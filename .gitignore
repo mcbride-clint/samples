@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Simple Architecture/SimpleArchitecture/.vs/SimpleArchitecture/v16
+/Simple Architecture/SimpleArchitecture/SimpleArchitecture/bin/Debug/netcoreapp3.1
+/Simple Architecture/SimpleArchitecture/SimpleArchitecture/obj
