@@ -1,0 +1,49 @@
+﻿@page "{userSeqNum}"
+@model SimpleArchitecture.RazorPages.ViewModel
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2>@Model.ThisUser.FullName</h2>
+
+<dl>
+    <dt>
+        Full Name
+    </dt>
+    <dd>
+        @Model.ThisUser.FullName
+    </dd>
+    <dt>
+        User Name
+    </dt>
+    <dd>
+        @Model.ThisUser.UserId
+    </dd>
+    <dt>
+        Owner
+    </dt>
+    <dd>
+        @Model.ThisUser.Owner
+    </dd>
+    <dt>
+        Activity
+    </dt>
+    <dd>
+        @Model.ThisUser.Activity
+    </dd>
+    <dt>
+        SubActivity
+    </dt>
+    <dd>
+        @Model.ThisUser.Subactivity
+    </dd>
+    <dt>
+        Phone Number
+    </dt>
+    <dd>
+        @Model.ThisUser.PhoneNumber
+    </dd>
+</dl>
+
+<a asp-page="/Users/Edit" asp-route-userSeqNum="@Model.ThisUser.UserIdSeqNum" class="btn btn-primary">Edit</a>
+<a asp-page="/Users/Delete" asp-route-userSeqNum="@Model.ThisUser.UserIdSeqNum" class="btn btn-danger">Delete</a>

@@ -4,13 +4,30 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Current User List</h1>
 
-<ul>
-    @foreach (var singleUser in Model.Users)
-    {
-        <li>
-            @singleUser.FullName
-        </li>
-    }
-</ul>
+<a asp-page="/Users/Create" class="btn btn-success">Add New User</a>
+
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                User Name
+            </th>
+            <th>
+                Full Name
+            </th>
+            <th>
+                Owner
+            </th>
+            <th>
+                &nbsp;
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @Html.DisplayFor(model => model.Users)
+    </tbody>
+</table>

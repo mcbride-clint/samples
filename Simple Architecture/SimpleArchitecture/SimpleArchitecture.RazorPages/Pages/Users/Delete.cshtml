@@ -1,0 +1,54 @@
+﻿@page "{userSeqNum}"
+@model SimpleArchitecture.RazorPages.DeleteModel
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+Are you sure you want to Delete this User?
+
+<dl>
+    <dt>
+        Full Name
+    </dt>
+    <dd>
+        @Model.ThisUser.FullName
+    </dd>
+    <dt>
+        User Name
+    </dt>
+    <dd>
+        @Model.ThisUser.UserId
+    </dd>
+    <dt>
+        Owner
+    </dt>
+    <dd>
+        @Model.ThisUser.Owner
+    </dd>
+    <dt>
+        Activity
+    </dt>
+    <dd>
+        @Model.ThisUser.Activity
+    </dd>
+    <dt>
+        SubActivity
+    </dt>
+    <dd>
+        @Model.ThisUser.Subactivity
+    </dd>
+    <dt>
+        Phone Number
+    </dt>
+    <dd>
+        @Model.ThisUser.PhoneNumber
+    </dd>
+</dl>
+
+<form method="post">
+    <input type="hidden" asp-for="@Model.ThisUser.UserIdSeqNum" />
+
+    <button type="submit" class="btn btn-danger">Delete User</button>
+</form>

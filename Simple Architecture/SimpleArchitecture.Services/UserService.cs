@@ -10,17 +10,35 @@ namespace SimpleArchitecture.Services
     public class UserService
     {
         IUserRepository _userRepo;
-        public UserService(IUserRepository userRepo) {
+        public UserService(IUserRepository userRepo)
+        {
             _userRepo = userRepo;
         }
 
-        public User Find(long userIdSeqNum) {
+        public User Find(long userIdSeqNum)
+        {
             return _userRepo.Find(userIdSeqNum);
         }
 
         public List<User> Find(UserFilter filter)
         {
             return _userRepo.Find(filter);
+        }
+
+        public User Save(User thisUser)
+        {
+            if (thisUser.UserIdSeqNum == 0)
+            {
+                return _userRepo.Insert(thisUser);
+            }
+            else
+            {
+                return _userRepo.Update(thisUser);
+            }
+        }
+
+        public void Delete(User thisUser) {
+            _userRepo.Delete(thisUser);
         }
     }
 }

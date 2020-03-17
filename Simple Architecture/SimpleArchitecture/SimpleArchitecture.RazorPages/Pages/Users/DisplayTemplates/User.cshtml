@@ -1,0 +1,16 @@
+﻿@model SimpleArchitecture.Models.DomainModels.User
+
+<tr>
+    <td>
+        @Model.UserId
+    </td>
+    <td>
+        @Model.FullName
+    </td>
+    <td>
+        @Model.Owner
+    </td>
+    <td>
+        <a asp-page="/Users/View" asp-route-userSeqNum="@Model.UserIdSeqNum" asp- class="btn btn-primary">View</a>
+    </td>
+</tr>
