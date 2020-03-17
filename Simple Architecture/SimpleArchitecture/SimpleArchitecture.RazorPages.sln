@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleArchitecture.RazorPag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleArchitecture.Models", "..\SimpleArchitecture.Models\SimpleArchitecture.Models.csproj", "{D8DA134E-F6D8-465B-824A-0E6FF6C332E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleArchitecture.Services", "..\SimpleArchitecture.Services\SimpleArchitecture.Services.csproj", "{ADBE7C45-A0B3-4C65-9C40-557FA7BA70A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleArchitecture.DataAccess", "..\SimpleArchitecture.DataAccess\SimpleArchitecture.DataAccess.csproj", "{2D78B72B-592F-4D76-A3EE-CBBF3683D342}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{D8DA134E-F6D8-465B-824A-0E6FF6C332E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8DA134E-F6D8-465B-824A-0E6FF6C332E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8DA134E-F6D8-465B-824A-0E6FF6C332E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADBE7C45-A0B3-4C65-9C40-557FA7BA70A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADBE7C45-A0B3-4C65-9C40-557FA7BA70A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADBE7C45-A0B3-4C65-9C40-557FA7BA70A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADBE7C45-A0B3-4C65-9C40-557FA7BA70A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D78B72B-592F-4D76-A3EE-CBBF3683D342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D78B72B-592F-4D76-A3EE-CBBF3683D342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D78B72B-592F-4D76-A3EE-CBBF3683D342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D78B72B-592F-4D76-A3EE-CBBF3683D342}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
