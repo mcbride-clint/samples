@@ -35,8 +35,12 @@ namespace SimpleArchitecture.RazorPages
             // Inject the UserRepositoryInMemory into needed IUserRepository Instances. 
             // This Instance is a Singleton so there will ever only be 1 between HTTP Transactions to Store Users in memory
             services.AddSingleton<IUserRepository, UserRepositoryInMemory>();
+
             // Inject a User Service Wherever Needed
             services.AddScoped<UserService>();
+
+            // There is a Default ILogger Injected that will log messages to the Output and Debug Visual Studio Windows at Information and above levels
+            // Inject a different one to redirect to other destinations
 
             // ****************************8
             // End Custom Setup

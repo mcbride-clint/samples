@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
 using SimpleArchitecture.Models.DomainModels;
 using SimpleArchitecture.Services;
 
@@ -11,10 +12,13 @@ namespace SimpleArchitecture.RazorPages
 {
     public class DeleteModel : PageModel
     {
+        private readonly ILogger<DeleteModel> _logger;
         private readonly UserService _service;
-        public DeleteModel(UserService service)
+
+        public DeleteModel(ILogger<DeleteModel> logger, UserService service)
         {
             _service = service;
+            _logger = logger;
         }
 
         [BindProperty]
@@ -22,6 +26,7 @@ namespace SimpleArchitecture.RazorPages
         public void OnGet(long userSeqNum)
         {
             ThisUser = _service.Find(userSeqNum);
+            _logger.LogInformation($"User opened {ThisUser.FullName} for deletion");
         }
 
         public IActionResult OnPost()
@@ -35,6 +40,7 @@ namespace SimpleArchitecture.RazorPages
             }
 
             _service.Delete(ThisUser);
+            _logger.LogInformation($"User deleted {ThisUser.FullName}");
 
             return RedirectToPage("./Index");
         }

@@ -1,4 +1,5 @@
-﻿using SimpleArchitecture.Models.DomainModels;
+﻿using Microsoft.Extensions.Logging;
+using SimpleArchitecture.Models.DomainModels;
 using SimpleArchitecture.Models.Filters;
 using SimpleArchitecture.Models.Interfaces.Repositories;
 using System;
@@ -13,12 +14,16 @@ namespace SimpleArchitecture.Services
     public class UserService
     {
         IUserRepository _userRepo;
+        ILogger<UserService> _logger;
+
         /// <summary>
         /// Initialize the Service with an instance of an injected User Repository
         /// </summary>
+        /// <param name="logger"></param>
         /// <param name="userRepo"></param>
-        public UserService(IUserRepository userRepo)
+        public UserService(ILogger<UserService> logger, IUserRepository userRepo)
         {
+            _logger = logger;
             _userRepo = userRepo;
         }
 
@@ -49,12 +54,15 @@ namespace SimpleArchitecture.Services
         /// <returns></returns>
         public User Save(User thisUser)
         {
+            _logger.LogDebug("Checking for existing User Id Seq Num");
             if (thisUser.UserIdSeqNum == 0)
             {
+                _logger.LogInformation("No UserIdSeqNum Found, inserting new record");
                 return _userRepo.Insert(thisUser);
             }
             else
             {
+                _logger.LogInformation("UserIdSeqNum Found, updating existing record");
                 return _userRepo.Update(thisUser);
             }
         }
