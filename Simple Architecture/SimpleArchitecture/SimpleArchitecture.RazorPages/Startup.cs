@@ -12,6 +12,9 @@ using SimpleArchitecture.DataAccess.Repositories;
 using SimpleArchitecture.Models.Interfaces.Repositories;
 using SimpleArchitecture.Services;
 
+/// <summary>
+/// Use this Code to Customize Services and other capabilities available to the Web Application
+/// </summary>
 namespace SimpleArchitecture.RazorPages
 {
     public class Startup
@@ -23,17 +26,25 @@ namespace SimpleArchitecture.RazorPages
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // ****************************8
+            // Begin Custom Setup
+            // ****************************8
+
+            // Inject the UserRepositoryInMemory into needed IUserRepository Instances. 
+            // This Instance is a Singleton so there will ever only be 1 between HTTP Transactions to Store Users in memory
             services.AddSingleton<IUserRepository, UserRepositoryInMemory>();
+            // Inject a User Service Wherever Needed
             services.AddScoped<UserService>();
 
+            // ****************************8
+            // End Custom Setup
+            // ****************************8
 
             services.AddRazorPages();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -43,7 +54,6 @@ namespace SimpleArchitecture.RazorPages
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 

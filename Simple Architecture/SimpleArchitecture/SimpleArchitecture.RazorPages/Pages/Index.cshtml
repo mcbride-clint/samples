@@ -4,23 +4,36 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h2 class="display-2">
-        .Net Core Test Application
-    </h2>
-    <p>
-        Uses the Shared Simple Architecture Services, Models, and Repositories with Razor Pages.
-    </p>
+    <div class="text-center">
+        <h2 class="display-2">
+            .Net Core Test Application
+        </h2>
+        <p>
+            Uses the Shared Simple Architecture Services, Models, and Repositories with Razor Pages.
+        </p>
 
-    <div class="card">
-        <div class="card-body">
-            <h2 class="card-title">Users</h2>
-            <p class="card-text">
-                View, Add, Edit, and Delete Users
-            </p>
-        </div>
-        <div class="card-footer">
-            <a asp-page="/Users/Index" class="btn btn-secondary">Go >></a>
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Users</h2>
+                    <p class="card-text">
+                        View, Add, Edit, and Delete Users
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a asp-page="/Users/Index" class="btn btn-secondary">Go >></a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Future Stuff</h2>
+                    <p class="card-text">
+                        To be accomplished
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-outline-secondary">Go >></a>
+                </div>
+            </div>
         </div>
     </div>
-</div>

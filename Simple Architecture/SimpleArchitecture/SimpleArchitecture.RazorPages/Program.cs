@@ -7,6 +7,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+/// <summary>
+/// Everything here is .Net Defaults to turn the console application into a Web Application.
+/// Somethings can be customized here in advanced circumstances.
+/// </summary>
 namespace SimpleArchitecture.RazorPages
 {
     public class Program
