@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "SimpleArchitecture.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/SimpleArchitecture.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SimpleArchitecture.Models.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "SimpleArchitecture.Models/1.0.0": {
+      "type": "project",
+      "path": "../../SimpleArchitecture.Models/SimpleArchitecture.Models.csproj",
+      "msbuildProject": "../../SimpleArchitecture.Models/SimpleArchitecture.Models.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "SimpleArchitecture.Models >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\cmm55\\.nuget\\packages\\": {}
@@ -32,7 +51,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Source\\Simple Architecture\\SimpleArchitecture.Models\\SimpleArchitecture.Models.csproj": {
+              "projectPath": "D:\\Source\\Simple Architecture\\SimpleArchitecture.Models\\SimpleArchitecture.Models.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
