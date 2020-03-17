@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace SimpleArchitecture
+namespace SimpleArchitecture.RazorPages
 {
     public class Program
     {
