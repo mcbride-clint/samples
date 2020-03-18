@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleArchitecture.RazorPages", "SimpleArchitecture.RazorPages\SimpleArchitecture.RazorPages.csproj", "{AEACE3AE-E0F6-4FDF-9EF2-FAD68AE85F0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleArchitecture.Models", "..\SimpleArchitecture.Models\SimpleArchitecture.Models.csproj", "{D8DA134E-F6D8-465B-824A-0E6FF6C332E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleArchitecture.Models", "..\..\SimpleArchitecture.Models\SimpleArchitecture.Models.csproj", "{D8DA134E-F6D8-465B-824A-0E6FF6C332E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleArchitecture.Services", "..\SimpleArchitecture.Services\SimpleArchitecture.Services.csproj", "{ADBE7C45-A0B3-4C65-9C40-557FA7BA70A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleArchitecture.Services", "..\..\SimpleArchitecture.Services\SimpleArchitecture.Services.csproj", "{ADBE7C45-A0B3-4C65-9C40-557FA7BA70A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleArchitecture.DataAccess", "..\SimpleArchitecture.DataAccess\SimpleArchitecture.DataAccess.csproj", "{2D78B72B-592F-4D76-A3EE-CBBF3683D342}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleArchitecture.DataAccess", "..\..\SimpleArchitecture.DataAccess\SimpleArchitecture.DataAccess.csproj", "{2D78B72B-592F-4D76-A3EE-CBBF3683D342}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
