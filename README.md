@@ -1,7 +1,7 @@
 # samples
 Repository to test sample architectures.
 
-Communicate about this Repo here: [at-home-ls.slack.com](at-home-ls.slack.com)
+Communicate about this Repo here: [at-home-ls.slack.com](https://at-home-ls.slack.com)
 
 Email Clint for an Invite: cmm5559@gmail.com
 
