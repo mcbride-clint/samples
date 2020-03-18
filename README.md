@@ -13,13 +13,15 @@ Contains the Tasks that the Application can do. Contains the Business and Valida
 ### SimpleArchitecture.DataAccess
 Contains only the code needed for persistance of data.
 
-## SimpleArchitecture.RazorPages
+## UI Projects
+
+### SimpleArchitecture.RazorPages
 Simple Application to View and Edit Users.  Uses the Built in dependency Injection framework to inject the needed service and repository to each Page.
 
-## SimpleArchitecture.Mvc
+### SimpleArchitecture.Mvc
 Simple Application to View and Edit Users.  Uses the Built in dependency Injection framework to inject the needed service and repository to each Controller. 
 Used the default View Scaffolding function to design each view.
 
-## SimpleArchitecture.Api
+### SimpleArchitecture.Api
 Simple API to View and Edit Users.  Uses the Built in dependency Injection framework to inject the needed service and repository to each Controller. 
 Used Swagger to add an easy to use/test frontend.
