@@ -5,14 +5,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using SimpleArchitecture.DataAccess.Repositories;
 using SimpleArchitecture.Models.Interfaces.Repositories;
 using SimpleArchitecture.Services;
 
-namespace SimpleArchitecture.Mvc
+namespace SimpleArchitecture.Api
 {
     public class Startup
     {
@@ -39,11 +42,22 @@ namespace SimpleArchitecture.Mvc
             // There is a Default ILogger Injected that will log messages to the Output and Debug Visual Studio Windows at Information and above levels
             // Inject a different one to redirect to other destinations
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Simple Architecture API",
+                    Description = "Testing the Simple Architecture backend with a Swagger API",
+                    Version = "v1"
+                });
+            });
+
+
             // ****************************8
             // End Custom Setup
             // ****************************8
 
-            services.AddControllersWithViews();
+            services.AddControllers();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -52,24 +66,29 @@ namespace SimpleArchitecture.Mvc
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
 
             app.UseRouting();
 
             app.UseAuthorization();
 
+            // ********************
+            // Initialize Swagger
+            // ********************
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Simple Architecture V1");
+            });
+
+            // ********************
+            // ********************
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllers();
             });
         }
     }
