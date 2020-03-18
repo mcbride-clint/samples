@@ -25,3 +25,7 @@ Used the default View Scaffolding function to design each view.
 ### SimpleArchitecture.Api
 Simple API to View and Edit Users.  Uses the Built in dependency Injection framework to inject the needed service and repository to each Controller. 
 Used Swagger to add an easy to use/test frontend.
+
+### SimpleArchitecture.Angular
+Simple Angular App to View and Edit Users.  Uses the Built in dependency Injection framework to inject the needed service and repository to each Controller. 
+The default Microsoft Angular Template creates a built in API.
