@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
+    <ProjectReference Include="..\Catalog.Models\Catalog.Models.csproj" />
   </ItemGroup>
 
 </Project>
