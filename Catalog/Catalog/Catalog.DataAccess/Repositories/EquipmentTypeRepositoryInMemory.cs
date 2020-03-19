@@ -2,6 +2,7 @@
 using Catalog.Models.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -13,20 +14,10 @@ namespace Catalog.DataAccess.Repositories
 
         public EquipmentTypeRepositoryInMemory()
         {
-            // Populate Initial Values
-            EquipmentTypes = new List<EquipmentType>()
-            {
-                new EquipmentType(){
-                     EquipmentTypeId = 1,
-                     Name = "Infrastructure",
-                     Description = "Holds up alot"
-                },
-                new EquipmentType(){
-                     EquipmentTypeId = 2,
-                     Name = "Other",
-                     Description = "Miscellaneous Items"
-                }
-            };
+            // May Only work in Testing
+            var rootDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName;
+            var dummyData = File.ReadAllText(rootDirectory + "\\Catalog.DataAccess\\DummyData\\EquipmentType.json");
+            EquipmentTypes = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EquipmentType>>(dummyData);
         }
 
         public EquipmentType Find(long equipmentTypeId)

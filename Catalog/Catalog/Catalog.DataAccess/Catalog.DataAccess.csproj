@@ -2,10 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <UserSecretsId>11b1f14f-7103-4470-931b-fd2e6caa9532</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Catalog.Models\Catalog.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DummyData\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
 </Project>

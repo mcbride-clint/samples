@@ -3,6 +3,7 @@ using Catalog.Models.Filters;
 using Catalog.Models.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -14,34 +15,10 @@ namespace Catalog.DataAccess.Repositories
 
         public EquipmentSubTypeRepositoryInMemory()
         {
-            // Populate Initial Values
-            EquipmentSubTypes = new List<EquipmentSubType>()
-            {
-                new EquipmentSubType(){
-                     EquipmentSubTypeId = 1,
-                     Name = "Large Assembly",
-                     ParentEquipmentTypeId = 1,
-                     Description = "Really Big Stuff"
-                },
-                new EquipmentSubType(){
-                     EquipmentSubTypeId = 2,
-                     Name = "Medium Assembly",
-                     ParentEquipmentTypeId = 1,
-                     Description = "Kinda Big Stuff"
-                },
-                new EquipmentSubType(){
-                     EquipmentSubTypeId = 3,
-                     Name = "Circuit Board",
-                     ParentEquipmentTypeId = 2,
-                     Description = "Holds Electronics"
-                },
-                new EquipmentSubType(){
-                     EquipmentSubTypeId = 4,
-                     Name = "Cable",
-                     ParentEquipmentTypeId = 2,
-                     Description = "Connects Electronics"
-                }
-            };
+            // May Only work in Testing
+            var rootDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName;
+            var dummyData = File.ReadAllText(rootDirectory + "\\Catalog.DataAccess\\DummyData\\EquipmentSubType.json");
+            EquipmentSubTypes = Newtonsoft.Json.JsonConvert.DeserializeObject<List<EquipmentSubType>>(dummyData);          
         }
 
         public EquipmentSubType Find(long equipmentSubTypeId)

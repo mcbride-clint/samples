@@ -2,6 +2,7 @@
 using Catalog.Models.Filters;
 using Catalog.Models.Interfaces;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Catalog.DataAccess.Repositories
@@ -12,23 +13,10 @@ namespace Catalog.DataAccess.Repositories
 
         public DesignatorRepositoryInMemory()
         {
-            // Populate Initial Values
-            Designators = new List<Designator>()
-            {
-                new Designator(){
-                    DesignatorId = 1,
-                    ActivityId = 1,
-                    EquipmentTypeId = 1,
-                    EquipmentSubType = 1,
-                    Nomenclature = "Test Category",
-                    LeadTimeGroupId = 1,
-                    OwnerId = 1,
-                    SubActivityId = 1,
-                    IsAssembly = true,
-                    IsComponent = true,
-                    IsSpare = true
-                }
-            };
+            // May Only work in Testing
+            var rootDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName;
+            var dummyData = File.ReadAllText(rootDirectory + "\\Catalog.DataAccess\\DummyData\\Designator.json");
+            Designators = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Designator>>(dummyData);
         }
 
         public Designator Find(long designatorId)
