@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MDCLog.Models.DomainModels
 {
-    class LogAttachmentTrans
+    public class LogAttachmentTrans
     {
         public int LogAttachSeqNum { get; set; }
         public int LogNumber { get; set; }
