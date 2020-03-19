@@ -64,9 +64,9 @@ namespace Catalog.DataAccess.Repositories
             {
                 matchedDesignators = matchedDesignators.Where(d => d.EquipmentTypeId == filter.EquipmentTypeId);
             }
-            if (filter.EquipmentSubType.HasValue)
+            if (filter.EquipmentSubTypeId.HasValue)
             {
-                matchedDesignators = matchedDesignators.Where(d => d.EquipmentSubType == filter.EquipmentSubType);
+                matchedDesignators = matchedDesignators.Where(d => d.EquipmentSubTypeId == filter.EquipmentSubTypeId);
             }
 
             return matchedDesignators;

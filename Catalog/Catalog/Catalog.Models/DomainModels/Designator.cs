@@ -12,7 +12,7 @@ namespace Catalog.Models.DomainModels
         public bool IsSpare { get; set; }
         public string Nomenclature { get; set; }
         public int EquipmentTypeId { get; set; }
-        public int EquipmentSubType { get; set; }
+        public int EquipmentSubTypeId { get; set; }
         public int LeadTimeGroupId { get; set; }
         public int ActivityId { get; set; }
         public int SubActivityId { get; set; }
