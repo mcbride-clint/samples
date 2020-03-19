@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MDCLog.Models.DomainModels.Filters
+namespace MDCLog.Services
 {
-    public class UserFilter
+    public class LogCommentsService
     {
+
     }
 }
