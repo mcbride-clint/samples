@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MDCLog.Models
+namespace MDCLog.Models.DomainModels
 {
     public class MDCStatusChangeLog
     {
@@ -14,4 +14,6 @@ namespace MDCLog.Models
         public DateTime StatusChangedDate { get; set; }
 
     }
+}
+
 }
