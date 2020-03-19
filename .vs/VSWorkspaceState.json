@@ -1,11 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Simple Architecture",
-    "\\Simple Architecture\\SimpleArchitecture.Models\\DomainModels",
-    "\\Simple Architecture\\SimpleArchitecture\\SimpleArchitecture.RazorPages",
-    "\\Simple Architecture\\SimpleArchitecture\\SimpleArchitecture.RazorPages\\Pages"
+    "\\Simple Architecture"
   ],
-  "SelectedNode": "\\README.md",
   "PreviewInSolutionExplorer": false
 }
