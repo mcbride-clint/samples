@@ -1,4 +1,5 @@
 ﻿using Catalog.Models.DomainModels;
+using Catalog.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,19 +7,19 @@ using System.Text;
 
 namespace Catalog.DataAccess.Repositories
 {
-    public class LeadTimeGroupRepository
+    public class LeadTimeGroupRepositoryInMemory : ILeadTimeGroupRepository
     {
         private readonly List<LeadTimeGroup> LeadTimeGroups;
 
-        public LeadTimeGroupRepository()
+        public LeadTimeGroupRepositoryInMemory()
         {
             LeadTimeGroups = new List<LeadTimeGroup>();
 
             LeadTimeGroups.Add(new LeadTimeGroup()
             {
-                 LeadTimeGroupId = 1,
-                 Name = "Long",
-                 Description = "More Than 5 Years"
+                LeadTimeGroupId = 1,
+                Name = "Long",
+                Description = "More Than 5 Years"
             });
 
             LeadTimeGroups.Add(new LeadTimeGroup()

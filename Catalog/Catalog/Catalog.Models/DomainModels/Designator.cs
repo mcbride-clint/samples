@@ -17,6 +17,6 @@ namespace Catalog.Models.DomainModels
         public int ActivityId { get; set; }
         public int SubActivityId { get; set; }
         public int OwnerId { get; set; }
-        public IEnumerable<int> ImageIds { get; set; }
+        public int ImageListId { get; set; }
     }
 }
