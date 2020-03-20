@@ -12,10 +12,10 @@ namespace Catalog.DataAccess.Repositories
     public class ImageRepositoryInMemory : IImageRepository
     {
         private readonly List<Image> Images;
-        public ImageRepositoryInMemory()
+        public ImageRepositoryInMemory(string rootDirectory)
         {
             // May Only work in Testing
-            var rootDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName;
+            // rootDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName;
             var dummyData = File.ReadAllText(rootDirectory + "\\Catalog.DataAccess\\DummyData\\Image.json");
             Images = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Image>>(dummyData);
         }

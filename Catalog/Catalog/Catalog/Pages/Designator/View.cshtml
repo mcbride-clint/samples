@@ -1,0 +1,23 @@
+﻿@page "{designatorId}"
+@model Designator.ViewModel
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>View</h1>
+
+<form>
+
+    <div class="container">
+        @foreach (var img in Model.Images)
+        {
+            <img src="@img.Base64Image" title="@img.Title" />
+        }
+
+        <div class="form-group">
+            <label asp-for="@Model.thisDesignator.DesignatorId" class="col-form-label"></label>
+            <input asp-for="@Model.thisDesignator.DesignatorId" class="form-control" />
+        </div>
+    </div>
+
+</form>

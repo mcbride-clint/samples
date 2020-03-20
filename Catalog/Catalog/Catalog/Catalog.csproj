@@ -8,6 +8,12 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Catalog.DataAccess\Catalog.DataAccess.csproj" />
+    <ProjectReference Include="..\Catalog.Models\Catalog.Models.csproj" />
+    <ProjectReference Include="..\Catalog.Services\Catalog.Services.csproj" />
+  </ItemGroup>
+
 
 
 </Project>

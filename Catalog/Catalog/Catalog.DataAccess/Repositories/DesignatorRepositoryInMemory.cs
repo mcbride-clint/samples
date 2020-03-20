@@ -11,10 +11,10 @@ namespace Catalog.DataAccess.Repositories
     {
         private readonly List<Designator> Designators;
 
-        public DesignatorRepositoryInMemory()
+        public DesignatorRepositoryInMemory(string rootDirectory)
         {
             // May Only work in Testing
-            var rootDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName;
+            // rootDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName;
             var dummyData = File.ReadAllText(rootDirectory + "\\Catalog.DataAccess\\DummyData\\Designator.json");
             Designators = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Designator>>(dummyData);
         }

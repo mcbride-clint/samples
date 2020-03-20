@@ -1,7 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Catalog.DataAccess.Repositories;
+using Catalog.Models.Interfaces;
+using Catalog.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,6 +27,20 @@ namespace Catalog
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var rootDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).FullName;
+
+            services.AddSingleton<IDesignatorRepository, DesignatorRepositoryInMemory>((services) => {
+                return new DesignatorRepositoryInMemory(rootDirectory);
+            });
+
+            services.AddSingleton<IImageRepository, ImageRepositoryInMemory>((services) => {
+                return new ImageRepositoryInMemory(rootDirectory);
+            });
+
+            services.AddScoped<ImageService>();
+            services.AddScoped<DesignatorService>();
+
+            services.AddMvc();
             services.AddRazorPages();
         }
 
@@ -50,6 +68,7 @@ namespace Catalog
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }

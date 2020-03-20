@@ -11,5 +11,6 @@ namespace Catalog.Models.DomainModels
         public string Title { get; set; }
         public string Description { get; set; }
         public byte[] ImageData { get; set; }
+        public string Base64Image => "data:image/png;base64," + Convert.ToBase64String(ImageData, 0, ImageData.Length);
     }
 }

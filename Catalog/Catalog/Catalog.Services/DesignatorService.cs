@@ -19,5 +19,10 @@ namespace Catalog.Services
         {
             return _designatorRepo.Find(new Models.Filters.DesignatorFilter());
         }
+
+        public Designator Get(int designatorId)
+        {
+            return _designatorRepo.Find(designatorId);
+        }
     }
 }
