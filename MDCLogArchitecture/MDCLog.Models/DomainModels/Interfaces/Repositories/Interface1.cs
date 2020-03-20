@@ -11,7 +11,7 @@ namespace MDCLog.Models.DomainModels.Interfaces.Repositories
         LogComments Update(LogComments entity);
         void Delete(LogComments entity);
         LogComments Find(int LogNumber);
-        List<LogComments> Find(UserFilter filter);
+        List<LogComments> Find(LogComments filter);
 
     }
 }
