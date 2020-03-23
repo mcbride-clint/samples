@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MDCLogArchitecture.Models", "MDCLogArchitecture.Models.csproj", "{BDF8AED1-A486-47AF-9D69-658C34112003}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "..\DataAccess\DataAccess.csproj", "{24FBA601-7341-4510-B012-CBAEF248CD60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MDCLogArchitecture.DataAccess", "..\DataAccess\MDCLogArchitecture.DataAccess.csproj", "{24FBA601-7341-4510-B012-CBAEF248CD60}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDCLogArchitecture.Services", "..\MDCLogArchitecture.Services\MDCLogArchitecture.Services.csproj", "{77456E35-B072-4727-97EA-A92F0CB7F78D}"
 EndProject

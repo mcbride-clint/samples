@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MDCLogArchitecture.Models.DomainModels.Filters
+namespace MDCLogArchitecture.Models.Filters
 {
     public class LogCommentsFilter
     {
