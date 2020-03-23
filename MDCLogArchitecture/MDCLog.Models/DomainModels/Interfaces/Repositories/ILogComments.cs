@@ -1,9 +1,9 @@
-﻿using MDCLog.Models.DomainModels.Filters;
+﻿using MDCLogArchitecture.Models.DomainModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MDCLog.Models.DomainModels.Interfaces.Repositories
+namespace MDCLogArchitecture.Models.DomainModels.Interfaces.Repositories
 {
     interface ILogComments
     {
