@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MDCLog.Models
+namespace MDCLogArchitecture.Models.DomainModels
 {
     public class MDCStatusChangeLog
     {
@@ -15,3 +15,5 @@ namespace MDCLog.Models
 
     }
 }
+
+

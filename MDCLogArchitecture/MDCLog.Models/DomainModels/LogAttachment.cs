@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MDCLog.Models.DomainModels
+namespace MDCLogArchitecture.Models.DomainModels
 {
     public class LogAttachment
     {
