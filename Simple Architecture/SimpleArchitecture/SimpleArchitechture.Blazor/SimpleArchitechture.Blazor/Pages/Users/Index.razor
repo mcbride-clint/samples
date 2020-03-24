@@ -4,6 +4,7 @@
 @using SimpleArchitecture.Models.DomainModels
 @using SimpleArchitecture.Blazor.ViewModel
 @using SimpleArchitecture.Blazor.Extensions
+@using SimpleArchitecture.Blazor.Components
 
 @inject UserService userService
 
@@ -12,6 +13,12 @@
 <a href="/Users/Create" class="btn btn-success">Add New User</a>
 
 <hr />
+
+<SearchArea OnEnterPressed="NarrowResults">
+    <MatTextField @bind-Value="@searchUserId" Label="Search User Id" />
+    <MatTextField @bind-Value="@searchFullName" Label="Search Names" />
+    <MatButton Icon="search" OnClick="NarrowResults" />
+</SearchArea>
 
 <MatTable Items="@Users" class="mat-elevation-z5">
     <MatTableHeader>
@@ -31,15 +38,34 @@
 </MatTable>
 
 @code {
-    private IEnumerable<UserVM> Users;
+    private List<UserVM> Users;
+    private IEnumerable<UserVM> AllUsers;
+
+    public string searchUserId { get; set; }
+    public string searchFullName { get; set; }
 
     protected override void OnInitialized()
     {
-        Users = userService.Find(new SimpleArchitecture.Models.Filters.UserFilter()).ToViewModel();
+        AllUsers = userService.Find(new SimpleArchitecture.Models.Filters.UserFilter()).ToViewModel();
+        Users = AllUsers.ToList();
     }
 
-    private string CreateEditLink(UserVM user)
+    private void NarrowResults()
     {
-        return $"/Users/View/{user.UserIdSeqNum}";
+        IEnumerable<UserVM> FilteringUsers = AllUsers.AsEnumerable();
+
+        if (!string.IsNullOrWhiteSpace(searchUserId))
+        {
+            FilteringUsers = FilteringUsers.Where(u => u.UserId.ToUpper().StartsWith(searchUserId.ToUpper()));
+        }
+
+        if (!string.IsNullOrWhiteSpace(searchFullName))
+        {
+            FilteringUsers = FilteringUsers.Where(u => u.FullName.ToUpper().Contains(searchFullName.ToUpper()));
+        }
+
+        Users = FilteringUsers.ToList();
+
+        this.StateHasChanged();
     }
 }
