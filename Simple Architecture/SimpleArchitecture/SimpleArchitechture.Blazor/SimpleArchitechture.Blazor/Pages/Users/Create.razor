@@ -1,0 +1,52 @@
+﻿@page "/Users/Create"
+
+@using SimpleArchitecture.Services
+@using SimpleArchitecture.Blazor.ViewModel
+@using SimpleArchitecture.Blazor.Extensions
+
+@inject UserService userService
+@inject NavigationManager NavigationManager
+@inject IMatToaster Toaster
+
+<h1>Create</h1>
+
+<hr />
+<p>
+    <MatTextField @bind-Value="@User.UserId" Label="User Id" Outlined="true"></MatTextField>
+</p>
+<p>
+    <MatTextField @bind-Value="@User.FullName" Label="Full Name" Outlined="true"></MatTextField>
+</p>
+<p>
+    <MatTextField @bind-Value="@User.Activity" Label="Activity" Outlined="true"></MatTextField>
+</p>
+<p>
+    <MatTextField @bind-Value="@User.Subactivity" Label="Subactivity" Outlined="true"></MatTextField>
+</p>
+<p>
+    <MatTextField @bind-Value="@User.Owner" Label="Owner" Outlined="true"></MatTextField>
+</p>
+<p>
+    <MatTextField @bind-Value="@User.PhoneNumber" Label="Phone Number" Outlined="true"></MatTextField>
+</p>
+
+<hr />
+
+<MatButton Icon="add" OnClick="Submit" Raised="true">Save</MatButton>
+
+@code {
+    private UserVM User;
+
+    protected override void OnInitialized()
+    {
+        User = new UserVM();
+
+    }
+
+    void Submit()
+    {
+        userService.Save(User.ToDomainModel());
+        Toaster.Add($"{User.UserId} Saved Successfully", MatToastType.Success, icon: "add");
+        NavigationManager.NavigateTo("/Users");
+    }
+}

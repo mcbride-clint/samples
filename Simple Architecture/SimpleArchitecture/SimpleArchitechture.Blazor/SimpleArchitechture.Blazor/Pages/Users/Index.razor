@@ -1,0 +1,45 @@
+﻿@page "/Users"
+
+@using SimpleArchitecture.Services
+@using SimpleArchitecture.Models.DomainModels
+@using SimpleArchitecture.Blazor.ViewModel
+@using SimpleArchitecture.Blazor.Extensions
+
+@inject UserService userService
+
+<h1>Current User List</h1>
+
+<a href="/Users/Create" class="btn btn-success">Add New User</a>
+
+<hr />
+
+<MatTable Items="@Users" class="mat-elevation-z5">
+    <MatTableHeader>
+        <th>User Name</th>
+        <th>Full Name</th>
+        <th>Owner</th>
+        <th></th>
+    </MatTableHeader>
+    <MatTableRow>
+        <td>@context.UserId</td>
+        <td>@context.FullName</td>
+        <td>@context.Owner</td>
+        <td>
+            <MatButton Icon="visibility" Link="@CreateEditLink(context)" />
+        </td>
+    </MatTableRow>
+</MatTable>
+
+@code {
+    private IEnumerable<UserVM> Users;
+
+    protected override void OnInitialized()
+    {
+        Users = userService.Find(new SimpleArchitecture.Models.Filters.UserFilter()).ToViewModel();
+    }
+
+    private string CreateEditLink(UserVM user)
+    {
+        return $"/Users/View/{user.UserIdSeqNum}";
+    }
+}

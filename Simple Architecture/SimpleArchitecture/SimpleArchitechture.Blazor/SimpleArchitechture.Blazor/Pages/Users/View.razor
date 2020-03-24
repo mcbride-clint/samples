@@ -1,0 +1,80 @@
+﻿@page "/Users/View/{UserIdSeqNum:int}"
+
+@using SimpleArchitecture.Services
+@using SimpleArchitecture.Blazor.ViewModel
+@using SimpleArchitecture.Blazor.Extensions
+
+@inject UserService userService
+@inject NavigationManager NavigationManager
+@inject IMatToaster Toaster
+
+
+@if (IsReadonly)
+{
+    <h1>View</h1>
+}
+else
+{
+    <h1>Editing</h1>
+}
+
+<p>
+    <MatTextField @bind-Value="@User.UserId" Label="User Id" Outlined="true" ReadOnly="IsReadonly"></MatTextField>
+</p>
+<p>
+    <MatTextField @bind-Value="@User.FullName" Label="Full Name" Outlined="true" ReadOnly="IsReadonly"></MatTextField>
+</p>
+<p>
+    <MatTextField @bind-Value="@User.Activity" Label="Activity" Outlined="true" ReadOnly="IsReadonly"></MatTextField>
+</p>
+<p>
+    <MatTextField @bind-Value="@User.Subactivity" Label="Subactivity" Outlined="true" ReadOnly="IsReadonly"></MatTextField>
+</p>
+<p>
+    <MatTextField @bind-Value="@User.Owner" Label="Owner" Outlined="true" ReadOnly="IsReadonly"></MatTextField>
+</p>
+<p>
+    <MatTextField @bind-Value="@User.PhoneNumber" Label="Phone Number" Outlined="true" ReadOnly="IsReadonly"></MatTextField>
+</p>
+
+@if (IsReadonly)
+{
+    <MatButton Icon="edit" OnClick="ToggleEdit" Raised="true">Edit</MatButton>
+}
+else
+{
+    <MatButton Icon="cancel" OnClick="RefreshPage" Raised="true">Cancel</MatButton>
+    <MatButton Icon="save" OnClick="Submit" Raised="true">Save</MatButton>
+}
+
+
+@code {
+    private UserVM User;
+    [Parameter]
+    public int UserIdSeqNum { get; set; }
+
+    public bool IsReadonly { get; set; }
+
+    protected override void OnInitialized()
+    {
+        IsReadonly = true;
+        User = userService.Find(UserIdSeqNum).ToViewModel();
+    }
+
+    private void ToggleEdit()
+    {
+        IsReadonly = !IsReadonly;
+    }
+
+    void Submit()
+    {
+        userService.Save(User.ToDomainModel());
+        Toaster.Add($"{User.UserId} Saved Successfully", MatToastType.Success, icon: "edit");
+        RefreshPage();
+    }
+
+    void RefreshPage()
+    {
+        NavigationManager.NavigateTo($"/Users/View/{UserIdSeqNum}", true);
+    }
+}
