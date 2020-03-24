@@ -1,13 +1,5 @@
-﻿@page "/Users/View/{UserIdSeqNum:int}"
-
-@using SimpleArchitecture.Services
-@using SimpleArchitecture.Blazor.ViewModel
-@using SimpleArchitecture.Blazor.Extensions
-
-@inject UserService userService
-@inject NavigationManager NavigationManager
-@inject IMatToaster Toaster
-
+﻿@inherits Users.ViewBase
+@page "/Users/View/{UserIdSeqNum:int}"
 
 @if (IsReadonly)
 {
@@ -19,7 +11,7 @@ else
 }
 
 <p>
-    <MatTextField @bind-Value="@User.UserId" Label="User Id" Outlined="true" ReadOnly="IsReadonly"/>
+    <MatTextField @bind-Value="@User.UserId" Label="User Id"  Outlined="true" ReadOnly="IsReadonly"/>
 </p>
 <p>
     <MatTextField @bind-Value="@User.FullName" Label="Full Name" Outlined="true" ReadOnly="IsReadonly" />
@@ -45,36 +37,4 @@ else
 {
     <MatButton Icon="cancel" OnClick="RefreshPage" Raised="true">Cancel</MatButton>
     <MatButton Icon="save" OnClick="Submit" Raised="true">Save</MatButton>
-}
-
-
-@code {
-    private UserVM User;
-    [Parameter]
-    public int UserIdSeqNum { get; set; }
-
-    public bool IsReadonly { get; set; }
-
-    protected override void OnInitialized()
-    {
-        IsReadonly = true;
-        User = userService.Find(UserIdSeqNum).ToViewModel();
-    }
-
-    private void ToggleEdit()
-    {
-        IsReadonly = !IsReadonly;
-    }
-
-    void Submit()
-    {
-        userService.Save(User.ToDomainModel());
-        Toaster.Add($"{User.UserId} Saved Successfully", MatToastType.Success, icon: "edit");
-        RefreshPage();
-    }
-
-    void RefreshPage()
-    {
-        NavigationManager.NavigateTo($"/Users/View/{UserIdSeqNum}", true);
-    }
 }

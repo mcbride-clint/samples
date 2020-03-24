@@ -1,0 +1,40 @@
+﻿@inherits Users2.ViewBase
+@page "/Users2/View/{UserIdSeqNum:int}"
+
+@if (IsReadonly)
+{
+    <h1>View</h1>
+}
+else
+{
+    <h1>Editing</h1>
+}
+
+<p>
+    <RadzenTextBox @bind-Value="@User.UserId" Label="User Id" Outlined="true" Disabled="IsReadonly" ReadOnly="IsReadonly" />
+</p>
+<p>
+    <RadzenTextBox @bind-Value="@User.FullName" Label="Full Name" Outlined="true" ReadOnly="IsReadonly" />
+</p>
+<p>
+    <RadzenTextBox @bind-Value="@User.Activity" Label="Activity" Outlined="true" ReadOnly="IsReadonly" />
+</p>
+<p>
+    <RadzenTextBox @bind-Value="@User.Subactivity" Label="Subactivity" Outlined="true" ReadOnly="IsReadonly" />
+</p>
+<p>
+    <RadzenTextBox @bind-Value="@User.Owner" Label="Owner" Outlined="true" ReadOnly="IsReadonly" />
+</p>
+<p>
+    <RadzenTextBox @bind-Value="@User.PhoneNumber" Label="Phone Number" Outlined="true" ReadOnly="IsReadonly" />
+</p>
+
+@if (IsReadonly)
+{
+    <RadzenButton Icon="edit" Click="ToggleEdit" Text="Edit" />
+}
+else
+{
+    <RadzenButton Icon="cancel" Click="RefreshPage" Text="Cancel" />
+    <RadzenButton Icon="save" Click="Submit" Text="Save" />
+}

@@ -1,0 +1,43 @@
+﻿@page "/Users2"
+
+@using Radzen
+@using SimpleArchitecture.Services
+@using SimpleArchitecture.Blazor.ViewModel
+@using SimpleArchitecture.Blazor.Extensions
+
+@inject UserService userService
+
+<h1>Current User List</h1>
+
+<a href="/Users2/Create" class="btn btn-success">Add New User</a>
+
+<hr />
+
+<RadzenGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="4"
+            AllowSorting="true" Data="@Users" TItem="UserVM" ColumnWidth="200px">
+    <Columns>
+        <RadzenGridColumn TItem="UserVM" Property="UserId" Title="UserId" />
+        <RadzenGridColumn TItem="UserVM" Property="FullName" Title="Full Name" />
+        <RadzenGridColumn TItem="UserVM" Property="Owner" Title="Owner" />
+        <RadzenGridColumn TItem="UserVM" Property="UserIdSeqNum"  Filterable="false" Sortable="false">
+            <Template Context="user">
+                <RadzenLink Icon="visibility" Path="@($"/Users2/View/{user.UserIdSeqNum}")" Text="View" />
+            </Template>
+        </RadzenGridColumn>
+    </Columns>
+</RadzenGrid>
+
+
+@code {
+    private IEnumerable<UserVM> Users;
+
+    protected override void OnInitialized()
+    {
+        Users = userService.Find(new SimpleArchitecture.Models.Filters.UserFilter()).ToViewModel();
+    }
+
+    private string CreateEditLink(UserVM user)
+    {
+        return $"/Users2/View/{user.UserIdSeqNum}";
+    }
+}

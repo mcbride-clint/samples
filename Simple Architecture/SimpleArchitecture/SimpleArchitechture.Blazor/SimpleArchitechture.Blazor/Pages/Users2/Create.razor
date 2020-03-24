@@ -1,0 +1,52 @@
+﻿@page "/Users2/Create"
+
+@using Radzen 
+@using SimpleArchitecture.Services
+@using SimpleArchitecture.Blazor.ViewModel
+@using SimpleArchitecture.Blazor.Extensions
+
+@inject UserService userService
+@inject NavigationManager NavigationManager
+@inject NotificationService NotificationService
+
+<h1>Create</h1>
+
+<p>
+    <RadzenTextBox @bind-Value="@User.UserId" Label="User Id" Outlined="true" />
+</p>
+<p>
+    <RadzenTextBox @bind-Value="@User.FullName" Label="Full Name" Outlined="true" />
+</p>
+<p>
+    <RadzenTextBox @bind-Value="@User.Activity" Label="Activity" Outlined="true" />
+</p>
+<p>
+    <RadzenTextBox @bind-Value="@User.Subactivity" Label="Subactivity" Outlined="true" />
+</p>
+<p>
+    <RadzenTextBox @bind-Value="@User.Owner" Label="Owner" Outlined="true" />
+</p>
+<p>
+    <RadzenTextBox @bind-Value="@User.PhoneNumber" Label="Phone Number" Outlined="true" />
+</p>
+
+<hr />
+
+<MatButton Icon="add" OnClick="Submit" Raised="true">Save</MatButton>
+
+@code {
+    private UserVM User;
+
+    protected override void OnInitialized()
+    {
+        User = new UserVM();
+
+    }
+
+    void Submit()
+    {
+        userService.Save(User.ToDomainModel());
+        NotificationService.Notify(NotificationSeverity.Success, $"{User.UserId} Saved Successfully", duration: 3000);
+        NavigationManager.NavigateTo("/Users");
+    }
+}

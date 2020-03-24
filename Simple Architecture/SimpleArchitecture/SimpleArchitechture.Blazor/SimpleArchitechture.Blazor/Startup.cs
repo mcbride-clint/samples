@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Radzen;
 using SimpleArchitecture.DataAccess.Repositories;
 using SimpleArchitecture.Models.Interfaces.Repositories;
 using SimpleArchitecture.Services;
@@ -45,6 +46,8 @@ namespace SimpleArchitecture.Blazor
             // Inject a different one to redirect to other destinations
 
             services.AddScoped<HttpClient>();
+
+            services.AddScoped<NotificationService>();
 
             services.AddMatToaster(config =>
             {

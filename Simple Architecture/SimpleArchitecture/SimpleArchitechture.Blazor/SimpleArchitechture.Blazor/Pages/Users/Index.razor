@@ -25,7 +25,7 @@
         <td>@context.FullName</td>
         <td>@context.Owner</td>
         <td>
-            <MatButton Icon="visibility" Link="@CreateEditLink(context)" />
+            <MatButton Icon="visibility" Link="@($"/Users/View/{context.UserIdSeqNum}")">View MatBlazor</MatButton>
         </td>
     </MatTableRow>
 </MatTable>
