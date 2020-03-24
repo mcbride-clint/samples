@@ -16,11 +16,13 @@
 
 <SearchArea OnEnterPressed="NarrowResults">
     <MatTextField @bind-Value="@searchUserId" Label="Search User Id" />
-    <MatTextField @bind-Value="@searchFullName" Label="Search Names" />
+    <MatAutocompleteList Items="@(Users.Select(u => u.FullName).Distinct())" @bind-Value="searchFullName" TItem="string" Label="Pick one"></MatAutocompleteList>
     <MatButton Icon="search" OnClick="NarrowResults" />
 </SearchArea>
 
-<MatTable Items="@Users" class="mat-elevation-z5">
+<MatTable Items="@Users"
+          SortBy=")"
+          class="mat-elevation-z5">
     <MatTableHeader>
         <th>User Name</th>
         <th>Full Name</th>
