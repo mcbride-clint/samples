@@ -21,10 +21,10 @@
         <th></th>
     </MatTableHeader>
     <MatTableRow>
-        <td>@context.UserId</td>
-        <td>@context.FullName</td>
-        <td>@context.Owner</td>
-        <td>
+        <td style="width: 10%">@context.UserId</td>
+        <td style="width: 20%">@context.FullName</td>
+        <td style="width: 20%">@context.Owner</td>
+        <td style="width: unset;">
             <MatButton Icon="visibility" Link="@($"/Users/View/{context.UserIdSeqNum}")">View MatBlazor</MatButton>
         </td>
     </MatTableRow>
