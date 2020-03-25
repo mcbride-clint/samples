@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\MDCLogArchitecture",
+    "\\MDCLogArchitecture\\DataAccess",
+    "\\MDCLogArchitecture\\DataAccess\\Repositories",
+    "\\MDCLogArchitecture\\MDCLog.Models",
+    "\\MDCLogArchitecture\\MDCLog.Models\\DomainModels",
     "\\Simple Architecture"
   ],
   "PreviewInSolutionExplorer": false
