@@ -1,0 +1,32 @@
+﻿@page "/Comments/Index"
+@model MDCLogArchitecture.RazorPages.Pages.Comments.IndexModel
+@{
+    ViewData["Title"] = "index";
+}
+
+<h1>Log Comments</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Seq Num
+            </th>
+            <th>
+                Log Number
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Comment
+            </th>
+            <th>
+                &nbsp;
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @Html.DisplayFor(model => model.LogComments)
+    </tbody>
+</table>
+
