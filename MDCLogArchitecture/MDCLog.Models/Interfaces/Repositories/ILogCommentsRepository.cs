@@ -8,11 +8,15 @@ namespace MDCLogArchitecture.Models.Interfaces.Repositories
 {
     public interface ILogCommentsRepository
     {
-      
+      /// <summary>
+      /// Comments can only be inserted and viewed - because they are a history of what transpired from
+      /// the logs birth to completion
+      /// </summary>
+      /// <param name="entity"></param>
+      /// <returns></returns>
             LogComments Insert(LogComments entity);
 
-            void Delete(LogComments entity);
-            LogComments Find(int SeqNum);
+            //LogComments Find(int LogNumber);
             List<LogComments> Find(LogCommentsFilter filter);
       
     }
