@@ -1,0 +1,45 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+    <link rel="stylesheet" href="_content/Radzen.Blazor/css/default.css">
+    <script src="_content/Radzen.Blazor/Radzen.Blazor.js"></script>
+@*<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>*@
+    <div class="text-center">
+        <h2 class="display-2">
+            .Net Core Test Application
+        </h2>
+        <p>
+            Uses the MDCLog Architecture Services, Models, and Repositories with Razor Pages.
+        </p>
+
+        <div class="card-deck">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Comments</h2>
+                    <p class="card-text">
+                        View List of Comments
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <RadzenButton Text="Hi"></RadzenButton>
+                    <a asp-page="/Comments/Index" class="btn btn-secondary">Go >></a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Future Stuff</h2>
+                    <p class="card-text">
+                        To be accomplished
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-outline-secondary">Go >></a>
+                </div>
+            </div>
+        </div>
+    </div>
