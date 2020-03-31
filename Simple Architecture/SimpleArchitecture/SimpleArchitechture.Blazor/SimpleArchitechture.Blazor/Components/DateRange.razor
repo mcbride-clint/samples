@@ -1,0 +1,155 @@
+﻿@*FullWidth=""
+    HelperText=""
+    HelperTextPersistent=""
+    HelperTextValidation=""*@
+
+<p>
+    <MatDatePicker @bind-Value="@BeginDate"
+                   Maximum="EndDate"
+                   EnableTime="EnableTime"
+                   EnableSeconds="EnableSeconds"
+                   Enable24hours="Enable24hours"
+                   EnableWeekNumbers="EnableWeekNumbers"
+                   AllowInput="AllowInput"
+                   Position="Position"
+                   Box="Box"
+                   Dense="Dense"
+                   Disabled="Disabled"
+                   HideClearButton="HideClearButton"
+                   Outlined="Outlined"
+                   ReadOnly="ReadOnly"
+                   Required="Required"
+                   FullWidth="FullWidth"
+                   Format="@Format" />
+    -
+    <MatDatePicker @bind-Value="@EndDate"
+                   Minimum="BeginDate"
+                   EnableTime="EnableTime"
+                   EnableSeconds="EnableSeconds"
+                   Enable24hours="Enable24hours"
+                   EnableWeekNumbers="EnableWeekNumbers"
+                   AllowInput="AllowInput"
+                   Position="Position"
+                   Box="Box"
+                   Dense="Dense"
+                   Disabled="Disabled"
+                   HideClearButton="HideClearButton"
+                   Outlined="Outlined"
+                   ReadOnly="ReadOnly"
+                   Required="Required"
+                   FullWidth="FullWidth"
+                   Format="@Format"
+                   />
+</p>
+
+@code {
+    private DateTime? _beginDate;
+    private DateTime? _endDate;
+
+    [Parameter]
+    public DateTime? BeginDate
+    {
+        get { return _beginDate; }
+        set
+        {
+            if (_beginDate != value)
+            {
+                _beginDate = value;
+                OnBeginDateChanged();
+            }
+        }
+    }
+
+    [Parameter]
+    public DateTime? EndDate
+    {
+        get { return _endDate; }
+        set
+        {
+            if (_endDate != value)
+            {
+                _endDate = value;
+                OnEndDateChanged();
+            }
+        }
+    }
+
+    [Parameter]
+    public EventCallback<DateTime?> BeginDateChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<DateTime?> EndDateChanged { get; set; }
+
+
+    private void OnBeginDateChanged()
+    {
+        BeginDateChanged.InvokeAsync(BeginDate);
+    }
+    private void OnEndDateChanged()
+    {
+        EndDateChanged.InvokeAsync(EndDate);
+    }
+
+
+    [Parameter]
+    public bool EnableTime { get; set; } = false;
+
+    [Parameter]
+    public bool EnableSeconds { get; set; } = false;
+
+    [Parameter]
+    public bool Enable24hours { get; set; }
+
+    [Parameter]
+    public bool EnableWeekNumbers { get; set; }
+
+    [Parameter]
+    public bool AllowInput { get; set; } = true;
+
+    [Parameter]
+    public bool DisableMobile { get; set; }
+
+    [Parameter]
+    public bool Dense { get; set; }
+    [Parameter]
+    public bool Outlined { get; set; }
+    [Parameter]
+    public bool Disabled { get; set; }
+    //
+    // Summary:
+    //     When true, it specifies that an input field is read-only.
+    [Parameter]
+    public bool ReadOnly { get; set; }
+    [Parameter]
+    public bool FullWidth { get; set; }
+    [Parameter]
+    public bool Required { get; set; }
+    [Parameter]
+    public bool HelperTextValidation { get; set; }
+    [Parameter]
+    public bool HelperTextPersistent { get; set; }
+    [Parameter]
+    public string PlaceHolder { get; set; }
+    [Parameter]
+    public bool HideClearButton { get; set; }
+    [Parameter]
+    public string Type { get; set; }
+    [Parameter]
+    public string HelperText { get; set; }
+    [Parameter]
+    public bool Box { get; set; }
+    [Parameter]
+    public string Label { get; set; }
+    [Parameter]
+    public string Format { get; set; }
+
+    //
+    // Summary:
+    //     Css class of input element
+    [Parameter]
+    public string InputClass { get; set; }
+
+    [Parameter]
+    public MatDatePickerPosition Position { get; set; } = MatDatePickerPosition.Auto;
+
+}

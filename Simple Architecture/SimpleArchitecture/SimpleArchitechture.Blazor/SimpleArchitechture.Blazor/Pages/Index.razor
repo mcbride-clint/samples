@@ -1,7 +1,36 @@
 ﻿@page "/"
+@using SimpleArchitecture.Blazor.Components
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<DateRange @bind-BeginDate="BeginDate"
+           @bind-EndDate="EndDate"
+           Outlined="true"
+           Required="true"
+           Format="MM/dd/yyyy" />
+
+<MatButton OnClick="ToggleDate">Toggle Current Values</MatButton>
+
+@if (ShowDate)
+{
+    <p>
+        @BeginDate?.ToShortDateString()
+    </p>
+    <p>
+        @EndDate?.ToShortDateString()
+    </p>
+}
+
+@code {
+    public DateTime? BeginDate { get; set; }
+    public DateTime? EndDate { get; set; }
+
+    private bool ShowDate = false;
+
+    public void ToggleDate()
+    {
+        ShowDate = !ShowDate;
+    }
+}
