@@ -30,9 +30,13 @@ namespace MDCLogArchitecture.Services
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public List<LogComments> Find(LogCommentsFilter filter)
+        public List<LogComments> FindList(LogCommentsFilter filter)
         {
-            return _commentsRepo.Find(filter);
+            return _commentsRepo.FindList(filter);
+        }
+        public LogComments Find(int SeqNum)
+        {
+            return _commentsRepo.Find(SeqNum);
         }
     }
 }

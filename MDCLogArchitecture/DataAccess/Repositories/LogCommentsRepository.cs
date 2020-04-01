@@ -21,14 +21,16 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             _db = db;
         }
 
-        //public LogComments Find(int SeqNum)
-        //{
-           
-        //    throw new NotImplementedException();
-        //}
+        public LogComments Find(int SeqNum)
+        {
+            string findSQL = listSQL + " where seq_num = " + SeqNum;
+            LogComments comment = _db.QuerySingle<LogComments>(findSQL);
+            return comment;
+        }
 
-        public List<LogComments> Find(LogCommentsFilter filter)
-        {    
+        public List<LogComments> FindList(LogCommentsFilter filter)
+        {
+            string mySQL = listSQL + " where Log_number = " + filter.LogNumber;
                 List<LogComments> comments = _db.Query<LogComments>(listSQL).ToList();
                 return comments;  
         }

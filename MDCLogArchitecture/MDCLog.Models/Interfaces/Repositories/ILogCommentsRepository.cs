@@ -16,8 +16,8 @@ namespace MDCLogArchitecture.Models.Interfaces.Repositories
       /// <returns></returns>
             LogComments Insert(LogComments entity);
 
-            //LogComments Find(int LogNumber);
-            List<LogComments> Find(LogCommentsFilter filter);
+            LogComments Find(int SeqNum);
+            List<LogComments> FindList(LogCommentsFilter filter);
       
     }
 }
