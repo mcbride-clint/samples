@@ -1,0 +1,14 @@
+﻿@page
+@model MDCLogArchitecture.RazorPages.Pages.Comments.EditCommentsModel
+@{
+    ViewData["Title"] = "EditComments";
+}
+
+<h1>EditComments</h1>
+<form method="post">
+    @Html.EditorFor(m => m.ThisComment)
+
+    <hr />
+    <button type="submit" class="btn btn-success">Save</button>
+</form>
+

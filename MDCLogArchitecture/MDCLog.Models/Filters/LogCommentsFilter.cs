@@ -8,6 +8,7 @@ namespace MDCLogArchitecture.Models.Filters
     {
         
         public int? LogNumber { get; set; }
+        public int? SeqNum { get; set; }
         
 
     }
