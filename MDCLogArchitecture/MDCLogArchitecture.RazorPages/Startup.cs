@@ -35,6 +35,7 @@ namespace MDCLogArchitecture.RazorPages
 
             services.AddScoped<ILogCommentsRepository, LogCommentsRepository>();
             services.AddScoped<Services.MDCLogService>();
+            
             services.AddRazorPages();
         }
 
