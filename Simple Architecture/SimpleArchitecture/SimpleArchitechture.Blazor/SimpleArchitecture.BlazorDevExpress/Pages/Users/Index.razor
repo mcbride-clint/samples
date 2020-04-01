@@ -1,0 +1,57 @@
+﻿@page "/Users"
+
+@using SimpleArchitecture.Services
+@using SimpleArchitecture.Models.DomainModels
+@using SimpleArchitecture.BlazorDevExpress.ViewModel
+@using SimpleArchitecture.BlazorDevExpress.Extensions
+
+@inject UserService userService
+
+<h1>Current User List</h1>
+
+<a href="/Users/Create" class="btn btn-success">Add New User</a>
+
+<hr />
+
+<DxDataGrid Data="@Users"
+            PageSize="5"
+            ShowFilterRow="false"
+            style="width:100%">
+    <DxDataGridColumn Field="@nameof(UserVM.UserId)" Caption="User Id" Width="150px" />
+    <DxDataGridColumn Field="@nameof(UserVM.FullName)" Caption="Name"  />
+    <DxDataGridColumn Field="@nameof(UserVM.Owner)" Caption="Owner" TextAlignment="@DataGridTextAlign.Left" Width="150px" />
+</DxDataGrid>
+
+
+@code {
+    private List<UserVM> Users;
+    private IEnumerable<UserVM> AllUsers;
+
+    public string searchUserId { get; set; }
+    public string searchFullName { get; set; }
+
+    protected override void OnInitialized()
+    {
+        AllUsers = userService.Find(new SimpleArchitecture.Models.Filters.UserFilter()).ToViewModel();
+        Users = AllUsers.ToList();
+    }
+
+    private void NarrowResults()
+    {
+        IEnumerable<UserVM> FilteringUsers = AllUsers.AsEnumerable();
+
+        if (!string.IsNullOrWhiteSpace(searchUserId))
+        {
+            FilteringUsers = FilteringUsers.Where(u => u.UserId.ToUpper().StartsWith(searchUserId.ToUpper()));
+        }
+
+        if (!string.IsNullOrWhiteSpace(searchFullName))
+        {
+            FilteringUsers = FilteringUsers.Where(u => u.FullName.ToUpper().Contains(searchFullName.ToUpper()));
+        }
+
+        Users = FilteringUsers.ToList();
+
+        this.StateHasChanged();
+    }
+}

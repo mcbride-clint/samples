@@ -1,0 +1,55 @@
+﻿@inherits Users.ViewBase
+@page "/Users/View/{UserIdSeqNum:int}"
+
+@if (IsReadonly)
+{
+    <h1>View</h1>
+}
+else
+{
+    <h1>Editing</h1>
+}
+
+<DxFormLayout>
+    <DxFormLayoutItem Caption="User Id:" ColSpanMd="6">
+        <Template>
+            <DxTextBox @bind-Text="@User.UserId" ReadOnly="IsReadonly"></DxTextBox>
+        </Template>
+    </DxFormLayoutItem>
+    <DxFormLayoutItem Caption="Full Name:" ColSpanMd="6">
+        <Template>
+            <DxTextBox @bind-Text="@User.FullName" ReadOnly="IsReadonly"></DxTextBox>
+        </Template>
+    </DxFormLayoutItem>
+    <DxFormLayoutItem Caption="Activity:" ColSpanMd="6">
+        <Template>
+            <DxTextBox @bind-Text="@User.Activity" ReadOnly="IsReadonly"></DxTextBox>
+        </Template>
+    </DxFormLayoutItem>
+    <DxFormLayoutItem Caption="Subactivity:" ColSpanMd="6">
+        <Template>
+            <DxTextBox @bind-Text="@User.Subactivity" ReadOnly="IsReadonly"></DxTextBox>
+        </Template>
+    </DxFormLayoutItem>
+    <DxFormLayoutItem Caption="Owner:" ColSpanMd="6">
+        <Template>
+            <DxTextBox @bind-Text="@User.Owner" ReadOnly="IsReadonly"></DxTextBox>
+        </Template>
+    </DxFormLayoutItem>
+    <DxFormLayoutItem Caption="Phone Number:" ColSpanMd="6">
+        <Template>
+            <DxTextBox @bind-Text="@User.PhoneNumber" ReadOnly="IsReadonly"></DxTextBox>
+        </Template>
+    </DxFormLayoutItem>
+</DxFormLayout>
+
+
+@if (IsReadonly)
+{
+    <DxButton Icon="edit" OnClick="ToggleEdit" Raised="true">Edit</DxButton>
+}
+else
+{
+    <DxButton Icon="cancel" OnClick="RefreshPage" Raised="true" Style="background-color: red;">Cancel</DxButton>
+    <DxButton Icon="save" OnClick="Submit" Raised="true">Save</DxButton>
+}

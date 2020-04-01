@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleArchitecture.Services
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleArchitecture.Blazor", "SimpleArchitechture.Blazor\SimpleArchitecture.Blazor.csproj", "{A178E4BC-EAA2-4C4D-A2E8-C6DD26CC97FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleArchitecture.BlazorDevExpress", "SimpleArchitecture.BlazorDevExpress\SimpleArchitecture.BlazorDevExpress.csproj", "{D535DCB0-C708-450C-B67A-ABB965A5F333}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A178E4BC-EAA2-4C4D-A2E8-C6DD26CC97FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A178E4BC-EAA2-4C4D-A2E8-C6DD26CC97FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A178E4BC-EAA2-4C4D-A2E8-C6DD26CC97FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D535DCB0-C708-450C-B67A-ABB965A5F333}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D535DCB0-C708-450C-B67A-ABB965A5F333}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D535DCB0-C708-450C-B67A-ABB965A5F333}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D535DCB0-C708-450C-B67A-ABB965A5F333}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
