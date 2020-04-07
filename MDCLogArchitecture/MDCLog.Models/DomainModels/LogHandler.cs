@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MDCLogArchitecture.Models.DomainModels
 {
-    class LogHandlers
+    class LogHandler
     {
         public int UserSeqNum { get; set; }
         public string Code { get; set; }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MDCLogArchitecture.Models.DomainModels
 {
-    class StatusCodes
+    class StatusCode
     {
         public string Status { get; set; }
         public string Descr { get; set; }
