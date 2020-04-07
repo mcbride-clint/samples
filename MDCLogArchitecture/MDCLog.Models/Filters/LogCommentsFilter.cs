@@ -6,8 +6,10 @@ namespace MDCLogArchitecture.Models.Filters
 {
     public class LogCommentsFilter
     {
+        
         public int? LogNumber { get; set; }
-        public int LogCommentSeqNum { get; set; }
+        public int? SeqNum { get; set; }
+        
 
     }
 }

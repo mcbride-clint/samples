@@ -1,0 +1,72 @@
+﻿@page "/Users/Create"
+
+@using SimpleArchitecture.Services
+@using SimpleArchitecture.BlazorDevExpress.ViewModel
+@using SimpleArchitecture.BlazorDevExpress.Extensions
+
+@inject UserService userService
+@inject NavigationManager NavigationManager
+
+<h1>Create</h1>
+
+<hr />
+
+<form>
+
+    <div style="width:50%">
+        <DxFormLayout CaptionPosition="CaptionPosition.Vertical">
+            <DxFormLayoutItem Caption="User Id:" ColSpanMd="12">
+                <Template>
+                    <DxTextBox @bind-Text="@User.UserId"></DxTextBox>
+                </Template>
+            </DxFormLayoutItem>
+            <DxFormLayoutItem Caption="Full Name:" ColSpanMd="12">
+                <Template>
+                    <DxTextBox @bind-Text="@User.FullName"></DxTextBox>
+                </Template>
+            </DxFormLayoutItem>
+            <DxFormLayoutItem Caption="Activity:" ColSpanMd="12">
+                <Template>
+                    <DxTextBox @bind-Text="@User.Activity"></DxTextBox>
+                </Template>
+            </DxFormLayoutItem>
+            <DxFormLayoutItem Caption="Subactivity:" ColSpanMd="12">
+                <Template>
+                    <DxTextBox @bind-Text="@User.Subactivity"></DxTextBox>
+                </Template>
+            </DxFormLayoutItem>
+            <DxFormLayoutItem Caption="Owner:" ColSpanMd="12">
+                <Template>
+                    <DxTextBox @bind-Text="@User.Owner"></DxTextBox>
+                </Template>
+            </DxFormLayoutItem>
+            <DxFormLayoutItem Caption="Phone Number:" ColSpanMd="12">
+                <Template>
+                    <DxTextBox @bind-Text="@User.PhoneNumber"></DxTextBox>
+                </Template>
+            </DxFormLayoutItem>
+        </DxFormLayout>
+    </div>
+
+    <hr />
+
+    <DxButton  IconCssClass="save" OnClick="Submit" Raised="true">Save</DxButton>
+</form>
+
+
+@code {
+    private UserVM User;
+
+    protected override void OnInitialized()
+    {
+        User = new UserVM();
+
+    }
+
+    void Submit()
+    {
+        userService.Save(User.ToDomainModel());
+        //Toaster.Add($"{User.UserId} Saved Successfully", MatToastType.Success, icon: "add");
+        NavigationManager.NavigateTo("/Users");
+    }
+}

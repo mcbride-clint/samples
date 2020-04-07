@@ -1,13 +1,48 @@
 ﻿@page "/counter"
+@using System.Threading;
 
 <h1>Counter</h1>
 
 <p>Current count: @currentCount</p>
-
+<input @bind-value="AutoMilliseconds" type="number" class="form-control"/>
+<br />
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
 @code {
     private int currentCount = 0;
+    private int _AutoMilliseconds;
+    private int AutoMilliseconds
+    {
+        get
+        {
+            return _AutoMilliseconds;
+        }
+        set
+        {
+            _AutoMilliseconds = value;
+            StartTimer();
+        }
+    }
+
+    private Timer timer { get; set; }
+
+    protected override void OnInitialized()
+    {
+        AutoMilliseconds = 1000;
+    }
+
+    void StartTimer()
+    {
+        if (timer != null)
+            timer.Dispose();
+        timer = new Timer(AutoIncrement, null, AutoMilliseconds, AutoMilliseconds);
+    }
+
+    private TimerCallback AutoIncrement => new TimerCallback(_ =>
+    {
+        IncrementCount();
+        this.InvokeAsync(StateHasChanged);
+    });
 
     private void IncrementCount()
     {

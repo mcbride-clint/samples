@@ -1,0 +1,15 @@
+﻿@page
+@model MDCLogArchitecture.RazorPages.Pages.Comments.EditCommentsModel
+@{
+    ViewData["Title"] = "EditComments";
+}
+
+<h1>EditComments</h1>
+<form method="post">
+    @Html.EditorFor(m => m.ThisComment)
+
+    <hr />
+    
+    <a asp-page="/Comments/index" class="btn btn-primary">Back to List</a>
+</form>
+

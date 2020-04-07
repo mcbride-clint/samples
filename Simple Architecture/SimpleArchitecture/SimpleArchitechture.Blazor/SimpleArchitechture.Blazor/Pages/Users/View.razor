@@ -29,12 +29,13 @@ else
     <MatTextField @bind-Value="@User.PhoneNumber" Label="Phone Number" Outlined="true" ReadOnly="IsReadonly" />
 </p>
 
+
 @if (IsReadonly)
 {
     <MatButton Icon="edit" OnClick="ToggleEdit" Raised="true">Edit</MatButton>
 }
 else
 {
-    <MatButton Icon="cancel" OnClick="RefreshPage" Raised="true">Cancel</MatButton>
+    <MatButton Icon="cancel" OnClick="RefreshPage" Raised="true" Style="background-color: red;">Cancel</MatButton>
     <MatButton Icon="save" OnClick="Submit" Raised="true">Save</MatButton>
 }

@@ -1,0 +1,39 @@
+﻿@page "/Comments/Index"
+@model MDCLogArchitecture.RazorPages.Pages.Comments.IndexModel
+@{
+    ViewData["Title"] = "index";
+}
+
+<h1>Log Comments</h1>
+<a asp-page="/Comments/CreateComment" class="btn btn-success">Add New Comment</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Seq Num
+            </th>
+            <th>
+                Log Number
+            </th>
+            <th>
+                Basic Number
+            </th>
+            <th>
+                Type Desc
+            </th>
+            <th>
+                Created By
+            </th>
+            <th>
+                Comment
+            </th>
+            <th>
+                &nbsp;
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @Html.DisplayFor(model => model.LogComments)
+    </tbody>
+</table>
+
