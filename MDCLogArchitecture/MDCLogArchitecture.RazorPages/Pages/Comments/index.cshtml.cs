@@ -12,19 +12,19 @@ namespace MDCLogArchitecture.RazorPages.Pages.Comments
 {
     public class IndexModel : PageModel
     {
-       
-            private MDCLogService _service { get; }
 
-            public List<LogComments> LogComments { get; set; }
+        private MDCLogService _service { get; }
 
-            public IndexModel(MDCLogService service)
-            {
-                _service = service;
-            }
-            public void OnGet()
-            {
-                LogComments = _service.FindList(new LogCommentsFilter() { LogNumber = 100 });
-            
+        public List<LogComments> LogComments { get; set; }
+
+        public IndexModel(MDCLogService service)
+        {
+            _service = service;
+        }
+        public void OnGet()
+        {
+            LogComments = _service.FindList(new LogCommentsFilter() { LogNumber = 100 });
+
         }
 
 

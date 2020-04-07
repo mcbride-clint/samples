@@ -18,7 +18,7 @@ namespace MDCLogArchitecture.Services
         /// Initialize the Service with an instance of an injected User Repository
         /// </summary>
         /// <param name="logger"></param>
-        /// <param name="commentsRepo"></param>
+        /// <param name="commentTypesRepo"></param>
         public MDCLogService(ILogger<MDCLogService> logger, ILogCommentsRepository commentsRepo)
         {
             _logger = logger;
@@ -43,5 +43,9 @@ namespace MDCLogArchitecture.Services
             _logger.LogInformation("No UserIdSeqNum Found, inserting new record");
             return _commentsRepo.Insert(ThisComment);
         }
+        /// <summary>
+        /// Get Comment Types
+        /// </summary>
+        
     }
 }
