@@ -23,7 +23,7 @@ namespace MDCLogArchitecture.RazorPages.Pages.Comments
         }
         public void OnGet()
         {
-            LogComments = _service.FindList(new LogCommentsFilter() { LogNumber = 100 });
+            LogComments = _service.FindList(new LogCommentsFilter() );
 
         }
 

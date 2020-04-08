@@ -8,16 +8,16 @@ using System.Text;
 namespace MDCLogArchitecture.Services
 {
     
-    public class CommentTypeServices
+    public class CommentTypeService
     {
         ICommentTypesRepository _commentTypesRepo;
-        ILogger<CommentTypeServices> _logger;
+        ILogger<CommentTypeService> _logger;
         /// <summary>
         /// Initialize the Service with an instance of an injected User Repository
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="commentTypesRepo"></param>
-        public CommentTypeServices(ILogger<CommentTypeServices> logger, ICommentTypesRepository commentTypesRepo)
+        public CommentTypeService(ILogger<CommentTypeService> logger, ICommentTypesRepository commentTypesRepo)
         {
             _logger = logger;
             _commentTypesRepo = commentTypesRepo;
@@ -30,6 +30,18 @@ namespace MDCLogArchitecture.Services
         public List<CommentType> FindTypeList()
         {
             return _commentTypesRepo.FindTypeList();
+        }
+        public CommentType FindType(string CommentTypeCode)
+        {
+            return _commentTypesRepo.FindType(CommentTypeCode);
+        }
+        public CommentType InsertType (CommentType ThisCommentType)
+        {
+            return _commentTypesRepo.InsertType( ThisCommentType);
+        }
+        public CommentType EditType(CommentType ThisCommentType)
+        {
+            return _commentTypesRepo.EditType(ThisCommentType);
         }
     }
 }

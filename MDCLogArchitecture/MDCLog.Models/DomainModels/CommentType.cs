@@ -6,7 +6,7 @@ namespace MDCLogArchitecture.Models.DomainModels
 {
     public class CommentType
     {
-        public string Type { get; set; }
+        public string CommentTypeCode { get; set; }
         public string TypeDesc { get; set; }
     }
 }
