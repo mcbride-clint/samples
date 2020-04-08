@@ -2,11 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\MDCLogArchitecture",
-    "\\MDCLogArchitecture\\DataAccess",
-    "\\MDCLogArchitecture\\DataAccess\\Repositories",
-    "\\MDCLogArchitecture\\MDCLog.Models",
-    "\\MDCLogArchitecture\\MDCLog.Models\\DomainModels",
-    "\\Simple Architecture"
+    "\\MDCLogArchitecture\\MDCLogArchitecture.RazorPages",
+    "\\MDCLogArchitecture\\MDCLogArchitecture.RazorPages\\Pages",
+    "\\MDCLogArchitecture\\MDCLogArchitecture.RazorPages\\Pages\\Comments",
+    "\\MDCLogArchitecture\\MDCLogArchitecture.Services"
   ],
+  "SelectedNode": "\\MDCLogArchitecture\\MDCLogArchitecture.RazorPages\\Startup.cs",
   "PreviewInSolutionExplorer": false
 }
