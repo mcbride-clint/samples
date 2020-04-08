@@ -36,6 +36,12 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             CommentType commentType = _db.QuerySingle<CommentType>(findSQL);
             return commentType;
         }
+        public CommentType DeleteType(string CommentTypeCode)
+        {/// need to work this one out
+            string delSQL = " Delete[dbo].[TM_MDC_COMMENT_TYPES] where TYPE =  '" + CommentTypeCode + "'";
+            CommentType commentType = _db.QuerySingle<CommentType>(delSQL);
+            return commentType;
+        }
         public List<CommentType> FindTypeList()
         {
             List<CommentType> commentTypes = _db.Query<CommentType>(listSQL).ToList();
@@ -49,9 +55,11 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             int rowsAffected = _db.Execute(mySQL);
             return entity;
         }
+       
         public CommentType SaveType(CommentType entity)
         {
             throw new NotImplementedException();
         }
+
     }
 }

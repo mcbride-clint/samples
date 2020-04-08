@@ -16,5 +16,6 @@ namespace MDCLogArchitecture.Models.Interfaces.Repositories
          CommentType EditType(CommentType entity);
         CommentType FindType(string CommentTypeCode);
          List<CommentType> FindTypeList();
+        CommentType DeleteType(string CommentTypeCode);
     }
 }
