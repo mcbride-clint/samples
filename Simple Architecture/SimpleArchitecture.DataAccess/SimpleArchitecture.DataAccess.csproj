@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SimpleArchitecture.Domain\SimpleArchitecture.Domain.csproj" />
     <ProjectReference Include="..\SimpleArchitecture.Models\SimpleArchitecture.Models.csproj" />
   </ItemGroup>
 
