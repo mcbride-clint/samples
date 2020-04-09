@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleArchitecture.RazorPages", "SimpleArchitecture.RazorPages\SimpleArchitecture.RazorPages.csproj", "{AEACE3AE-E0F6-4FDF-9EF2-FAD68AE85F0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleArchitecture.RazorPages", "SimpleArchitecture.RazorPages\SimpleArchitecture.RazorPages.csproj", "{AEACE3AE-E0F6-4FDF-9EF2-FAD68AE85F0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleArchitecture.Models", "..\..\SimpleArchitecture.Models\SimpleArchitecture.Models.csproj", "{D8DA134E-F6D8-465B-824A-0E6FF6C332E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleArchitecture.Models", "..\..\SimpleArchitecture.Models\SimpleArchitecture.Models.csproj", "{D8DA134E-F6D8-465B-824A-0E6FF6C332E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleArchitecture.Services", "..\..\SimpleArchitecture.Services\SimpleArchitecture.Services.csproj", "{ADBE7C45-A0B3-4C65-9C40-557FA7BA70A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleArchitecture.DataAccess", "..\..\SimpleArchitecture.DataAccess\SimpleArchitecture.DataAccess.csproj", "{2D78B72B-592F-4D76-A3EE-CBBF3683D342}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleArchitecture.DataAccess", "..\..\SimpleArchitecture.DataAccess\SimpleArchitecture.DataAccess.csproj", "{2D78B72B-592F-4D76-A3EE-CBBF3683D342}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleArchitecture.Domain", "..\..\SimpleArchitecture.Domain\SimpleArchitecture.Domain.csproj", "{11FFC6F0-3E5E-4AD0-920D-0C18E3AEF1C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +25,14 @@ Global
 		{D8DA134E-F6D8-465B-824A-0E6FF6C332E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8DA134E-F6D8-465B-824A-0E6FF6C332E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8DA134E-F6D8-465B-824A-0E6FF6C332E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ADBE7C45-A0B3-4C65-9C40-557FA7BA70A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ADBE7C45-A0B3-4C65-9C40-557FA7BA70A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ADBE7C45-A0B3-4C65-9C40-557FA7BA70A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ADBE7C45-A0B3-4C65-9C40-557FA7BA70A5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2D78B72B-592F-4D76-A3EE-CBBF3683D342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2D78B72B-592F-4D76-A3EE-CBBF3683D342}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D78B72B-592F-4D76-A3EE-CBBF3683D342}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D78B72B-592F-4D76-A3EE-CBBF3683D342}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11FFC6F0-3E5E-4AD0-920D-0C18E3AEF1C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11FFC6F0-3E5E-4AD0-920D-0C18E3AEF1C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11FFC6F0-3E5E-4AD0-920D-0C18E3AEF1C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11FFC6F0-3E5E-4AD0-920D-0C18E3AEF1C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

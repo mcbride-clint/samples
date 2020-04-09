@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using SimpleArchitecture.Models.DomainModels;
-using SimpleArchitecture.Services;
+using SimpleArchitecture.Domain.Interfaces;
+using SimpleArchitecture.Domain.Services;
 
 namespace SimpleArchitecture.RazorPages
 {
@@ -21,7 +16,7 @@ namespace SimpleArchitecture.RazorPages
             _logger = logger;
         }
 
-        public User ThisUser { get; set; }
+        public IUser ThisUser { get; set; }
         public void OnGet(long userSeqNum)
         {
             ThisUser = _service.Find(userSeqNum);

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using SimpleArchitecture.Domain.Services;
 using SimpleArchitecture.Models.DomainModels;
-using SimpleArchitecture.Services;
 
 namespace SimpleArchitecture.RazorPages
 {
@@ -25,13 +21,13 @@ namespace SimpleArchitecture.RazorPages
         public User ThisUser { get; set; }
         public void OnGet(long userSeqNum)
         {
-            ThisUser = _service.Find(userSeqNum);
+            ThisUser = (User)_service.Find(userSeqNum);
             _logger.LogInformation($"User opened {ThisUser.FullName} for deletion");
         }
 
         public IActionResult OnPost()
         {
-            ThisUser = _service.Find(ThisUser.UserIdSeqNum);
+            ThisUser = (User)_service.Find(ThisUser.UserIdSeqNum);
 
             if (ThisUser is null) {
                 // Not the greatest way to return an error message

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using SimpleArchitecture.BlazorDevExpress.Extensions;
 using SimpleArchitecture.BlazorDevExpress.ViewModel;
-using SimpleArchitecture.Services;
+using SimpleArchitecture.Domain.Services;
 
 namespace SimpleArchitecture.BlazorDevExpress.Pages.Users
 {

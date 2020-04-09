@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SimpleArchitecture.Models.DomainModels;
 using SimpleArchitecture.Models.Filters;
-using SimpleArchitecture.Services;
+using SimpleArchitecture.Domain.Services;
+using SimpleArchitecture.Domain.Interfaces;
 
 namespace SimpleArchitecture.Mvc.Controllers
 {
@@ -99,8 +100,8 @@ namespace SimpleArchitecture.Mvc.Controllers
         {
             try
             {
-                entity = _userService.Find(id);
-                _userService.Delete(entity);
+                var existingUser = _userService.Find(id);
+                _userService.Delete(existingUser);
 
                 return RedirectToAction(nameof(Index));
             }

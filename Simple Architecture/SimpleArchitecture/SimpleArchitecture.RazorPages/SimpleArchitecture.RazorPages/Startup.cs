@@ -1,16 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SimpleArchitecture.DataAccess.Repositories;
-using SimpleArchitecture.Models.Interfaces.Repositories;
-using SimpleArchitecture.Services;
+using SimpleArchitecture.Domain.Interfaces.Repositories;
+using SimpleArchitecture.Domain.Services;
 
 /// <summary>
 /// Use this Code to Customize Services and other capabilities available to the Web Application

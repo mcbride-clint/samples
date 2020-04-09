@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SimpleArchitecture.Models.DomainModels;
-using SimpleArchitecture.Services;
+using SimpleArchitecture.Domain.Services;
+using SimpleArchitecture.Domain.Interfaces;
 
 namespace SimpleArchitecture.Api.Controllers
 {
@@ -24,28 +25,28 @@ namespace SimpleArchitecture.Api.Controllers
 
         // GET: api/Users
         [HttpGet]
-        public IEnumerable<User> Get()
+        public IEnumerable<IUser> Get()
         {
             return _userService.Find(new Models.Filters.UserFilter());
         }
 
         // GET: api/Users/5
         [HttpGet("{userSeqNum}", Name = "Get")]
-        public User Get(int userSeqNum)
+        public IUser Get(int userSeqNum)
         {
             return _userService.Find(userSeqNum);
         }
 
         // POST: api/Users
         [HttpPost]
-        public void Post([FromBody] User value)
+        public void Post([FromBody] IUser value)
         {
             _userService.Save(value);
         }
 
         // PUT: api/Users/5
         [HttpPut("{userSeqNum}")]
-        public void Put(int userSeqNum, [FromBody] User value)
+        public void Put(int userSeqNum, [FromBody] IUser value)
         {
             _userService.Save(value);
         }

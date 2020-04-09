@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using SimpleArchitecture.Models.DomainModels;
-using SimpleArchitecture.Services;
+using SimpleArchitecture.Domain.Services;
 
 namespace SimpleArchitecture.RazorPages
 {

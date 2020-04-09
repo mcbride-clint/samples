@@ -1,11 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using SimpleArchitecture.Domain.Interfaces;
+using SimpleArchitecture.Domain.Services;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using SimpleArchitecture.Models.DomainModels;
-using SimpleArchitecture.Services;
 
 namespace SimpleArchitecture.RazorPages
 {
@@ -13,7 +9,7 @@ namespace SimpleArchitecture.RazorPages
     {
         private UserService _service { get; }
 
-        public List<User> Users { get; set; }
+        public List<IUser> Users { get; set; }
 
         public IndexModel(UserService service) {
             _service = service;

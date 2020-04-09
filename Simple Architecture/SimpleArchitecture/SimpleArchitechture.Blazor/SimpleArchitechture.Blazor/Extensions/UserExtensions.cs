@@ -1,15 +1,14 @@
 ﻿using SimpleArchitecture.Blazor.ViewModel;
+using SimpleArchitecture.Domain.Interfaces;
 using SimpleArchitecture.Models.DomainModels;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace SimpleArchitecture.Blazor.Extensions
 {
     public static class UserExtensions
     {
-        public static UserVM ToViewModel(this User user)
+        public static UserVM ToViewModel(this IUser user)
         {
             return new UserVM()
             {
@@ -38,7 +37,7 @@ namespace SimpleArchitecture.Blazor.Extensions
         }
 
 
-        public static IEnumerable<UserVM> ToViewModel(this IEnumerable<User> users)
+        public static IEnumerable<UserVM> ToViewModel(this IEnumerable<IUser> users)
         {
             return users.Select(u => u.ToViewModel());
         }

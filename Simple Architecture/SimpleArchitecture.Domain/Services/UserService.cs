@@ -1,12 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
-using SimpleArchitecture.Models.DomainModels;
-using SimpleArchitecture.Models.Filters;
-using SimpleArchitecture.Models.Interfaces.Repositories;
-using System;
+using SimpleArchitecture.Domain.Interfaces;
+using SimpleArchitecture.Domain.Interfaces.Repositories;
 using System.Collections.Generic;
-using System.Text;
 
-namespace SimpleArchitecture.Services
+namespace SimpleArchitecture.Domain.Services
 {
     /// <summary>
     /// Actions that can be performed for User Data
@@ -32,7 +29,7 @@ namespace SimpleArchitecture.Services
         /// </summary>
         /// <param name="userIdSeqNum"></param>
         /// <returns></returns>
-        public User Find(long userIdSeqNum)
+        public IUser Find(long userIdSeqNum)
         {
             return _userRepo.Find(userIdSeqNum);
         }
@@ -42,7 +39,7 @@ namespace SimpleArchitecture.Services
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public List<User> Find(UserFilter filter)
+        public List<IUser> Find(IUserFilter filter)
         {
             return _userRepo.Find(filter);
         }
@@ -52,7 +49,7 @@ namespace SimpleArchitecture.Services
         /// </summary>
         /// <param name="thisUser"></param>
         /// <returns></returns>
-        public User Save(User thisUser)
+        public IUser Save(IUser thisUser)
         {
             _logger.LogDebug("Checking for existing User Id Seq Num");
             if (thisUser.UserIdSeqNum == 0)
@@ -71,7 +68,7 @@ namespace SimpleArchitecture.Services
         /// Remove a User from the Repository
         /// </summary>
         /// <param name="thisUser"></param>
-        public void Delete(User thisUser) {
+        public void Delete(IUser thisUser) {
             _userRepo.Delete(thisUser);
         }
     }

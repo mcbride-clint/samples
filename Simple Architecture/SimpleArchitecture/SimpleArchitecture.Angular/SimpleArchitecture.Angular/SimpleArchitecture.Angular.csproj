@@ -24,7 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\SimpleArchitecture.Services\SimpleArchitecture.Services.csproj" />
+    <ProjectReference Include="..\..\..\SimpleArchitecture.DataAccess\SimpleArchitecture.DataAccess.csproj" />
+    <ProjectReference Include="..\..\..\SimpleArchitecture.Domain\SimpleArchitecture.Domain.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

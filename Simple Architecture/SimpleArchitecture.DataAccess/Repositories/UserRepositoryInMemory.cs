@@ -1,19 +1,18 @@
-﻿using SimpleArchitecture.Models.DomainModels;
-using SimpleArchitecture.Models.Filters;
-using SimpleArchitecture.Models.Interfaces.Repositories;
+﻿using SimpleArchitecture.Domain.Interfaces;
+using SimpleArchitecture.Domain.Interfaces.Repositories;
+using SimpleArchitecture.Models.DomainModels;
 using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace SimpleArchitecture.DataAccess.Repositories
 {
     public class UserRepositoryInMemory : IUserRepository
     {
-        private Dictionary<long, User> Users { get; }
+        private Dictionary<long, IUser> Users { get; }
         public UserRepositoryInMemory()
         {
-            Users = new Dictionary<long, User>();
+            Users = new Dictionary<long, IUser>();
             Users.Add(1, new User()
             {
                 UserIdSeqNum = 1,
@@ -26,32 +25,32 @@ namespace SimpleArchitecture.DataAccess.Repositories
             });
         }
 
-        public User Insert(User entity)
+        public IUser Insert(IUser entity)
         {
             entity.UserIdSeqNum = Users.Keys.Max() + 1;
             Users.Add(entity.UserIdSeqNum, entity);
             return entity;
         }
 
-        public User Update(User entity)
+        public IUser Update(IUser entity)
         {
             Users.Remove(entity.UserIdSeqNum);
             Users.Add(entity.UserIdSeqNum, entity);
             return entity;
         }
 
-        public void Delete(User entity)
+        public void Delete(IUser entity)
         {
             Users.Remove(entity.UserIdSeqNum);
         }
 
-        public User Find(long userSeqNum)
+        public IUser Find(long userSeqNum)
         {
-            Users.TryGetValue(userSeqNum, out User matchedUser);
+            Users.TryGetValue(userSeqNum, out IUser matchedUser);
             return matchedUser;
         }
 
-        public List<User> Find(UserFilter filter)
+        public List<IUser> Find(IUserFilter filter)
         {
             // Change Dictionary to List for easy Linq syntax
             var matchedUsers = Users.Select(u => u.Value);

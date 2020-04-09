@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using SimpleArchitecture.Domain.Interfaces;
 
 namespace SimpleArchitecture.Models.Filters
 {
-    public class UserFilter
+    public class UserFilter : IUserFilter
     {
         public long? UserIdSeqNum { get; set; }
         public string UserId { get; set; }

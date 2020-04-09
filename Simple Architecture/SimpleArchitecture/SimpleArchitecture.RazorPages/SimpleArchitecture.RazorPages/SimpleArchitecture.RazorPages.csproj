@@ -7,7 +7,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\SimpleArchitecture.DataAccess\SimpleArchitecture.DataAccess.csproj" />
     <ProjectReference Include="..\..\..\SimpleArchitecture.Models\SimpleArchitecture.Models.csproj" />
-    <ProjectReference Include="..\..\..\SimpleArchitecture.Services\SimpleArchitecture.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

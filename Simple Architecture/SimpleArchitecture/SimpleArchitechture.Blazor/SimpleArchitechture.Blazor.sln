@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleArchitecture.DataAcce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleArchitecture.Models", "..\..\SimpleArchitecture.Models\SimpleArchitecture.Models.csproj", "{E28612B9-40D4-4152-B8AF-A470D857C4EC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleArchitecture.Services", "..\..\SimpleArchitecture.Services\SimpleArchitecture.Services.csproj", "{AB300173-C435-4F88-9EF0-8ED40F7A31CB}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleArchitecture.Blazor", "SimpleArchitechture.Blazor\SimpleArchitecture.Blazor.csproj", "{A178E4BC-EAA2-4C4D-A2E8-C6DD26CC97FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleArchitecture.BlazorDevExpress", "SimpleArchitecture.BlazorDevExpress\SimpleArchitecture.BlazorDevExpress.csproj", "{D535DCB0-C708-450C-B67A-ABB965A5F333}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleArchitecture.BlazorDevExpress", "SimpleArchitecture.BlazorDevExpress\SimpleArchitecture.BlazorDevExpress.csproj", "{D535DCB0-C708-450C-B67A-ABB965A5F333}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleArchitecture.Domain", "..\..\SimpleArchitecture.Domain\SimpleArchitecture.Domain.csproj", "{2AA384FB-913F-4551-831F-C5C247793219}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +27,6 @@ Global
 		{E28612B9-40D4-4152-B8AF-A470D857C4EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E28612B9-40D4-4152-B8AF-A470D857C4EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E28612B9-40D4-4152-B8AF-A470D857C4EC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AB300173-C435-4F88-9EF0-8ED40F7A31CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AB300173-C435-4F88-9EF0-8ED40F7A31CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AB300173-C435-4F88-9EF0-8ED40F7A31CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AB300173-C435-4F88-9EF0-8ED40F7A31CB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A178E4BC-EAA2-4C4D-A2E8-C6DD26CC97FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A178E4BC-EAA2-4C4D-A2E8-C6DD26CC97FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A178E4BC-EAA2-4C4D-A2E8-C6DD26CC97FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{D535DCB0-C708-450C-B67A-ABB965A5F333}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D535DCB0-C708-450C-B67A-ABB965A5F333}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D535DCB0-C708-450C-B67A-ABB965A5F333}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AA384FB-913F-4551-831F-C5C247793219}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AA384FB-913F-4551-831F-C5C247793219}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AA384FB-913F-4551-831F-C5C247793219}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AA384FB-913F-4551-831F-C5C247793219}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

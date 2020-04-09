@@ -13,8 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Radzen;
 using SimpleArchitecture.DataAccess.Repositories;
-using SimpleArchitecture.Models.Interfaces.Repositories;
-using SimpleArchitecture.Services;
+using SimpleArchitecture.Domain.Interfaces.Repositories;
+using SimpleArchitecture.Domain.Services;
 
 namespace SimpleArchitecture.Blazor
 {

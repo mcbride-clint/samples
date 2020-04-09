@@ -2,7 +2,7 @@
 using Radzen;
 using SimpleArchitecture.Blazor.Extensions;
 using SimpleArchitecture.Blazor.ViewModel;
-using SimpleArchitecture.Services;
+using SimpleArchitecture.Domain.Services;
 
 namespace SimpleArchitecture.Blazor.Pages.Users2
 {
