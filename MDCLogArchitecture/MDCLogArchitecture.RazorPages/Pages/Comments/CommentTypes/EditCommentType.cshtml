@@ -1,0 +1,15 @@
+﻿@page
+@model MDCLogArchitecture.RazorPages.Pages.Comments.CommentTypes.EditCommentTypeModel
+@{
+    ViewData["Title"] = "EditCommentType";
+}
+
+<h1>Edit Comment Type</h1>
+<form method="post">
+    @Html.EditorFor(m => m.ThisCommentType)
+
+    <hr />
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-page="/Comments/CommentTypes/CommentTypesindex" class="btn btn-primary">Back to List</a>
+</form>
+

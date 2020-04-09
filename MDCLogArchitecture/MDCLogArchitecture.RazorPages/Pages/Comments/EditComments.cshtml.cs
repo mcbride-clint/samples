@@ -29,5 +29,6 @@ namespace MDCLogArchitecture.RazorPages.Pages.Comments
             ThisComment = _service.Find(SeqNum);
             _logger.LogInformation($"User opened {ThisComment.SeqNum} for editing");
         }
+
     }
 }

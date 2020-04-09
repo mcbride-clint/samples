@@ -1,0 +1,14 @@
+﻿@page
+@model MDCLogArchitecture.RazorPages.Pages.Comments.CommentTypes.CreateCommentTypeModel
+@{
+    ViewData["Title"] = "CreateCommentType";
+}
+
+<h1>Create Comment Type</h1>
+<form method="post">
+    @Html.EditorFor(m => m.ThisCommentType)
+
+    <hr />
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-page="/Comments/CommentTypes/CommentTypesindex" class="btn btn-danger">Cancel Add</a>
+</form>

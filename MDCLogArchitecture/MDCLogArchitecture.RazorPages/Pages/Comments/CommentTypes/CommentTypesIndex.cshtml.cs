@@ -12,11 +12,11 @@ namespace MDCLogArchitecture.RazorPages.Pages.Comments.CommentTypes
 {
     public class CommentTypesIndexModel : PageModel
     {
-        private CommentTypeServices _service { get; }
+        private CommentTypeService _service { get; }
 
         public List<CommentType> CommentTypes { get; set; }
 
-        public CommentTypesIndexModel(CommentTypeServices service)
+        public CommentTypesIndexModel(CommentTypeService service)
         {
             _service = service;
         }

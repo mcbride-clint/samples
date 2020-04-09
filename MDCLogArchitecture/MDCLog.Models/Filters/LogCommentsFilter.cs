@@ -12,4 +12,12 @@ namespace MDCLogArchitecture.Models.Filters
         
 
     }
+    public class CommentsTypeFilter
+    {
+
+        public string CommentTypeCode { get; set; }
+        
+
+
+    }
 }
