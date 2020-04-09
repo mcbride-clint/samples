@@ -18,14 +18,24 @@
 
         <div class="card-deck">
             <div class="card">
+
                 <div class="card-body">
                     <h2 class="card-title">Comments</h2>
                     <p class="card-text">
-                        View List of Comments
+                        Log Comments
                     </p>
                 </div>
                 <div class="card-footer">
-                    <a asp-page="/Comments/Index" class="btn btn-secondary">Go >></a>
+                    <a asp-page="/Comments/index" class="btn btn-secondary">Comments for log 100 ></a>
+                </div>
+                <div class="card-footer">
+                    <a asp-page="/Comments/CreateComment" class="btn btn-secondary">Create Comment ></a>
+                </div>
+                <div class="card-footer">
+                    <a asp-page="/Comments/CommentTypes/CommentTypesIndex" class="btn btn-secondary">Comment Types ></a>
+                </div>
+                <div class="card-footer">
+                    <a asp-page="/Comments/CommentTypes/CreateCommentType" class="btn btn-secondary">Create Comment></a>
                 </div>
             </div>
             <div class="card">

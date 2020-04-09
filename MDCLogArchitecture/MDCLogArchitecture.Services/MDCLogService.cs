@@ -38,5 +38,12 @@ namespace MDCLogArchitecture.Services
         {
             return _commentsRepo.Find(SeqNum);
         }
+        public LogComments Save(LogComments ThisComment)
+        {
+            _logger.LogInformation("No UserIdSeqNum Found, inserting new record");
+            return _commentsRepo.Insert(ThisComment);
+        }
+        
+        
     }
 }

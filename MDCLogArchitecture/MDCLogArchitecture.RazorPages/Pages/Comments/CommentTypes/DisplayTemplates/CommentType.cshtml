@@ -1,0 +1,13 @@
+﻿@model MDCLogArchitecture.Models.DomainModels.CommentType
+<tr>
+    <td>
+        @Model.CommentTypeCode
+    </td>
+    <td>
+        @Model.TypeDesc
+    </td>
+
+    <td>
+        <a asp-page="/Comments/CommentTypes/EditCommentType" asp-route-CommentTypeCode="@Model.CommentTypeCode" asp- class="btn btn-primary">Edit</a>
+    </td>
+</tr>

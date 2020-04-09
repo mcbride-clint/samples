@@ -1,0 +1,24 @@
+﻿@page "/Comments/CommentTypes/CommentsTypeIndex"
+@model MDCLogArchitecture.RazorPages.Pages.Comments.CommentTypes.CommentTypesIndexModel
+@{
+    ViewData["Title"] = "CommentTypesIndex";
+}
+
+<h1>Comment Types</h1>
+<a asp-page="/Comments/CommentTypes/CreateCommentType" class="btn btn-success">Add New Comment Type</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Type
+            </th>
+            <th>
+                Type Description
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @Html.DisplayFor(model => model.CommentTypes)
+    </tbody>
+</table>
+
