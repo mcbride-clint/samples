@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Simple Architecture"
+    "\\MDCLogArchitecture",
+    "\\MDCLogArchitecture\\MDCLogArchitecture.RazorPages",
+    "\\MDCLogArchitecture\\MDCLogArchitecture.RazorPages\\Pages",
+    "\\MDCLogArchitecture\\MDCLogArchitecture.RazorPages\\Pages\\Comments",
+    "\\MDCLogArchitecture\\MDCLogArchitecture.Services"
   ],
+  "SelectedNode": "\\MDCLogArchitecture\\MDCLogArchitecture.RazorPages\\Startup.cs",
   "PreviewInSolutionExplorer": false
 }
