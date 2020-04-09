@@ -1,0 +1,14 @@
+﻿@model MDCLogArchitecture.Models.DomainModels.PriorityCode
+
+
+    <tr>
+        <td>
+            @Model.Priority
+        </td>
+        <td>
+            @Model.Descr
+        </td>
+        <td>
+            <a asp-page="/Priority/EditPriorities" asp-route-Priority="@Model.Priority" asp- class="btn btn-primary">Details</a>
+        </td>
+    </tr>
