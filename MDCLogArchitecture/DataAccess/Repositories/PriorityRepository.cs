@@ -42,7 +42,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
 
         public List<PriorityCode> FindPriorityList()
         {
-            string mySQL = listSQL ;
+            string mySQL = listSQL;
             List<PriorityCode> priorities = _db.Query<PriorityCode>(listSQL).ToList();
             return priorities;
         }
