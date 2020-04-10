@@ -32,24 +32,34 @@ namespace MDCLogArchitecture.DataAccess.Repositories
 
         public PriorityCode EditPriority(PriorityCode entity)
         {
-            throw new NotImplementedException();
+            string mySQL = "UPDATE[dbo].[TM_MDC_LOG_PRIORITY] SET[PRIORITY] = '" + entity.Priority + "'" +
+              ",[DESCR] = '" + entity.Descr + "'" +
+              " WHERE[PRIORITY] = '" + entity.Priority + "'";
+            int rowsAffected = _db.Execute(mySQL);
+            return entity;
         }
 
-        public PriorityCode FindPriority(string PriorityCode)
+        public PriorityCode FindPriority(PriorityCodesFilter filter)
         {
-            throw new NotImplementedException();
+            string findSQL = listSQL + " Where PRIORITY = '" + filter.Priority + "'";
+            PriorityCode priorityCode = _db.QuerySingle<PriorityCode>(findSQL);
+            return priorityCode;
         }
 
-        public List<PriorityCode> FindPriorityList()
+        public List<PriorityCode> FindPriorityList(PriorityCodesFilter filter)
         {
-            string mySQL = listSQL;
+            
+            string mySQL = listSQL + " where PRIORITY = " + filter.Priority;
             List<PriorityCode> priorities = _db.Query<PriorityCode>(listSQL).ToList();
             return priorities;
         }
 
         public PriorityCode InsertPriority(PriorityCode entity)
         {
-            throw new NotImplementedException();
+            string mySQL = " INSERT INTO [TM_MDC_LOG_PRIORITY] ([PRIORITY],[DESCR]) VALUES " +
+                           " ( '" + entity.Priority + ",'" + entity.Descr + "')";
+            int rowsAffected = _db.Execute(mySQL);
+            return entity;
         }
 
         public PriorityCode SavePriority(PriorityCode entity)

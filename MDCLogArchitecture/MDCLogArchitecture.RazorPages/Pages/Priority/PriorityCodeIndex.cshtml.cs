@@ -6,22 +6,23 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MDCLogArchitecture.Models.DomainModels;
 using MDCLogArchitecture.Services;
+using MDCLogArchitecture.Models.Filters;
 
 namespace MDCLogArchitecture.RazorPages.Pages.Priority
 {
     public class PriorityCodeIndexModel : PageModel
     {
-        private PriorityCodeService _service { get; }
+        private PriorityCodeService service { get; }
 
         public List<PriorityCode> PriorityCodes { get; set; }
 
         public PriorityCodeIndexModel(PriorityCodeService service)
         {
-            _service = service;
+            this.service = service;
         }
         public void OnGet()
         {
-            PriorityCodes = _service.FindPriorityList();
+            PriorityCodes = service.FindPriorityList(new PriorityCodesFilter());
         }
     }
 }

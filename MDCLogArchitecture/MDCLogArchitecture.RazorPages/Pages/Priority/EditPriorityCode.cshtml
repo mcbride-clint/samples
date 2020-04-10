@@ -1,0 +1,14 @@
+﻿@page
+@model MDCLogArchitecture.RazorPages.Pages.Priority.EditPriorityCodeModel
+@{
+    ViewData["Title"] = "EditProityCodes";
+}
+
+<h1>EditPriorityCodes</h1>
+<form method="post">
+    @Html.EditorFor(m => m.ThisPriorityCode)
+
+    <hr />
+
+    <a asp-page="/Priority/EditPriorityCode" class="btn btn-primary">Back to List</a>
+</form>
