@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MDCLogArchitecture.DataAcce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MDCLogArchitecture.Services", "..\MDCLogArchitecture.Services\MDCLogArchitecture.Services.csproj", "{77456E35-B072-4727-97EA-A92F0CB7F78D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDCLogArchitecture.RazorPages", "..\MDCLogArchitecture.RazorPages\MDCLogArchitecture.RazorPages.csproj", "{783CD573-6DC0-4BAC-978C-2F4E2C4993B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MDCLogArchitecture.RazorPages", "..\MDCLogArchitecture.RazorPages\MDCLogArchitecture.RazorPages.csproj", "{783CD573-6DC0-4BAC-978C-2F4E2C4993B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,24 @@
+﻿@page "/Priority/PriorityCodeIndex"
+@model MDCLogArchitecture.RazorPages.Pages.Priority.PriorityCodeIndexModel
+@{
+    ViewData["Title"] = "PriorityCodeIndex";
+}
+
+
+<h1>Priority Codes</h1>
+<a asp-page="/Priority/PriorityCodeIndex" class="btn btn-success">Add New Priority Code</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Priority
+            </th>
+            <th>
+                Description
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @Html.DisplayFor(model => model.PriorityCodes);
+    </tbody>
+</table>
