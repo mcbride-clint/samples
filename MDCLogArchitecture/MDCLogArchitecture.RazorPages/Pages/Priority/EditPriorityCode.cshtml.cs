@@ -29,5 +29,12 @@ namespace MDCLogArchitecture.RazorPages.Pages.Priority
             ThisPriorityCode = _service.Find(filter);
 
         }
+        public IActionResult OnPost()
+        {
+            _service.Edit(ThisPriorityCode);
+            _logger.LogInformation($"User edited {ThisPriorityCode.Priority}");
+
+            return RedirectToPage("./PriorityCodeIndex");
+        }
     }
 }

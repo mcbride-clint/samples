@@ -6,7 +6,9 @@
 
 
 <h1>Priority Codes</h1>
+
 <a asp-page="/Priority/CreatePriorityCode" class="btn btn-success">Add New Priority Code</a>
+
 <table class="table">
     <thead>
         <tr>
@@ -18,7 +20,26 @@
             </th>
         </tr>
     </thead>
-    <tbody>
+
+    @foreach (var item in Model.PriorityCodes)
+    {
+        <thead>
+            <tr>
+                <th>
+                    @item.Priority
+                </th>
+                <th>
+                    @item.Descr
+                </th>
+                <th>
+                
+                    <a asp-page="/Priority/EditPriorityCode" asp-route-Priority="@item.Priority" asp- class="btn btn-primary">Edit</a>
+                
+                </th>
+            </tr>
+        </thead>
+    }
+    @*<tbody>
         @Html.DisplayFor(model => model.PriorityCodes)
-    </tbody>
+    </tbody>*@
 </table>

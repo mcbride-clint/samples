@@ -48,7 +48,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
 
         public List<PriorityCode> FindPriorityList(PriorityCodesFilter filter)
         {
-            
+
             string mySQL = listSQL + " where PRIORITY = " + filter.Priority;
             List<PriorityCode> priorities = _db.Query<PriorityCode>(listSQL).ToList();
             return priorities;
@@ -57,7 +57,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
         public PriorityCode InsertPriority(PriorityCode entity)
         {
             string mySQL = " INSERT INTO [TM_MDC_LOG_PRIORITY] ([PRIORITY],[DESCR]) VALUES " +
-                           " ( '" + entity.Priority + ",'" + entity.Descr + "')";
+                           " ( '" + entity.Priority + "','" + entity.Descr + "')";
             int rowsAffected = _db.Execute(mySQL);
             return entity;
         }
