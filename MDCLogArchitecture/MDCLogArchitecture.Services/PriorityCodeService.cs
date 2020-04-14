@@ -1,4 +1,5 @@
 ﻿using MDCLogArchitecture.Models.DomainModels;
+using MDCLogArchitecture.Models.Filters;
 using MDCLogArchitecture.Models.Interfaces.Repositories;
 using Microsoft.Extensions.Logging;
 using System;
@@ -16,10 +17,23 @@ namespace MDCLogArchitecture.Services
             _logger = logger;
             _PriorityCodeRepo = PriorityCodeRepo;
         }
-
-        public List<PriorityCode> FindPriorityList()
+        public List<PriorityCode> FindPriorityList(PriorityCodesFilter filter)
         {
-            return _PriorityCodeRepo.FindPriorityList();
+            return _PriorityCodeRepo.FindPriorityList(filter);
+        }
+        public PriorityCode Insert(PriorityCode PriorityCode)
+        {
+            return _PriorityCodeRepo.InsertPriority(PriorityCode);
+        }
+
+        public PriorityCode Find(PriorityCodesFilter filter)
+        {
+            return _PriorityCodeRepo.FindPriority(filter);
+        }
+
+        public PriorityCode Edit(PriorityCode ThisPriorityCode)
+        {
+            return _PriorityCodeRepo.EditPriority(ThisPriorityCode);
         }
     }
 }
