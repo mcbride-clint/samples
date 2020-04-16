@@ -11,7 +11,7 @@ using MDCLogArchitecture.Domain.Interfaces;
 
 namespace MDCLogArchitecture.DataAccess.Repositories
 {
-    public class PriorityRepository : IPriorityCode
+    public class PriorityRepository : IPriorityRepository
     {
         private string listSQL = " Select PRIORITY,DESCR " +
             " from TM_MDC_LOG_PRIORITY ";
@@ -39,6 +39,8 @@ namespace MDCLogArchitecture.DataAccess.Repositories
         public IPriorityCode FindPriority(PriorityCodesFilter filter)
         {
             string findSQL = listSQL + " Where PRIORITY = '" + filter.Priority + "'";
+            //CommentType commentType = _db.QuerySingle<CommentType>(findSQL);
+            //return commentType;
             PriorityCode priorityCode = _db.QuerySingle<PriorityCode>(findSQL);
             return priorityCode;
         }
@@ -51,7 +53,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             return priorities;
         }
 
-        public IPriorityCode InsertPriority(PriorityCode entity)
+        public IPriorityCode InsertPriority(IPriorityCode entity)
         {
             string mySQL = " INSERT INTO [TM_MDC_LOG_PRIORITY] ([PRIORITY],[DESCR]) VALUES " +
                            " ( '" + entity.Priority + "','" + entity.Descr + "')";
@@ -60,6 +62,26 @@ namespace MDCLogArchitecture.DataAccess.Repositories
         }
 
         public IPriorityCode SavePriority(PriorityCode entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IPriorityCode SavePriority(IPriorityCode entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IPriorityCode FindPriority(IPriorityCodesFilter filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<IPriorityCode> FindPriorityList(IPriorityCodesFilter filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        IPriorityCode IPriorityRepository.DeletePriority(string PriorityCode)
         {
             throw new NotImplementedException();
         }
