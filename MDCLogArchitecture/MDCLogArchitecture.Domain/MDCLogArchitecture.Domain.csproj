@@ -27,6 +27,8 @@
     <None Include="obj\MDCLogArchitecture.Services.csproj.nuget.g.props" />
     <None Include="obj\MDCLogArchitecture.Services.csproj.nuget.g.targets" />
     <None Include="obj\project.nuget.cache" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.3" />
