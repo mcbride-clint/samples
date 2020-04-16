@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MDCLogArchitecture.Models.DomainModels;
-using MDCLogArchitecture.Services;
+using MDCLogArchitecture.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -26,7 +26,7 @@ namespace MDCLogArchitecture.RazorPages.Pages.Priority
         public PriorityCode ThisPriorityCode { get; set; }
         public void OnGet(PriorityCodesFilter filter)
         {
-            ThisPriorityCode = _service.Find(filter);
+            ThisPriorityCode = (PriorityCode)_service.Find(filter);
 
         }
         public IActionResult OnPost()

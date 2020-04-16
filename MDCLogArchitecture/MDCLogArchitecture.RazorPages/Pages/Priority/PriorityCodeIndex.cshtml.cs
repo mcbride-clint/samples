@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MDCLogArchitecture.Models.DomainModels;
-using MDCLogArchitecture.Services;
+using MDCLogArchitecture.Domain.Services;
 using MDCLogArchitecture.Models.Filters;
+using MDCLogArchitecture.Domain.Interfaces;
 
 namespace MDCLogArchitecture.RazorPages.Pages.Priority
 {
@@ -14,7 +15,7 @@ namespace MDCLogArchitecture.RazorPages.Pages.Priority
     {
         private PriorityCodeService service { get; }
 
-        public List<PriorityCode> PriorityCodes { get; set; }
+        public List<IPriorityCode> PriorityCodes { get; set; }
 
         public PriorityCodeIndexModel(PriorityCodeService service)
         {

@@ -5,18 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Pages\Priority\CreatePriorityCode.cshtml.cs" />
-    <Compile Remove="Pages\Priority\EditPriorityCode.cshtml.cs" />
-    <Compile Remove="Pages\Priority\PriorityCodeIndex.cshtml.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Remove="Pages\Priority\CreatePriorityCode.cshtml" />
-    <Content Remove="Pages\Priority\EditPriorityCode.cshtml" />
-    <Content Remove="Pages\Priority\PriorityCodeIndex.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\DataAccess\MDCLogArchitecture.DataAccess.csproj" />
     <ProjectReference Include="..\MDCLog.Models\MDCLogArchitecture.Models.csproj" />
     <ProjectReference Include="..\MDCLogArchitecture.Domain\MDCLogArchitecture.Domain.csproj" />
