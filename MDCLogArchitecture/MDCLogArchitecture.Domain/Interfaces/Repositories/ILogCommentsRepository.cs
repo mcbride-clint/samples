@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace MDCLogArchitecture.Domain.Interfaces.Repositories
 {
@@ -10,15 +11,13 @@ namespace MDCLogArchitecture.Domain.Interfaces.Repositories
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        ILogCommentsRepository Insert(ILogCommentsRepository entity);
-        ILogCommentsRepository Save(ILogCommentsRepository entity);
+        ILogComments Insert(ILogComments entity);
+        ILogComments Save(ILogComments entity);
 
-        ILogCommentsRepository Find(int SeqNum);
-        List<ILogCommentsRepository> FindList(LogCommentsFilter filter);
+        ILogComments Find(int SeqNum);
+        IEnumerable <ILogComments> FindList(int LogNumber);
 
     }
 
-    public class LogCommentsFilter
-    {
-    }
+    
 }

@@ -6,10 +6,12 @@ using MDCLogArchitecture.Models.Filters;
 using Dapper;
 using System.Linq;
 using System.Data;
+using MDCLogArchitecture.Domain.Interfaces.Repositories;
+using MDCLogArchitecture.Domain.Interfaces;
 
 namespace MDCLogArchitecture.DataAccess.Repositories
 {
-    public class PriorityRepository : IPriorityRepository
+    public class PriorityRepository : IPriorityCode
     {
         private string listSQL = " Select PRIORITY,DESCR " +
             " from TM_MDC_LOG_PRIORITY ";
@@ -25,7 +27,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public PriorityCode EditPriority(PriorityCode entity)
+        public IPriorityCode EditPriority(IPriorityCode entity)
         {
             string mySQL = "UPDATE[dbo].[TM_MDC_LOG_PRIORITY] SET[PRIORITY] = '" + entity.Priority + "'" +
               ",[DESCR] = '" + entity.Descr + "'" +
@@ -34,7 +36,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             return entity;
         }
 
-        public PriorityCode FindPriority(PriorityCodesFilter filter)
+        public IPriorityCode FindPriority(PriorityCodesFilter filter)
         {
             string findSQL = listSQL + " Where PRIORITY = '" + filter.Priority + "'";
             PriorityCode priorityCode = _db.QuerySingle<PriorityCode>(findSQL);
@@ -49,7 +51,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             return priorities;
         }
 
-        public PriorityCode InsertPriority(PriorityCode entity)
+        public IPriorityCode InsertPriority(PriorityCode entity)
         {
             string mySQL = " INSERT INTO [TM_MDC_LOG_PRIORITY] ([PRIORITY],[DESCR]) VALUES " +
                            " ( '" + entity.Priority + "','" + entity.Descr + "')";
@@ -57,7 +59,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             return entity;
         }
 
-        public PriorityCode SavePriority(PriorityCode entity)
+        public IPriorityCode SavePriority(PriorityCode entity)
         {
             throw new NotImplementedException();
         }

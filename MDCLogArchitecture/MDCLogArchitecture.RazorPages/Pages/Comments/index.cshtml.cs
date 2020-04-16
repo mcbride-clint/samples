@@ -7,6 +7,7 @@ using MDCLogArchitecture.Models.DomainModels;
 using MDCLogArchitecture.Models.Filters;
 using MDCLogArchitecture.Services;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using MDCLogArchitecture.Domain.Interfaces;
 
 namespace MDCLogArchitecture.RazorPages.Pages.Comments
 {
@@ -14,8 +15,8 @@ namespace MDCLogArchitecture.RazorPages.Pages.Comments
     {
 
         private MDCLogService _service { get; }
-
-        public List<LogComments> LogComments { get; set; }
+        
+        public List<ILogComments> LogComments { get; set; }
 
         public IndexModel(MDCLogService service)
         {
@@ -23,7 +24,8 @@ namespace MDCLogArchitecture.RazorPages.Pages.Comments
         }
         public void OnGet()
         {
-            LogComments = _service.FindList(new LogCommentsFilter() );
+            int LogNumber = 100;
+            LogComments = _service.FindList(LogNumber);
 
         }
 

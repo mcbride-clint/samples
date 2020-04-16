@@ -4,16 +4,17 @@ using System.Text;
 using MDCLogArchitecture.Models.DomainModels;
 using MDCLogArchitecture.Models.Filters;
 
-namespace MDCLogArchitecture.Models.Interfaces.Repositories
+namespace MDCLogArchitecture.Domain.Interfaces.Repositories
 {
     public interface IPriorityRepository
     {
-        PriorityCode InsertPriority(PriorityCode entity);
-        PriorityCode SavePriority(PriorityCode entity);
-        PriorityCode EditPriority(PriorityCode entity);
-        PriorityCode FindPriority(PriorityCodesFilter filter);
-        List<PriorityCode> FindPriorityList(PriorityCodesFilter filter);
-        PriorityCode DeletePriority(string PriorityCode);
+        IPriorityCode InsertPriority(IPriorityCode entity);
+        IPriorityCode SavePriority(IPriorityCode entity);
+        IPriorityCode EditPriority(IPriorityCode entity);
+        IPriorityCode FindPriority(IPriorityCodesFilter filter);
+        
+        IEnumerable<IPriorityCode> FindPriorityList(PriorityCodesFilter filter);
+        IPriorityCode DeletePriority(string PriorityCode);
         
     }
 }
