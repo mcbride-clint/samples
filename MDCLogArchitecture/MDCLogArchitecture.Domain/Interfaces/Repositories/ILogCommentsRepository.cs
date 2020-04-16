@@ -12,7 +12,7 @@ namespace MDCLogArchitecture.Domain.Interfaces.Repositories
         /// <param name="entity"></param>
         /// <returns></returns>
         ILogComments Insert(ILogComments entity);
-        ILogComments Save(ILogComments entity);
+        //ILogComments Save(ILogComments entity);
 
         ILogComments Find(int SeqNum);
         IEnumerable <ILogComments> FindList(int LogNumber);
