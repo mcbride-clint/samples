@@ -36,22 +36,25 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             return entity;
         }
 
-        public IPriorityCode FindPriority(PriorityCodesFilter filter)
+        public IPriorityCode FindPriority(string PriorityCode)
         {
-            string findSQL = listSQL + " Where PRIORITY = '" + filter.Priority + "'";
+            string findSQL = listSQL + " Where PRIORITY = '" + PriorityCode + "'";
             //CommentType commentType = _db.QuerySingle<CommentType>(findSQL);
             //return commentType;
             PriorityCode priorityCode = _db.QuerySingle<PriorityCode>(findSQL);
             return priorityCode;
         }
-
-        public List<PriorityCode> FindPriorityList(PriorityCodesFilter filter)
+        public IEnumerable<IPriorityCode> FindPriorityList()
         {
-
-            string mySQL = listSQL + " where PRIORITY = " + filter.Priority;
-            List<PriorityCode> priorities = _db.Query<PriorityCode>(listSQL).ToList();
-            return priorities;
+            return _db.Query<PriorityCode>(listSQL);
         }
+        //public List<PriorityCode> FindPriorityList()
+        //{
+
+        //    string mySQL = listSQL ;
+        //    List<PriorityCode> priorities = _db.Query<PriorityCode>(listSQL).ToList();
+        //    return priorities;
+        //}
 
         public IPriorityCode InsertPriority(IPriorityCode entity)
         {
@@ -61,26 +64,12 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             return entity;
         }
 
-        public IPriorityCode SavePriority(PriorityCode entity)
-        {
-            throw new NotImplementedException();
-        }
-
         public IPriorityCode SavePriority(IPriorityCode entity)
         {
             throw new NotImplementedException();
         }
 
-        public IPriorityCode FindPriority(IPriorityCodesFilter filter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<IPriorityCode> FindPriorityList(IPriorityCodesFilter filter)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         IPriorityCode IPriorityRepository.DeletePriority(string PriorityCode)
         {
             throw new NotImplementedException();

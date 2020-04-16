@@ -24,9 +24,9 @@ namespace MDCLogArchitecture.RazorPages.Pages.Priority
 
         [BindProperty]
         public PriorityCode ThisPriorityCode { get; set; }
-        public void OnGet(PriorityCodesFilter filter)
+        public void OnGet(string Priority)
         {
-            ThisPriorityCode = (PriorityCode)_service.Find(filter);
+            ThisPriorityCode = (PriorityCode)_service.Find(Priority);
 
         }
         public IActionResult OnPost()

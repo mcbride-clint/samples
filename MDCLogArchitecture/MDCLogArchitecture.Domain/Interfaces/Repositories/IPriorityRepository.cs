@@ -11,9 +11,9 @@ namespace MDCLogArchitecture.Domain.Interfaces.Repositories
         IPriorityCode InsertPriority(IPriorityCode entity);
         IPriorityCode SavePriority(IPriorityCode entity);
         IPriorityCode EditPriority(IPriorityCode entity);
-        IPriorityCode FindPriority(IPriorityCodesFilter filter);
+        IPriorityCode FindPriority(string PriorityCode);
         
-        IEnumerable<IPriorityCode> FindPriorityList(IPriorityCodesFilter filter);
+        IEnumerable<IPriorityCode> FindPriorityList();
         IPriorityCode DeletePriority(string PriorityCode);
         
     }

@@ -17,18 +17,18 @@ namespace MDCLogArchitecture.Domain.Services
             _logger = logger;
             _PriorityCodeRepo = PriorityCodeRepo;
         }
-        public List<IPriorityCode> FindPriorityList(IPriorityCodesFilter filter)
+        public List<IPriorityCode> FindPriorityList()
         {
-            return _PriorityCodeRepo.FindPriorityList(filter).ToList();
+            return _PriorityCodeRepo.FindPriorityList().ToList();
         }
         public IPriorityCode Insert(IPriorityCode PriorityCode)
         {
             return _PriorityCodeRepo.InsertPriority(PriorityCode);
         }
 
-        public IPriorityCode Find(IPriorityCodesFilter filter)
+        public IPriorityCode Find(string PriorityCode)
         {
-            return _PriorityCodeRepo.FindPriority(filter);
+            return _PriorityCodeRepo.FindPriority(PriorityCode);
         }
 
         public IPriorityCode Edit(IPriorityCode ThisPriorityCode)

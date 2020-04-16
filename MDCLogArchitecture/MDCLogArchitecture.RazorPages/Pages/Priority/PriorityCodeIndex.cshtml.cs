@@ -23,7 +23,7 @@ namespace MDCLogArchitecture.RazorPages.Pages.Priority
         }
         public void OnGet()
         {
-            PriorityCodes = service.FindPriorityList(new PriorityCodesFilter());
+            PriorityCodes = service.FindPriorityList();
         }
     }
 }

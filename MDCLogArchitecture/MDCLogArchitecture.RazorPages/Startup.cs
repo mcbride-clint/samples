@@ -39,10 +39,10 @@ namespace MDCLogArchitecture.RazorPages
             services.AddScoped<ILogCommentsRepository, LogCommentsRepository>();
             services.AddScoped<ICommentTypesRepository,CommentsTypeRepository>();
            
-            //services.AddScoped<IPriorityRepository, PriorityRepository>();
+            services.AddScoped<IPriorityRepository, PriorityRepository>();
             services.AddScoped<MDCLogService>();
             services.AddScoped<CommentTypeService>();
-            //services.AddScoped<PriorityCodeService>();
+            services.AddScoped<PriorityCodeService>();
             
             services.AddRazorPages();
         }
