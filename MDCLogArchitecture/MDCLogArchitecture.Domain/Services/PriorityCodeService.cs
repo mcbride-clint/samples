@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
-namespace MDCLogArchitecture.Services
+namespace MDCLogArchitecture.Domain.Services
 {
     public class PriorityCodeService
     {

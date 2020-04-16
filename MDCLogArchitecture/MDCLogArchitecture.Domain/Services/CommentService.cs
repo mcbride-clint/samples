@@ -8,7 +8,7 @@ using System.Text;
 using MDCLogArchitecture.Domain.Interfaces.Repositories;
 using System.Linq;
 
-namespace MDCLogArchitecture.Services
+namespace MDCLogArchitecture.Domain.Services
 {
     public class CommentService
     {

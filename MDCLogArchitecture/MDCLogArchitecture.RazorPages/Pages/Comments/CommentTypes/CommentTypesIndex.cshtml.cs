@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MDCLogArchitecture.Models.DomainModels;
 
-using MDCLogArchitecture.Services;
+using MDCLogArchitecture.Domain.Services;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MDCLogArchitecture.Domain.Interfaces;
 

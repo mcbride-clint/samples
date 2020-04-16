@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MDCLogArchitecture.DataAccess.Repositories;
 using MDCLogArchitecture.Domain.Interfaces.Repositories;
+using MDCLogArchitecture.Domain.Services;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,9 +40,9 @@ namespace MDCLogArchitecture.RazorPages
             services.AddScoped<ICommentTypesRepository,CommentsTypeRepository>();
            
             //services.AddScoped<IPriorityRepository, PriorityRepository>();
-            services.AddScoped<Services.MDCLogService>();
-            services.AddScoped<Services.CommentTypeService>();
-            //services.AddScoped<Services.PriorityCodeService>();
+            services.AddScoped<MDCLogService>();
+            services.AddScoped<CommentTypeService>();
+            //services.AddScoped<PriorityCodeService>();
             
             services.AddRazorPages();
         }

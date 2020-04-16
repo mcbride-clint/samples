@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 using Microsoft.Extensions.Logging;
 using MDCLogArchitecture.Models.DomainModels;
-using MDCLogArchitecture.Services;
+using MDCLogArchitecture.Domain.Services;
 using MDCLogArchitecture.Domain.Interfaces;
 
 namespace MDCLogArchitecture.RazorPages.Pages.Comments
