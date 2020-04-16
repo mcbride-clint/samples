@@ -1,17 +1,18 @@
 ﻿
 using MDCLogArchitecture.Models.DomainModels;
 using MDCLogArchitecture.Models.Filters;
-using MDCLogArchitecture.Models.Interfaces.Repositories;
+using MDCLogArchitecture.Domain.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using MDCLogArchitecture.Domain.Interfaces.Repositories;
 
 namespace MDCLogArchitecture.Services
 {
     public class CommentService
     {
-        ILogCommentsRepository _commentsRepo;
+        Domain.Interfaces.Repositories.ILogCommentsRepository _commentsRepo;
         ILogger<CommentService> _logger;
 
         /// <summary>

@@ -5,8 +5,17 @@
 }
 
 <h1>Edit Comment Type</h1>
-<form method="post">
-    @Html.EditorFor(m => m.ThisCommentType)
+<form method="post" >
+
+     <div class="form-group">
+        <label for="@Model.CommentTypeCode">Comment Type Code</label>
+        <input asp-for="@Model.CommentTypeCode" readonly class="form-control col-sm-3"/>
+     </div>
+
+     <div class="form-group">
+        <label for="@Model.TypeDesc">Description</label>
+        <input asp-for="@Model.TypeDesc"  class="form-control col-sm-3"/>
+     </div>
 
     <hr />
     <button type="submit" class="btn btn-success">Save</button>

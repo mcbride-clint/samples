@@ -5,7 +5,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using MDCLogArchitecture.DataAccess.Repositories;
-using MDCLogArchitecture.Models.Interfaces.Repositories;
+using MDCLogArchitecture.Domain.Interfaces.Repositories;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,12 +35,13 @@ namespace MDCLogArchitecture.RazorPages
                 return new SqlConnection(connString);
             });
 
-            services.AddScoped<ILogCommentsRepository, LogCommentsRepository>();
+           // services.AddScoped<ILogCommentsRepository, LogCommentsRepository>();
             services.AddScoped<ICommentTypesRepository,CommentsTypeRepository>();
-            services.AddScoped<IPriorityRepository, PriorityRepository>();
-            services.AddScoped<Services.MDCLogService>();
+           
+            //services.AddScoped<IPriorityRepository, PriorityRepository>();
+           // services.AddScoped<Services.MDCLogService>();
             services.AddScoped<Services.CommentTypeService>();
-            services.AddScoped<Services.PriorityCodeService>();
+            //services.AddScoped<Services.PriorityCodeService>();
             
             services.AddRazorPages();
         }

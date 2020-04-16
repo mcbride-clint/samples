@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 using MDCLogArchitecture.Models.DomainModels;
 using MDCLogArchitecture.Models.Filters;
-using MDCLogArchitecture.Models.Interfaces.Repositories;
-using MDCLogArchitecture.DataAccess.Connections;
-using System.Data.SqlClient;
 using Dapper;
 using System.Linq;
 using System.Data;
-using System.Runtime.InteropServices.ComTypes;
 
 namespace MDCLogArchitecture.DataAccess.Repositories
 {

@@ -5,9 +5,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Comments\CommentTypes\CreateCommentType.cshtml.cs" />
+    <Compile Remove="Pages\Comments\CreateComment.cshtml.cs" />
+    <Compile Remove="Pages\Comments\EditComments.cshtml.cs" />
+    <Compile Remove="Pages\Comments\index.cshtml.cs" />
+    <Compile Remove="Pages\Priority\CreatePriorityCode.cshtml.cs" />
+    <Compile Remove="Pages\Priority\EditPriorityCode.cshtml.cs" />
+    <Compile Remove="Pages\Priority\PriorityCodeIndex.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\Comments\CommentTypes\CreateCommentType.cshtml" />
+    <Content Remove="Pages\Comments\CreateComment.cshtml" />
+    <Content Remove="Pages\Comments\EditComments.cshtml" />
+    <Content Remove="Pages\Comments\index.cshtml" />
+    <Content Remove="Pages\Priority\CreatePriorityCode.cshtml" />
+    <Content Remove="Pages\Priority\EditPriorityCode.cshtml" />
+    <Content Remove="Pages\Priority\PriorityCodeIndex.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DataAccess\MDCLogArchitecture.DataAccess.csproj" />
     <ProjectReference Include="..\MDCLog.Models\MDCLogArchitecture.Models.csproj" />
-    <ProjectReference Include="..\MDCLogArchitecture.Services\MDCLogArchitecture.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

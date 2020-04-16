@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Repositories\LogCommentsRepository.cs" />
+    <Compile Remove="Repositories\PriorityRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.35" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
@@ -12,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MDCLog.Models\MDCLogArchitecture.Models.csproj" />
+    <ProjectReference Include="..\MDCLogArchitecture.Domain\MDCLogArchitecture.Domain.csproj" />
   </ItemGroup>
 
 </Project>

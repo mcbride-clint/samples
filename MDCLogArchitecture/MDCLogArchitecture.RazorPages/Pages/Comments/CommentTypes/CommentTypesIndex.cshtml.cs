@@ -6,7 +6,7 @@ using MDCLogArchitecture.Models.DomainModels;
 
 using MDCLogArchitecture.Services;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-
+using MDCLogArchitecture.Domain.Interfaces;
 
 namespace MDCLogArchitecture.RazorPages.Pages.Comments.CommentTypes
 {
@@ -14,7 +14,7 @@ namespace MDCLogArchitecture.RazorPages.Pages.Comments.CommentTypes
     {
         private CommentTypeService _service { get; }
 
-        public List<CommentType> CommentTypes { get; set; }
+        public List<ICommentType> CommentTypes { get; set; }
 
         public CommentTypesIndexModel(CommentTypeService service)
         {
