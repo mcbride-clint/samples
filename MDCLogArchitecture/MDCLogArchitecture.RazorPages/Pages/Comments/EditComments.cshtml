@@ -4,12 +4,54 @@
     ViewData["Title"] = "EditComments";
 }
 
-<h1>EditComments</h1>
-<form method="post">
-    @Html.EditorFor(m => m.ThisComment)
+<h1>Comment Details</h1>
+<form method="post" class="vh-100">
+
+    <div class="container-fluid">
+        <div class="form-row border border-dark">
+            <div class="form-inline ">
+                <label for="@Model.SeqNum">Seq Num</label>
+                &nbsp;
+                <input asp-for="@Model.SeqNum" readonly class="form-control col-sm-2" />
+                &nbsp;
+                <label for="@Model.LogNumber">Log</label>
+                &nbsp;
+                <input asp-for="@Model.LogNumber" readonly class="form-control col-sm-2" />
+                &nbsp;
+                <label for="@Model.BasicNumber">Basic Number</label>
+                &nbsp;
+                <input asp-for="@Model.BasicNumber" readonly class="form-control col-sm-2" />
+                <label for="@Model.LinkToSeqNum">Link to Seq Num</label>
+                &nbsp;
+                <input asp-for="@Model.LinkToSeqNum" readonly class="form-control col-sm-2" />
+            </div>
+        </div>
+        <br /><br />
+              <div class="form-inline">
+                  <label for="@Model.TypeDesc">Type</label>
+                  &nbsp;
+                  <input asp-for="@Model.TypeDesc" readonly class="form-control col-sm-3" />
+                  <label for="@Model.CreatedBy">Created By</label>
+                  &nbsp;
+                  <input asp-for="@Model.CreatedBy" readonly class="form-control col-sm-3" />
+                  <label for="@Model.CreateDate">Created </label>
+                  &nbsp;
+                  <input asp-for="@Model.CreateDate" readonly class="form-control col-sm-3" />
+              </div>
+
+
+    </div>
+    <br /><br />
+    <div class="form-group ">
+        <label for="@Model.Comment">Comment</label>
+        <input asp-for="@Model.Comment" readonly class="form-control word-wrap: break-word;" />
+    </div>
+    
+
+
 
     <hr />
-    
+
     <a asp-page="/Comments/index" class="btn btn-primary">Back to List</a>
 </form>
 

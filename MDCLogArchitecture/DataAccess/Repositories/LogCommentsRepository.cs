@@ -3,12 +3,14 @@ using System.Collections.Generic;
 
 using MDCLogArchitecture.Models.DomainModels;
 using MDCLogArchitecture.Models.Filters;
-using MDCLogArchitecture.Models.Interfaces.Repositories;
-using MDCLogArchitecture.DataAccess.Connections;
+
 using System.Data.SqlClient;
 using Dapper;
 using System.Linq;
+using System.Collections;
 using System.Data;
+using MDCLogArchitecture.Domain.Interfaces.Repositories;
+using MDCLogArchitecture.Domain.Interfaces;
 
 namespace MDCLogArchitecture.DataAccess.Repositories
 {
@@ -24,21 +26,25 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             _db = db;
         }
 
-        public LogComments Find(int SeqNum)
+        public ILogComments Find(int SeqNum)
         {
             string findSQL = listSQL + " where seq_num = " + SeqNum;
             LogComments comment = _db.QuerySingle<LogComments>(findSQL);
             return comment;
         }
-
-        public List<LogComments> FindList(LogCommentsFilter filter)
+        public IEnumerable<ILogComments> FindList(int LogNumber)
         {
-            string mySQL = listSQL + " where Log_number = " + filter.LogNumber;
-            List<LogComments> comments = _db.Query<LogComments>(listSQL).ToList();
-            return comments;
+            string mySQL = listSQL + " where Log_num = " + LogNumber;
+            return _db.Query<LogComments>(mySQL);
         }
+        //public IEnumerable<ILogComments> ILogCommentsRepository.FindList(int LogNumber)
+        //{
+        //    string mySQL = listSQL + " where Log_number = " + LogNumber;
+        //    List<LogComments> listComments = _db.Query<LogComments>(listSQL).ToList();
+        //    return listComments;
+        //}
 
-        public LogComments Insert(LogComments entity)
+        public ILogComments Insert(ILogComments entity)
         {
             string mySQL = "INSERT INTO [TM_DIST_CHG_LOG_COMMENTS] ([LOG_NUM],[BASIC_NUMBER]" +
     ",[TYPE],[LINK_TO_SEQ_NUM],[CREATED_DATE],[CREATED_BY_SEQ_NUM],[COMMENT_TEXT]" +
@@ -49,10 +55,37 @@ namespace MDCLogArchitecture.DataAccess.Repositories
            int rowsAffected = _db.Execute(mySQL);
             return entity;
         }
-        public LogComments Save(LogComments entity)
+        //public LogComments Save(LogComments entity)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //ILogComments ILogCommentsRepository.Insert(ILogComments entity)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public ILogComments Save(ILogComments entity)
         {
             throw new NotImplementedException();
         }
+
+       
+
+        //ILogComments ILogCommentsRepository.Find(int SeqNum)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public IEnumerable<ILogComments> FindList(Domain.Interfaces.Repositories.LogCommentsFilter filter)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //IEnumerable<ILogComments> ILogCommentsRepository.FindList(int LogNumber)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 
 

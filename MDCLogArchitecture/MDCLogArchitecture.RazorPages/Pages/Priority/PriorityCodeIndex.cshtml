@@ -21,25 +21,7 @@
         </tr>
     </thead>
 
-    @foreach (var item in Model.PriorityCodes)
-    {
-        <thead>
-            <tr>
-                <th>
-                    @item.Priority
-                </th>
-                <th>
-                    @item.Descr
-                </th>
-                <th>
-                
-                    <a asp-page="/Priority/EditPriorityCode" asp-route-Priority="@item.Priority" asp- class="btn btn-primary">Edit</a>
-                
-                </th>
-            </tr>
-        </thead>
-    }
-    @*<tbody>
+    <tbody>
         @Html.DisplayFor(model => model.PriorityCodes)
-    </tbody>*@
+    </tbody>
 </table>

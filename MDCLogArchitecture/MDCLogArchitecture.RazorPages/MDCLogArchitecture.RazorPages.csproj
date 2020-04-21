@@ -7,7 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\MDCLogArchitecture.DataAccess.csproj" />
     <ProjectReference Include="..\MDCLog.Models\MDCLogArchitecture.Models.csproj" />
-    <ProjectReference Include="..\MDCLogArchitecture.Services\MDCLogArchitecture.Services.csproj" />
+    <ProjectReference Include="..\MDCLogArchitecture.Domain\MDCLogArchitecture.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

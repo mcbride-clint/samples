@@ -1,25 +1,26 @@
 ﻿
-using MDCLogArchitecture.Models.DomainModels;
-using MDCLogArchitecture.Models.Filters;
-using MDCLogArchitecture.Models.Interfaces.Repositories;
+using MDCLogArchitecture.Domain.Interfaces;
+using MDCLogArchitecture.Domain.Interfaces.Repositories;
+
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
-namespace MDCLogArchitecture.Services
+namespace MDCLogArchitecture.Domain.Services
 {
-    public class CommentService
+    public class MDCLogService
     {
         ILogCommentsRepository _commentsRepo;
-        ILogger<CommentService> _logger;
+        ILogger<MDCLogService> _logger;
 
         /// <summary>
         /// Initialize the Service with an instance of an injected User Repository
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="commentsRepo"></param>
-        public CommentService(ILogger<CommentService> logger, ILogCommentsRepository commentsRepo)
+        public MDCLogService(ILogger<MDCLogService> logger, ILogCommentsRepository commentsRepo)
         {
             _logger = logger;
             _commentsRepo = commentsRepo;
@@ -30,15 +31,15 @@ namespace MDCLogArchitecture.Services
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public List<LogComments> FindList(LogCommentsFilter filter)
+        public List<ILogComments> FindList(int LogNum)
         {
-            return _commentsRepo.FindList(filter);
+            return _commentsRepo.FindList(LogNum).ToList();
         }
-        public LogComments Find(int SeqNum)
+        public ILogComments Find(int SeqNum)
         {
             return _commentsRepo.Find(SeqNum);
         }
-        public LogComments Save(LogComments ThisComment)
+        public ILogComments Save(ILogComments ThisComment)
         {
             _logger.LogInformation("No UserIdSeqNum Found, inserting new record");
             return _commentsRepo.Insert(ThisComment);

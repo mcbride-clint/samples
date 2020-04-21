@@ -1,10 +1,11 @@
 ﻿using System;
+using MDCLogArchitecture.Domain.Interfaces;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MDCLogArchitecture.Models.DomainModels
 {
-    public class LogComments
+    public class LogComments :ILogComments
     {
         public int SeqNum { get; set; }
         public int LogNumber { get; set; }

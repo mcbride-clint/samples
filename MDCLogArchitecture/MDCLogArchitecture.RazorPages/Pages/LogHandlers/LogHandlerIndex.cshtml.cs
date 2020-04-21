@@ -9,21 +9,21 @@ using MDCLogArchitecture.Domain.Services;
 using MDCLogArchitecture.Models.Filters;
 using MDCLogArchitecture.Domain.Interfaces;
 
-namespace MDCLogArchitecture.RazorPages.Pages.Priority
+namespace MDCLogArchitecture.RazorPages.Pages.LogHandlers
 {
-    public class PriorityCodeIndexModel : PageModel
+    public class LogHandlerIndexModel : PageModel
     {
-        private PriorityCodeService service { get; }
+        private LogHandlerService service { get; }
 
-        public List<IPriorityCode> PriorityCodes { get; set; }
+        public List<ILogHandler> LogHandler { get; set; }
 
-        public PriorityCodeIndexModel(PriorityCodeService service)
+        public LogHandlerIndexModel(LogHandlerService service)
         {
             this.service = service;
         }
         public void OnGet()
         {
-            PriorityCodes = service.FindPriorityList();
+            LogHandler = service.FindLogHandlerList();
         }
     }
 }

@@ -1,25 +1,26 @@
 ﻿
-using MDCLogArchitecture.Models.DomainModels;
-using MDCLogArchitecture.Models.Filters;
-using MDCLogArchitecture.Models.Interfaces.Repositories;
+
+using MDCLogArchitecture.Domain.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using MDCLogArchitecture.Domain.Interfaces.Repositories;
+using System.Linq;
 
-namespace MDCLogArchitecture.Services
+namespace MDCLogArchitecture.Domain.Services
 {
-    public class MDCLogService
+    public class CommentService
     {
-        ILogCommentsRepository _commentsRepo;
-        ILogger<MDCLogService> _logger;
+        Domain.Interfaces.Repositories.ILogCommentsRepository _commentsRepo;
+        ILogger<CommentService> _logger;
 
         /// <summary>
         /// Initialize the Service with an instance of an injected User Repository
         /// </summary>
         /// <param name="logger"></param>
         /// <param name="commentsRepo"></param>
-        public MDCLogService(ILogger<MDCLogService> logger, ILogCommentsRepository commentsRepo)
+        public CommentService(ILogger<CommentService> logger, ILogCommentsRepository commentsRepo)
         {
             _logger = logger;
             _commentsRepo = commentsRepo;
@@ -30,15 +31,15 @@ namespace MDCLogArchitecture.Services
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public List<LogComments> FindList(LogCommentsFilter filter)
+        public List<ILogComments> FindList(int filter)
         {
-            return _commentsRepo.FindList(filter);
+            return _commentsRepo.FindList(filter).ToList();
         }
-        public LogComments Find(int SeqNum)
+        public ILogComments Find(int SeqNum)
         {
             return _commentsRepo.Find(SeqNum);
         }
-        public LogComments Save(LogComments ThisComment)
+        public ILogComments Save(ILogComments ThisComment)
         {
             _logger.LogInformation("No UserIdSeqNum Found, inserting new record");
             return _commentsRepo.Insert(ThisComment);

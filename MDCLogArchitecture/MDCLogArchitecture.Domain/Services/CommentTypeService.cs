@@ -1,11 +1,12 @@
-﻿using MDCLogArchitecture.Models.DomainModels;
-using MDCLogArchitecture.Models.Interfaces.Repositories;
+﻿using MDCLogArchitecture.Domain.Interfaces.Repositories;
+using MDCLogArchitecture.Domain.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MDCLogArchitecture.Services
+namespace MDCLogArchitecture.Domain.Services
 {
     
     public class CommentTypeService
@@ -27,19 +28,20 @@ namespace MDCLogArchitecture.Services
         /// Get All Comment Types
         /// </summary>
         /// <returns></returns>
-        public List<CommentType> FindTypeList()
+        public List<ICommentType> FindTypeList()
         {
-            return _commentTypesRepo.FindTypeList();
+            _logger.LogError("Hello");
+            return _commentTypesRepo.FindTypeList().ToList();
         }
-        public CommentType FindType(string CommentTypeCode)
+        public ICommentType FindType(string CommentTypeCode)
         {
             return _commentTypesRepo.FindType(CommentTypeCode);
         }
-        public CommentType InsertType (CommentType ThisCommentType)
+        public ICommentType InsertType (ICommentType ThisCommentType)
         {
             return _commentTypesRepo.InsertType( ThisCommentType);
         }
-        public CommentType EditType(CommentType ThisCommentType)
+        public ICommentType EditType(ICommentType ThisCommentType)
         {
             return _commentTypesRepo.EditType(ThisCommentType);
         }
