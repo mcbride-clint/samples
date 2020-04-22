@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using MDCLogArchitecture.Models.DomainModels;
 using MDCLogArchitecture.Models.Filters;
-using System.Data.SqlClient;
 using Dapper;
 using System.Linq;
-using System.Collections;
 using System.Data;
 using MDCLogArchitecture.Domain.Interfaces.Repositories;
 using MDCLogArchitecture.Domain.Interfaces;
-
 namespace MDCLogArchitecture.DataAccess.Repositories
 {
     public class LogHandlerRepository : ILogHandlersRepository
@@ -57,13 +55,13 @@ namespace MDCLogArchitecture.DataAccess.Repositories
         public ILogHandler FindLogHandler(int userseqnum)
         {
             string findSQL = listSQL + " where USERID_SEQ_NUM = '" + userseqnum + "'";
-            ILogHandler loghandler = _db.QuerySingle<ILogHandler>(findSQL);
+            ILogHandler loghandler = _db.QuerySingle<LogHandler>(findSQL);
             return loghandler;
         }
 
         public IEnumerable<ILogHandler> FindLogHandlerList()
         {
-            return _db.Query<ILogHandler>(listSQL).ToList();
+            return _db.Query<LogHandler>(listSQL);
         }
 
         public ILogHandler DeleteLogHandler(int LogHandler)

@@ -5,7 +5,7 @@ using MDCLogArchitecture.Domain.Interfaces;
 
 namespace MDCLogArchitecture.Models.Filters
 {
-    public class PriorityCodesFilter :IPriorityCodesFilter
+    public class PriorityCodesFilter : IPriorityCodesFilter
     {
         
         public int? Priority { get; set; }
