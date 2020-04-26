@@ -29,22 +29,21 @@ namespace MDCLogArchitecture.RazorPages
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string connString = @"Server=DESKTOP-UV36790\SQLDRA;Database=MDC;Trusted_Connection = True;";
+            //string connString = @"Server=DESKTOP-UV36790\SQLDRA;Database=MDC;Trusted_Connection = True;";
             //string connString = @"Server=DESKTOP-KH6A94U;Database=MDC;Trusted_Connection = True;";
-            //string connString = @"Server=DESKTOP-KH6A94U;Database=MDC;Trusted_Connection = True;";
+            string connString = @"Server=DESKTOP-KH6A94U;Database=MDC;Trusted_Connection = True;";
             services.AddScoped<IDbConnection, SqlConnection>(c => {
                 return new SqlConnection(connString);
             });
 
             services.AddScoped<ILogCommentsRepository, LogCommentsRepository>();
-            services.AddScoped<ICommentTypesRepository, CommentsTypeRepository>();
+            services.AddScoped<ICommentTypesRepository,CommentsTypeRepository>();
+           
             services.AddScoped<IPriorityRepository, PriorityRepository>();
-            services.AddScoped<ILogHandlersRepository, LogHandlerRepository>();
             services.AddScoped<MDCLogService>();
             services.AddScoped<CommentTypeService>();
             services.AddScoped<PriorityCodeService>();
-            services.AddScoped<LogHandlerService>();
-
+            
             services.AddRazorPages();
         }
 

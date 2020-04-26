@@ -37,12 +37,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             string mySQL = listSQL + " where Log_num = " + LogNumber;
             return _db.Query<LogComments>(mySQL);
         }
-        //public IEnumerable<ILogComments> ILogCommentsRepository.FindList(int LogNumber)
-        //{
-        //    string mySQL = listSQL + " where Log_number = " + LogNumber;
-        //    List<LogComments> listComments = _db.Query<LogComments>(listSQL).ToList();
-        //    return listComments;
-        //}
+       
 
         public ILogComments Insert(ILogComments entity)
         {
@@ -55,37 +50,12 @@ namespace MDCLogArchitecture.DataAccess.Repositories
            int rowsAffected = _db.Execute(mySQL);
             return entity;
         }
-        //public LogComments Save(LogComments entity)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //ILogComments ILogCommentsRepository.Insert(ILogComments entity)
-        //{
-        //    throw new NotImplementedException();
-        //}
+       
 
         public ILogComments Save(ILogComments entity)
         {
             throw new NotImplementedException();
         }
-
-       
-
-        //ILogComments ILogCommentsRepository.Find(int SeqNum)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public IEnumerable<ILogComments> FindList(Domain.Interfaces.Repositories.LogCommentsFilter filter)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //IEnumerable<ILogComments> ILogCommentsRepository.FindList(int LogNumber)
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 
 

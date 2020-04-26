@@ -2,11 +2,11 @@
 @model MDCLogArchitecture.RazorPages.Pages.Comments.IndexModel
 @{
     ViewData["Title"] = "index";
-}
+    Layout = "_DataTableLayout";}
 
 <h1>Log Comments</h1>
 <a asp-page="/Comments/CreateComment" class="btn btn-success">Add New Comment</a>
-<table class="table">
+<table class="table table-sm display" id="example" style="width:100%">
     <thead>
         <tr>
             <th>
@@ -36,4 +36,33 @@
         @Html.DisplayFor(model => model.LogComments)
     </tbody>
 </table>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/jquery.dataTables.min.js"></script>
+<script>
+    
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>
+@*@section Scripts {
+
+    <script>
+        Alert("Hello");
+
+    $(document).ready(function () {
+
+        //$('#example').DataTable();
+        //----------------------------------------------
+        //note that this is the old yadcf API for init the filters
+        //new init function should be used when working with new Datatable (capital "D" API)
+        //for new init function see: http://yadcf-showcase.appspot.com/DOM_Ajax_Multiple_1.10.html
+        //----------------------------------------------
+
+         $('#example').DataTable({
+            stateSave: true,
+            responsive: true
+
+         });
+        </script>
+    }*@
 

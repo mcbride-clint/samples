@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MDCLogArchitecture.Domain.Interfaces
 {
-    public interface ILogHandler
+    public interface ILogHandler 
     {
         string UserSeqNum { get; set; }
         string Code { get; set; }
