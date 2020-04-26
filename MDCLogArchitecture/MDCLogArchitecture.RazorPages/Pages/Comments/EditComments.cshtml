@@ -6,7 +6,7 @@
 
 <h1>Comment Details</h1>
 <form method="post" class="vh-100">
-
+    
     <div class="container-fluid">
         <div class="form-row border border-dark">
             <div class="form-inline ">
@@ -42,10 +42,12 @@
 
     </div>
     <br /><br />
-    <div class="form-group ">
-        <label for="@Model.Comment">Comment</label>
-        <input asp-for="@Model.Comment" readonly class="form-control word-wrap: break-word;" />
-    </div>
+          <div class="form-group ">
+              <label for="@Model.Comment">Comment</label>
+              
+              <textarea readonly rows="3" class="form-control" asp-for="@Model.Comment" ></textarea>
+             
+          </div>
     
 
 
