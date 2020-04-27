@@ -2,11 +2,12 @@
 @model MDCLogArchitecture.RazorPages.Pages.Comments.CommentTypes.CommentTypesIndexModel
 @{
     ViewData["Title"] = "CommentTypesIndex";
+    Layout = "_DataTableLayout";
 }
 
 <h1>Comment Types</h1>
 <a asp-page="/Comments/CommentTypes/CreateCommentType" class="btn btn-success">Add New Comment Type</a>
-<table class="table">
+<table class="table table-sm display" id="example" style="width:60%">
     <thead>
         <tr>
             <th>
@@ -15,10 +16,23 @@
             <th>
                 Type Description
             </th>
+            <th>
+                &nbsp;
+            </th>
         </tr>
     </thead>
     <tbody>
         @Html.DisplayFor(model => model.CommentTypes)
     </tbody>
 </table>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/jquery.dataTables.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>
 
