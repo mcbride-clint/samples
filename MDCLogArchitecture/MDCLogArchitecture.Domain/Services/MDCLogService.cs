@@ -44,7 +44,7 @@ namespace MDCLogArchitecture.Domain.Services
             _logger.LogInformation("No UserIdSeqNum Found, inserting new record");
             return _commentsRepo.Insert(ThisComment);
         }
-        
-        
+
+
     }
 }
