@@ -1,0 +1,13 @@
+﻿@page
+@model MDCLogArchitecture.RazorPages.Pages.LogHandlers.EditLogHandlerModel
+@{
+    ViewData["Title"] = "EditLogHandler";
+}
+<h1>Edit LogHandler</h1>
+<form method="post">
+    @Html.EditorFor(m => m.ThisLogHandler)
+
+    <hr />
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-page="/LogHandlers/LogHandlerIndex" class="btn btn-primary">Back to List</a>
+</form>
