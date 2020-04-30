@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using MDCLogArchitecture.Domain.Interfaces.Repositories;
-using MDCLogArchitecture.Domain.Interfaces;
+using MDCLogArchitecture.Models.DomainModels;
 using Microsoft.Extensions.Logging;
 using System.Linq;
 
@@ -17,21 +17,21 @@ namespace MDCLogArchitecture.Domain.Services
             _logger = logger;
             _LogHandlersRepo = LogHandlersRepo;
         }
-        public List<ILogHandler> FindLogHandlerList()
+        public List<LogHandler> FindLogHandlerList()
         {
             return _LogHandlersRepo.FindLogHandlerList().ToList();
         }
-        public ILogHandler Insert(ILogHandler LogHandler)
+        public LogHandler Insert(LogHandler LogHandler)
         {
             return _LogHandlersRepo.InsertLogHandler(LogHandler);
         }
 
-        public ILogHandler FindLogHandler(int UserSeqNum)
+        public LogHandler FindLogHandler(int UserSeqNum)
         {
             return _LogHandlersRepo.FindLogHandler(UserSeqNum);
         }
 
-        public ILogHandler EditLogHandler(ILogHandler ThisLogHandler)
+        public LogHandler EditLogHandler(LogHandler ThisLogHandler)
         {
             return _LogHandlersRepo.EditLogHandler(ThisLogHandler);
         }

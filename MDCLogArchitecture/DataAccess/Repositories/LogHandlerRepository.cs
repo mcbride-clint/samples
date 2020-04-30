@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using MDCLogArchitecture.Models.DomainModels;
 using MDCLogArchitecture.Models.Filters;
+using System.Data.SqlClient;
 using Dapper;
 using System.Linq;
+using System.Collections;
 using System.Data;
 using MDCLogArchitecture.Domain.Interfaces.Repositories;
 using MDCLogArchitecture.Domain.Interfaces;
+
 namespace MDCLogArchitecture.DataAccess.Repositories
 {
     public class LogHandlerRepository : ILogHandlersRepository
@@ -17,13 +19,13 @@ namespace MDCLogArchitecture.DataAccess.Repositories
                                  " TMMA_CODE as TMMA " +
                                  " from TM_MDC_LOG_HANDLERS ";
 
-        readonly System.Data.IDbConnection _db;
+        readonly IDbConnection _db;
         public LogHandlerRepository(IDbConnection db)
         {
             _db = db;
         }
 
-        public ILogHandler InsertLogHandler(ILogHandler entity)
+        public LogHandler InsertLogHandler(LogHandler entity)
         {
             string mySQL = " INSERT INTO[dbo].[TM_MDC_LOG_HANDLERS] " +
                                      " ([USERID_SEQ_NUM], " +
@@ -37,12 +39,12 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             return entity;
         }
 
-        public ILogHandler SaveLogHandler(ILogHandler entity)
+        public LogHandler SaveLogHandler(LogHandler entity)
         {
             throw new NotImplementedException();
         }
 
-        public ILogHandler EditLogHandler(ILogHandler entity)
+        public LogHandler EditLogHandler(LogHandler entity)
         {
             string mySQL = "UPDATE[dbo].[TM_MDC_LOG_HANDLERS] SET[USERID_SEQ_NUM] = " + entity.UserSeqNum +
               ",[HANDLERS_CODE] = '" + entity.Code + "'" +
@@ -52,19 +54,19 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             return entity;
         }
 
-        public ILogHandler FindLogHandler(int userseqnum)
+        public LogHandler FindLogHandler(int userseqnum)
         {
             string findSQL = listSQL + " where USERID_SEQ_NUM = '" + userseqnum + "'";
-            ILogHandler loghandler = _db.QuerySingle<LogHandler>(findSQL);
+            LogHandler loghandler = _db.QuerySingle<LogHandler>(findSQL);
             return loghandler;
         }
 
-        public IEnumerable<ILogHandler> FindLogHandlerList()
+        public IEnumerable<LogHandler> FindLogHandlerList()
         {
-            return _db.Query<LogHandler>(listSQL);
+            return _db.Query<LogHandler>(listSQL).ToList();
         }
 
-        public ILogHandler DeleteLogHandler(int LogHandler)
+        public LogHandler DeleteLogHandler(int LogHandler)
         {
             throw new NotImplementedException();
         }

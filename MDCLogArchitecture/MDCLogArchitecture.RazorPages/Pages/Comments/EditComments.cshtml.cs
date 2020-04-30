@@ -24,7 +24,7 @@ namespace MDCLogArchitecture.RazorPages.Pages.Comments
         }
 
         [BindProperty]
-        public LogComments ThisComment { get; set; }
+        public string ThisComment { get; set; }
         [BindProperty]
         public int SeqNum { get; set; }
         [BindProperty]
@@ -52,6 +52,12 @@ namespace MDCLogArchitecture.RazorPages.Pages.Comments
             ToViewModel(_service.Find(SeqNum));
             _logger.LogInformation($"User opened {SeqNum} for editing");
         }
+
+        private void ToViewModel(LogComment logComment)
+        {
+            throw new NotImplementedException();
+        }
+
         private void ToViewModel(ILogComments entity)
         {
             this.LogNumber = entity.LogNumber;

@@ -1,7 +1,6 @@
-﻿
+﻿using MDCLogArchitecture.Models.DomainModels;
 using MDCLogArchitecture.Domain.Interfaces;
 using MDCLogArchitecture.Domain.Interfaces.Repositories;
-
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -31,15 +30,15 @@ namespace MDCLogArchitecture.Domain.Services
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public List<ILogComments> FindList(int LogNum)
+        public List<LogComment> FindList(int LogNum)
         {
             return _commentsRepo.FindList(LogNum).ToList();
         }
-        public ILogComments Find(int SeqNum)
+        public LogComment Find(int SeqNum)
         {
             return _commentsRepo.Find(SeqNum);
         }
-        public ILogComments Save(ILogComments ThisComment)
+        public LogComment Save(LogComment ThisComment)
         {
             _logger.LogInformation("No UserIdSeqNum Found, inserting new record");
             return _commentsRepo.Insert(ThisComment);

@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MDCLogArchitecture.Domain.Interfaces;
 
 namespace MDCLogArchitecture.Models.Filters
 {
-    public class PriorityCodesFilter : IPriorityCodesFilter
+    public class PriorityCodesFilter
     {
         
         public int? Priority { get; set; }

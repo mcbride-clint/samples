@@ -26,20 +26,20 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             _db = db;
         }
 
-        public ILogComments Find(int SeqNum)
+        public LogComment Find(int SeqNum)
         {
             string findSQL = listSQL + " where seq_num = " + SeqNum;
-            LogComments comment = _db.QuerySingle<LogComments>(findSQL);
+            LogComment comment = _db.QuerySingle<LogComment>(findSQL);
             return comment;
         }
-        public IEnumerable<ILogComments> FindList(int LogNumber)
+        public IEnumerable<LogComment> FindList(int LogNumber)
         {
             string mySQL = listSQL + " where Log_num = " + LogNumber;
-            return _db.Query<LogComments>(mySQL);
+            return _db.Query<LogComment>(mySQL);
         }
        
 
-        public ILogComments Insert(ILogComments entity)
+        public LogComment Insert(LogComment entity)
         {
             string mySQL = "INSERT INTO [TM_DIST_CHG_LOG_COMMENTS] ([LOG_NUM],[BASIC_NUMBER]" +
     ",[TYPE],[LINK_TO_SEQ_NUM],[CREATED_DATE],[CREATED_BY_SEQ_NUM],[COMMENT_TEXT]" +
@@ -52,7 +52,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
         }
        
 
-        public ILogComments Save(ILogComments entity)
+        public LogComment Save(LogComment entity)
         {
             throw new NotImplementedException();
         }

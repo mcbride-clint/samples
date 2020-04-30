@@ -27,7 +27,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public IPriorityCode EditPriority(IPriorityCode entity)
+        public PriorityCode EditPriority(PriorityCode entity)
         {
             string mySQL = "UPDATE[dbo].[TM_MDC_LOG_PRIORITY] SET[PRIORITY] = '" + entity.Priority + "'" +
               ",[DESCR] = '" + entity.Descr + "'" +
@@ -36,7 +36,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             return entity;
         }
 
-        public IPriorityCode FindPriority(string PriorityCode)
+        public PriorityCode FindPriority(string PriorityCode)
         {
             string findSQL = listSQL + " Where PRIORITY = '" + PriorityCode + "'";
             //CommentType commentType = _db.QuerySingle<CommentType>(findSQL);
@@ -44,7 +44,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             PriorityCode priorityCode = _db.QuerySingle<PriorityCode>(findSQL);
             return priorityCode;
         }
-        public IEnumerable<IPriorityCode> FindPriorityList()
+        public IEnumerable<PriorityCode> FindPriorityList()
         {
             return _db.Query<PriorityCode>(listSQL);
         }
@@ -56,7 +56,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
         //    return priorities;
         //}
 
-        public IPriorityCode InsertPriority(IPriorityCode entity)
+        public PriorityCode InsertPriority(PriorityCode entity)
         {
             string mySQL = " INSERT INTO [TM_MDC_LOG_PRIORITY] ([PRIORITY],[DESCR]) VALUES " +
                            " ( '" + entity.Priority + "','" + entity.Descr + "')";
@@ -64,13 +64,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             return entity;
         }
 
-        public IPriorityCode SavePriority(IPriorityCode entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        
-        IPriorityCode IPriorityRepository.DeletePriority(string PriorityCode)
+        public PriorityCode SavePriority(PriorityCode entity)
         {
             throw new NotImplementedException();
         }

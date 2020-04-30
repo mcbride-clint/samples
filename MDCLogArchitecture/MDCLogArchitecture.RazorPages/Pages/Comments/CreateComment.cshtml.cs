@@ -22,7 +22,7 @@ namespace MDCLogArchitecture.RazorPages.Pages.Comments
         }
 
         [BindProperty]
-        public LogComments ThisComment { get; set; }
+        public LogComment ThisComment { get; set; }
         public void OnGet()
         {
         }

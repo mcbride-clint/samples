@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using MDCLogArchitecture.Models.DomainModels;
 
 
 
@@ -8,13 +9,13 @@ namespace MDCLogArchitecture.Domain.Interfaces.Repositories
 {
     public interface IPriorityRepository
     {
-        IPriorityCode InsertPriority(IPriorityCode entity);
-        IPriorityCode SavePriority(IPriorityCode entity);
-        IPriorityCode EditPriority(IPriorityCode entity);
-        IPriorityCode FindPriority(string PriorityCode);
+        PriorityCode InsertPriority(PriorityCode entity);
+        PriorityCode SavePriority(PriorityCode entity);
+        PriorityCode EditPriority(PriorityCode entity);
+        PriorityCode FindPriority(string PriorityCode);
         
-        IEnumerable<IPriorityCode> FindPriorityList();
-        IPriorityCode DeletePriority(string PriorityCode);
+        IEnumerable<PriorityCode> FindPriorityList();
+        PriorityCode DeletePriority(string PriorityCode);
         
     }
 }
