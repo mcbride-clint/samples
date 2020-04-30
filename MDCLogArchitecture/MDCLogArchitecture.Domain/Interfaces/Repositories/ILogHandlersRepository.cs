@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using MDCLogArchitecture.Models.DomainModels;
 
 namespace MDCLogArchitecture.Domain.Interfaces.Repositories
 {
     public interface ILogHandlersRepository
     {
-        ILogHandler InsertLogHandler(ILogHandler entity);
-        ILogHandler SaveLogHandler(ILogHandler entity);
-        ILogHandler EditLogHandler(ILogHandler entity);
-        ILogHandler FindLogHandler(int UserSeqNum);
-        IEnumerable<ILogHandler> FindLogHandlerList();
-        ILogHandler DeleteLogHandler(int UserSeqNum);
+        LogHandler InsertLogHandler(LogHandler entity);
+        LogHandler SaveLogHandler(LogHandler entity);
+        LogHandler EditLogHandler(LogHandler entity);
+        LogHandler FindLogHandler(int UserSeqNum);
+        IEnumerable<LogHandler> FindLogHandlerList();
+        LogHandler DeleteLogHandler(int UserSeqNum);
     }
 }

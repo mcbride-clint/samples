@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MDCLogArchitecture.Models.DomainModels;
 
 namespace MDCLogArchitecture.Domain.Interfaces.Repositories
 {/// <summary>
@@ -8,11 +9,11 @@ namespace MDCLogArchitecture.Domain.Interfaces.Repositories
  /// <returns></returns>
     public interface ICommentTypesRepository
     {
-        ICommentType InsertType(ICommentType entity);
-        ICommentType SaveType(ICommentType entity);
-        ICommentType EditType(ICommentType entity);
-        ICommentType FindType(string CommentTypeCode);
-        IEnumerable<ICommentType> FindTypeList();
-        ICommentType DeleteType(string CommentTypeCode);
+        CommentType InsertType(CommentType entity);
+        CommentType SaveType(CommentType entity);
+        CommentType EditType(CommentType entity);
+        CommentType FindType(string CommentTypeCode);
+        IEnumerable<CommentType> FindTypeList();
+        CommentType DeleteType(string CommentTypeCode);
     }
 }

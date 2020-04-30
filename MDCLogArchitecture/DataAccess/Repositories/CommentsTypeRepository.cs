@@ -21,7 +21,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             _db = db;
         }
 
-        public ICommentType InsertType(ICommentType entity)
+        public CommentType InsertType(CommentType entity)
         {
             string mySQL = "INSERT INTO [TM_MDC_COMMENT_TYPES] ([TYPE],[TYPE_DESC]) VALUES " +
         "('" + entity.CommentTypeCode + "','" + entity.TypeDesc.ToString() + "')";
@@ -29,12 +29,12 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             return entity;
         }
 
-        public ICommentType SaveType(ICommentType entity)
+        public CommentType SaveType(CommentType entity)
         {
             throw new NotImplementedException();
         }
 
-        public ICommentType EditType(ICommentType entity)
+        public CommentType EditType(CommentType entity)
         {
             string mySQL = "UPDATE[dbo].[TM_MDC_COMMENT_TYPES] SET[TYPE] = '" + entity.CommentTypeCode + "'" +
               ",[TYPE_DESC] = '" + entity.TypeDesc + "'" +
@@ -43,23 +43,23 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             return entity;
         }
 
-        public ICommentType FindType(string CommentTypeCode)
+        public CommentType FindType(string CommentTypeCode)
         {
             string findSQL = listSQL + " Where Type = '" + CommentTypeCode + "'";
                 CommentType commentType = _db.QuerySingle<CommentType>(findSQL);
                 return commentType;
         }
 
-        public IEnumerable<ICommentType> FindTypeList()
+        public IEnumerable<CommentType> FindTypeList()
         {
                  return _db.Query<CommentType>(listSQL);
         }
 
-        public ICommentType DeleteType(string CommentTypeCode)
+        public CommentType DeleteType(string CommentTypeCode)
         {
             throw new NotImplementedException();
         }
-        public ICommentType EditType2(CommentType entity)
+        public CommentType EditType2(CommentType entity)
         {
             string mySQL = "UPDATE[dbo].[TM_MDC_COMMENT_TYPES] SET[TYPE] = '" + entity.CommentTypeCode + "'" +
               ",[TYPE_DESC] = '" + entity.TypeDesc + "'" +
