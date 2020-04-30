@@ -6,7 +6,7 @@ namespace MDCLogArchitecture.Domain.Interfaces
 {
     public interface ILogHandler 
     {
-        string UserSeqNum { get; set; }
+        int UserSeqNum { get; set; }
         string Code { get; set; }
         string Tmma { get; set; }
     }

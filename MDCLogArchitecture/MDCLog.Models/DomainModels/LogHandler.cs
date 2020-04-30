@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MDCLogArchitecture.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MDCLogArchitecture.Models.DomainModels
 {
-    public class LogHandler
+    public class LogHandler : ILogHandler
     {
         public int UserSeqNum { get; set; }
         public string Code { get; set; }
