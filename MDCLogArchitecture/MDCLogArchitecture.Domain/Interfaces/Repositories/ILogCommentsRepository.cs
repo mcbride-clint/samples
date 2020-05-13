@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using MDCLogArchitecture.Models.DomainModels;
+using MDCLogArchitecture.Models.ViewModels;
 
 namespace MDCLogArchitecture.Domain.Interfaces.Repositories
 {
@@ -12,13 +13,11 @@ namespace MDCLogArchitecture.Domain.Interfaces.Repositories
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        LogComment Insert(LogComment entity);
-        //LogComments Save(LogComments entity);
-
+        LogCommentVM Insert(LogCommentVM entity);
         LogComment Find(int SeqNum);
-        IEnumerable <LogComment> FindList(int LogNumber);
+        IEnumerable<LogComment> FindList(int LogNumber);
 
     }
 
-    
+
 }

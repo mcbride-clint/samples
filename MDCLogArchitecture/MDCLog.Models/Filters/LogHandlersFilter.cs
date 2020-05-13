@@ -1,4 +1,4 @@
-﻿using MDCLogArchitecture.Domain.Interfaces;
+﻿//using MDCLogArchitecture.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;

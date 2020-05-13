@@ -6,7 +6,7 @@ namespace MDCLogArchitecture.Models.DomainModels
     {
         public int SeqNum { get; set; }
         public int LogNumber { get; set; }
-        public string Type { get; set; }
+        public string CommentTypeCode { get; set; }
         public string TypeDesc { get; set; }
         public string BasicNumber { get; set; }
         public string Comment { get; set; }
