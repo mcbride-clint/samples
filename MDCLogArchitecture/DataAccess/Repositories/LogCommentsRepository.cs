@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using MDCLogArchitecture.Models.DomainModels;
+using MDCLogArchitecture.Models.ViewModels;
 using MDCLogArchitecture.Models.Filters;
 
 using System.Data.SqlClient;
@@ -16,7 +17,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
 {
     public class LogCommentsRepository : ILogCommentsRepository
     {
-        private string listSQL = "Select SEQ_NUM as SeqNum,LOG_NUM as LogNumber,TYPE as Type,TYPE_DESC as TypeDesc,COMMENT_TEXT as Comment," +
+        private string listSQL = "Select SEQ_NUM as SeqNum,LOG_NUM as LogNumber,TYPE as CommentTypeCode,TYPE_DESC as TypeDesc,COMMENT_TEXT as Comment," +
             "BASIC_NUMBER as BasicNumber,CREATED_DATE as CreateDate,CREATED_BY_SEQ_NUM as CreatedBySeqNum," +
             " CREATED_BY as CreatedBy from TM_DIST_CHG_LOG_COMMENTS";
 
@@ -39,14 +40,14 @@ namespace MDCLogArchitecture.DataAccess.Repositories
         }
        
 
-        public LogComment Insert(LogComment entity)
+        public LogCommentVM Insert(LogCommentVM entity)
         {
             string mySQL = "INSERT INTO [TM_DIST_CHG_LOG_COMMENTS] ([LOG_NUM],[BASIC_NUMBER]" +
     ",[TYPE],[LINK_TO_SEQ_NUM],[CREATED_DATE],[CREATED_BY_SEQ_NUM],[COMMENT_TEXT]" +
       " ,[CREATED_BY],[TYPE_DESC]) VALUES " +
-        "(" + entity.LogNumber + ",'"+ entity.BasicNumber + "','"  + entity.Type.ToString() + "',"
-         + entity.LinkToSeqNum + "," + entity.CreateDate.ToShortDateString() + "," + entity.CreatedBySeqNum + ",'"
-         + entity.Comment.ToString() + "','" + entity.CreatedBy.ToString() + "','" + entity.TypeDesc.ToString() + "')";
+        "(" + entity.LogNumber + ",'"+ entity.BasicNumber + "','"  + entity.CommentTypeCode.ToString() + "',"
+         + entity.LinkToSeqNum + ",'" + DateTime.Now + "'," + entity.CreatedBySeqNum + ",'"
+         + entity.Comment.ToString() + "','" + entity.CreatedBy + "','" + entity.TypeDesc.ToString() + "')";
            int rowsAffected = _db.Execute(mySQL);
             return entity;
         }

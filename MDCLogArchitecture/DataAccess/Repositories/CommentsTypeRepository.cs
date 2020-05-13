@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MDCLogArchitecture.DataAccess.Repositories;
 using MDCLogArchitecture.Models.DomainModels;
+using MDCLogArchitecture.Models.ViewModels;
 using Dapper;
 using System.Linq;
 using System.Data;
@@ -12,7 +13,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
 {
     public class CommentsTypeRepository : ICommentTypesRepository
     {
-        private string listSQL = "Select TYPE as CommentTypeCode,TYPE_DESC as TypeDesc" +
+        private string listSQL = "Select TYPE as  CommentTypeCode,TYPE_DESC as TypeDesc" +
            " from TM_MDC_COMMENT_TYPES";
 
         readonly System.Data.IDbConnection _db;
@@ -21,7 +22,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             _db = db;
         }
 
-        public CommentType InsertType(CommentType entity)
+        public CommentTypeVM InsertType(CommentTypeVM entity)
         {
             string mySQL = "INSERT INTO [TM_MDC_COMMENT_TYPES] ([TYPE],[TYPE_DESC]) VALUES " +
         "('" + entity.CommentTypeCode + "','" + entity.TypeDesc.ToString() + "')";
@@ -34,7 +35,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public CommentType EditType(CommentType entity)
+        public CommentTypeVM EditType(CommentTypeVM entity)
         {
             string mySQL = "UPDATE[dbo].[TM_MDC_COMMENT_TYPES] SET[TYPE] = '" + entity.CommentTypeCode + "'" +
               ",[TYPE_DESC] = '" + entity.TypeDesc + "'" +
@@ -43,63 +44,27 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             return entity;
         }
 
-        public CommentType FindType(string CommentTypeCode)
+        public CommentTypeVM FindType(string CommentTypeCode)
         {
             string findSQL = listSQL + " Where Type = '" + CommentTypeCode + "'";
-                CommentType commentType = _db.QuerySingle<CommentType>(findSQL);
-                return commentType;
+            CommentTypeVM commentType = _db.QuerySingle<CommentTypeVM>(findSQL);
+            return commentType;
         }
 
         public IEnumerable<CommentType> FindTypeList()
         {
-                 return _db.Query<CommentType>(listSQL);
+            string findSQL = listSQL + " ORDER BY TYPE";
+            return _db.Query<CommentType>(findSQL).ToList();
         }
 
-        public CommentType DeleteType(string CommentTypeCode)
+        public int DeleteType(string CommentTypeCode)
         {
-            throw new NotImplementedException();
-        }
-        public CommentType EditType2(CommentType entity)
-        {
-            string mySQL = "UPDATE[dbo].[TM_MDC_COMMENT_TYPES] SET[TYPE] = '" + entity.CommentTypeCode + "'" +
-              ",[TYPE_DESC] = '" + entity.TypeDesc + "'" +
-              $" WHERE[Type] = @{nameof(entity.CommentTypeCode)}";
-             int rowsAffected = _db.Execute(mySQL, entity);
-            return entity;
+            int deletedRecords = _db.Execute("DELETE[dbo].[TM_MDC_COMMENT_TYPES] where Type = '" + CommentTypeCode + "'");
+            return deletedRecords;
         }
 
-        //public ICommentTypesRepository FindType(string CommentTypeCode)
 
-        //{
-        //    string findSQL = listSQL + " Where Type = '" + CommentTypeCode + "'";
-        //    ICommentType commentType = _db.QuerySingle<ICommentType>(findSQL);
-        //    return commentType;
-        //}
-        // public CommentType DeleteType(string CommentTypeCode)
-        // {/// need to work this one out
-        //     string delSQL = " Delete[dbo].[TM_MDC_COMMENT_TYPES] where TYPE =  '" + CommentTypeCode + "'";
-        //     CommentType commentType = _db.QuerySingle<CommentType>(delSQL);
-        //     return commentType;
-        // }
 
-        // public List<CommentType> FindTypeList()
-        // {
-        //     List<CommentType> commentTypes = _db.Query<CommentType>(listSQL).ToList();
-        //     return commentTypes;
-        // }
-
-        // public CommentType InsertType(CommentType entity)
-        // {
-        //     string mySQL = "INSERT INTO [TM_MDC_COMMENT_TYPES] ([TYPE],[TYPE_DESC]) VALUES " +
-        //"('" + entity.CommentTypeCode + "','" + entity.TypeDesc.ToString() + "')";
-        //     int rowsAffected = _db.Execute(mySQL);
-        //     return entity;
-        // }
-
-        // public CommentType SaveType(CommentType entity)
-        // {
-        //     throw new NotImplementedException();
-        // }
 
     }
 }
