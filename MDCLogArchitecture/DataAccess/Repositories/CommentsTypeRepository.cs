@@ -13,7 +13,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
 {
     public class CommentsTypeRepository : ICommentTypesRepository
     {
-        private string listSQL = "Select TYPE as CommentTypeCode,TYPE_DESC as TypeDesc" +
+        private string listSQL = "Select TYPE as  CommentTypeCode,TYPE_DESC as TypeDesc" +
            " from TM_MDC_COMMENT_TYPES";
 
         readonly System.Data.IDbConnection _db;
@@ -53,8 +53,8 @@ namespace MDCLogArchitecture.DataAccess.Repositories
 
         public IEnumerable<CommentType> FindTypeList()
         {
-            string findSQL = listSQL + " ORDER BY COMMENT_TYPE_CODE";
-            return _db.Query<CommentType>(listSQL).ToList();
+            string findSQL = listSQL + " ORDER BY TYPE";
+            return _db.Query<CommentType>(findSQL).ToList();
         }
 
         public int DeleteType(string CommentTypeCode)

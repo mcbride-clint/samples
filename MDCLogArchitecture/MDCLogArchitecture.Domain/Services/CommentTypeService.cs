@@ -10,7 +10,7 @@ using System.Text;
 
 namespace MDCLogArchitecture.Domain.Services
 {
-
+    
     public class CommentTypeService
     {
         ICommentTypesRepository _commentTypesRepo;
@@ -30,7 +30,7 @@ namespace MDCLogArchitecture.Domain.Services
         /// Get All Comment Types
         /// </summary>
         /// <returns></returns>
-
+        
         public IList<CommentType> FindTypeList()
         {
             _logger.LogError("Hello");
@@ -44,7 +44,7 @@ namespace MDCLogArchitecture.Domain.Services
         {
             return new CommentTypeVM();
         }
-        public CommentTypeVM InsertType(CommentTypeVM ThisCommentType)
+        public CommentTypeVM InsertType (CommentTypeVM ThisCommentType)
         {
             return _commentTypesRepo.InsertType(ThisCommentType);
         }

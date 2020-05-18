@@ -38,20 +38,20 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             string mySQL = listSQL + " where Log_num = " + LogNumber;
             return _db.Query<LogComment>(mySQL);
         }
-
+       
 
         public LogCommentVM Insert(LogCommentVM entity)
         {
             string mySQL = "INSERT INTO [TM_DIST_CHG_LOG_COMMENTS] ([LOG_NUM],[BASIC_NUMBER]" +
     ",[TYPE],[LINK_TO_SEQ_NUM],[CREATED_DATE],[CREATED_BY_SEQ_NUM],[COMMENT_TEXT]" +
       " ,[CREATED_BY],[TYPE_DESC]) VALUES " +
-        "(" + entity.LogNumber + ",'" + entity.BasicNumber + "','" + entity.CommentTypeCode.ToString() + "',"
+        "(" + entity.LogNumber + ",'"+ entity.BasicNumber + "','"  + entity.CommentTypeCode.ToString() + "',"
          + entity.LinkToSeqNum + ",'" + DateTime.Now + "'," + entity.CreatedBySeqNum + ",'"
          + entity.Comment.ToString() + "','" + entity.CreatedBy + "','" + entity.TypeDesc.ToString() + "')";
-            int rowsAffected = _db.Execute(mySQL);
+           int rowsAffected = _db.Execute(mySQL);
             return entity;
         }
-
+       
 
         public LogComment Save(LogComment entity)
         {

@@ -15,6 +15,6 @@ namespace MDCLogArchitecture.Domain.Interfaces.Repositories
         CommentTypeVM EditType(CommentTypeVM entity);
         CommentTypeVM FindType(string CommentTypeCode);
         IEnumerable<CommentType> FindTypeList();
-        int DeleteType(string CommentTypeCode);
+         int DeleteType(string CommentTypeCode);
     }
 }
