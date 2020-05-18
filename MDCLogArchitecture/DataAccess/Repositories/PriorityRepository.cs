@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using MDCLogArchitecture.DataAccess.Repositories;
 using MDCLogArchitecture.Models.DomainModels;
-using MDCLogArchitecture.Models.Filters;
+using MDCLogArchitecture.Models.ViewModels;
 using Dapper;
 using System.Linq;
 using System.Data;
 using MDCLogArchitecture.Domain.Interfaces.Repositories;
 using MDCLogArchitecture.Domain.Interfaces;
+
 
 namespace MDCLogArchitecture.DataAccess.Repositories
 {
@@ -22,41 +23,7 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             _db = db;
         }
 
-        public PriorityCode DeletePriority(string PriorityCode)
-        {
-            throw new NotImplementedException();
-        }
-
-        public PriorityCode EditPriority(PriorityCode entity)
-        {
-            string mySQL = "UPDATE[dbo].[TM_MDC_LOG_PRIORITY] SET[PRIORITY] = '" + entity.Priority + "'" +
-              ",[DESCR] = '" + entity.Descr + "'" +
-              " WHERE[PRIORITY] = '" + entity.Priority + "'";
-            int rowsAffected = _db.Execute(mySQL);
-            return entity;
-        }
-
-        public PriorityCode FindPriority(string PriorityCode)
-        {
-            string findSQL = listSQL + " Where PRIORITY = '" + PriorityCode + "'";
-            //CommentType commentType = _db.QuerySingle<CommentType>(findSQL);
-            //return commentType;
-            PriorityCode priorityCode = _db.QuerySingle<PriorityCode>(findSQL);
-            return priorityCode;
-        }
-        public IEnumerable<PriorityCode> FindPriorityList()
-        {
-            return _db.Query<PriorityCode>(listSQL);
-        }
-        //public List<PriorityCode> FindPriorityList()
-        //{
-
-        //    string mySQL = listSQL ;
-        //    List<PriorityCode> priorities = _db.Query<PriorityCode>(listSQL).ToList();
-        //    return priorities;
-        //}
-
-        public PriorityCode InsertPriority(PriorityCode entity)
+        public PriorityCodeVM InsertPriority(PriorityCodeVM entity)
         {
             string mySQL = " INSERT INTO [TM_MDC_LOG_PRIORITY] ([PRIORITY],[DESCR]) VALUES " +
                            " ( '" + entity.Priority + "','" + entity.Descr + "')";
@@ -68,5 +35,34 @@ namespace MDCLogArchitecture.DataAccess.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public PriorityCodeVM EditPriority(PriorityCodeVM entity)
+        {
+            string mySQL = "UPDATE[dbo].[TM_MDC_LOG_PRIORITY] SET[PRIORITY] = '" + entity.Priority + "'" +
+              ",[DESCR] = '" + entity.Descr + "'" +
+              " WHERE[PRIORITY] = '" + entity.Priority + "'";
+            int rowsAffected = _db.Execute(mySQL);
+            return entity;
+        }
+
+        public PriorityCodeVM FindPriority(string PriorityCode)
+        {
+            string findSQL = listSQL + " Where PRIORITY = '" + PriorityCode + "'";
+            //CommentType commentType = _db.QuerySingle<CommentType>(findSQL);
+            //return commentType;
+            PriorityCodeVM priorityCode = _db.QuerySingle<PriorityCodeVM>(findSQL);
+            return priorityCode;
+        }
+
+        public IEnumerable<PriorityCode> FindPriorityList()
+        {
+            return _db.Query<PriorityCode>(listSQL);
+        }
+
+        public PriorityCode DeletePriority(string PriorityCode)
+        {
+            throw new NotImplementedException();
+        }
+       
     }
 }

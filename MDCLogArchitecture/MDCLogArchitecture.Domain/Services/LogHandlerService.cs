@@ -5,6 +5,7 @@ using MDCLogArchitecture.Domain.Interfaces.Repositories;
 using MDCLogArchitecture.Models.DomainModels;
 using Microsoft.Extensions.Logging;
 using System.Linq;
+using MDCLogArchitecture.Models.ViewModels;
 
 namespace MDCLogArchitecture.Domain.Services
 {
@@ -21,12 +22,12 @@ namespace MDCLogArchitecture.Domain.Services
         {
             return _LogHandlersRepo.FindLogHandlerList().ToList();
         }
-        public LogHandler Insert(LogHandler LogHandler)
+        public LogHandlerVM Insert(LogHandlerVM ThisLogHandler)
         {
-            return _LogHandlersRepo.InsertLogHandler(LogHandler);
+            return _LogHandlersRepo.InsertLogHandlersType(ThisLogHandler);
         }
 
-        public LogHandler FindLogHandler(int UserSeqNum)
+        public LogHandlerVM FindLogHandler(int UserSeqNum)
         {
             return _LogHandlersRepo.FindLogHandler(UserSeqNum);
         }
@@ -34,6 +35,15 @@ namespace MDCLogArchitecture.Domain.Services
         public LogHandler EditLogHandler(LogHandler ThisLogHandler)
         {
             return _LogHandlersRepo.EditLogHandler(ThisLogHandler);
+        }
+
+        public LogHandlerVM GetCreateLogHandlerVMType()
+        {
+            return new LogHandlerVM();
+        }
+        public void DeleteLogHandler(int UserSeqNum)
+        {
+            _LogHandlersRepo.DeleteLogHandler(UserSeqNum);
         }
     }
 }

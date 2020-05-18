@@ -1,5 +1,6 @@
 ﻿using MDCLogArchitecture.Domain.Interfaces.Repositories;
 using MDCLogArchitecture.Models.DomainModels;
+using MDCLogArchitecture.Models.ViewModels;
 using MDCLogArchitecture.Domain.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
@@ -9,7 +10,7 @@ using System.Text;
 
 namespace MDCLogArchitecture.Domain.Services
 {
-    
+
     public class CommentTypeService
     {
         ICommentTypesRepository _commentTypesRepo;
@@ -29,22 +30,32 @@ namespace MDCLogArchitecture.Domain.Services
         /// Get All Comment Types
         /// </summary>
         /// <returns></returns>
-        public List<CommentType> FindTypeList()
+
+        public IList<CommentType> FindTypeList()
         {
             _logger.LogError("Hello");
             return _commentTypesRepo.FindTypeList().ToList();
         }
-        public CommentType FindType(string CommentTypeCode)
+        public CommentTypeVM FindType(string typecode)
         {
-            return _commentTypesRepo.FindType(CommentTypeCode);
+            return _commentTypesRepo.FindType(typecode);
         }
-        public CommentType InsertType (CommentType ThisCommentType)
+        public CommentTypeVM GetCreateCommentVMType()
         {
-            return _commentTypesRepo.InsertType( ThisCommentType);
+            return new CommentTypeVM();
         }
-        public CommentType EditType(CommentType ThisCommentType)
+        public CommentTypeVM InsertType(CommentTypeVM ThisCommentType)
+        {
+            return _commentTypesRepo.InsertType(ThisCommentType);
+        }
+        public CommentTypeVM EditType(CommentTypeVM ThisCommentType)
         {
             return _commentTypesRepo.EditType(ThisCommentType);
+        }
+        public int DeleteType(string typecode)
+        {
+            int recordsDeleted = _commentTypesRepo.DeleteType(typecode);
+            return recordsDeleted;
         }
     }
 }

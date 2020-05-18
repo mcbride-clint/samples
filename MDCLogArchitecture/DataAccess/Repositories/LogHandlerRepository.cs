@@ -9,6 +9,7 @@ using System.Collections;
 using System.Data;
 using MDCLogArchitecture.Domain.Interfaces.Repositories;
 using MDCLogArchitecture.Domain.Interfaces;
+using MDCLogArchitecture.Models.ViewModels;
 
 namespace MDCLogArchitecture.DataAccess.Repositories
 {
@@ -25,9 +26,8 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             _db = db;
         }
 
-        public LogHandler InsertLogHandler(LogHandler entity)
-        {
-            string mySQL = " INSERT INTO[dbo].[TM_MDC_LOG_HANDLERS] " +
+        public LogHandlerVM InsertLogHandlersType(LogHandlerVM entity)   {
+         string mySQL = " INSERT INTO[dbo].[TM_MDC_LOG_HANDLERS] " +
                                      " ([USERID_SEQ_NUM], " +
                                      " [HANDLERS_CODE], " +
                                      " [TMMA_CODE]) " +
@@ -40,12 +40,11 @@ namespace MDCLogArchitecture.DataAccess.Repositories
         }
 
         public LogHandler SaveLogHandler(LogHandler entity)
-        {
+      {
             throw new NotImplementedException();
         }
 
-        public LogHandler EditLogHandler(LogHandler entity)
-        {
+        public LogHandler EditLogHandler(LogHandler entity)        {
             string mySQL = "UPDATE[dbo].[TM_MDC_LOG_HANDLERS] SET[USERID_SEQ_NUM] = " + entity.UserSeqNum +
               ",[HANDLERS_CODE] = '" + entity.Code + "'" +
               ",[TMMA_CODE] = '" + entity.Tmma + "'" +
@@ -54,20 +53,20 @@ namespace MDCLogArchitecture.DataAccess.Repositories
             return entity;
         }
 
-        public LogHandler FindLogHandler(int userseqnum)
-        {
+        public LogHandlerVM FindLogHandler(int userseqnum)
+      {
             string findSQL = listSQL + " where USERID_SEQ_NUM = '" + userseqnum + "'";
-            LogHandler loghandler = _db.QuerySingle<LogHandler>(findSQL);
+            LogHandlerVM loghandler = _db.QuerySingle<LogHandlerVM>(findSQL);
             return loghandler;
         }
 
         public IEnumerable<LogHandler> FindLogHandlerList()
         {
-            return _db.Query<LogHandler>(listSQL).ToList();
+          return _db.Query<LogHandler>(listSQL).ToList();
         }
 
-        public LogHandler DeleteLogHandler(int LogHandler)
-        {
+      public LogHandler DeleteLogHandler(int userseqnum)
+      {
             throw new NotImplementedException();
         }
     }

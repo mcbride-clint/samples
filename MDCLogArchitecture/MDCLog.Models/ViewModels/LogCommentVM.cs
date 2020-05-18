@@ -5,11 +5,11 @@ using System.Text;
 namespace MDCLogArchitecture.Models.ViewModels
 
 {
-    public class LogCommentsVM
+    public class LogCommentVM
     {
         public int SeqNum { get; set; }
         public int LogNumber { get; set; }
-        public string Type { get; set; }
+        public string CommentTypeCode { get; set; }
         public string TypeDesc { get; set; }
         public string BasicNumber { get; set; }
         public string Comment { get; set; }

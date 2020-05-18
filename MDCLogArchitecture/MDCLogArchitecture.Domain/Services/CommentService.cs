@@ -1,4 +1,5 @@
 ﻿using MDCLogArchitecture.Models.DomainModels;
+using MDCLogArchitecture.Models.ViewModels;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace MDCLogArchitecture.Domain.Services
         {
             _logger = logger;
             _commentsRepo = commentsRepo;
-            
+
         }
         /// <summary>
         /// Get All Comments
@@ -37,12 +38,16 @@ namespace MDCLogArchitecture.Domain.Services
         {
             return _commentsRepo.Find(SeqNum);
         }
-        public LogComment Save(LogComment ThisComment)
+        public LogCommentVM Insert(LogCommentVM ThisComment)
         {
             _logger.LogInformation("No UserIdSeqNum Found, inserting new record");
             return _commentsRepo.Insert(ThisComment);
         }
-        
-        
+        public LogCommentVM GetCreateCommentVMType()
+        {
+            return new LogCommentVM();
+        }
+
+
     }
 }
