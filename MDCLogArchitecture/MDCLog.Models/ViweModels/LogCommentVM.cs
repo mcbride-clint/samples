@@ -1,15 +1,15 @@
 ﻿using System;
-using MDCLogArchitecture.Domain.Interfaces;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MDCLogArchitecture.Models.DomainModels
+namespace MDCLogArchitecture.Models.ViewModels
+
 {
-    public class LogComments :ILogComments
+    public class LogCommentVM
     {
         public int SeqNum { get; set; }
         public int LogNumber { get; set; }
-        public string Type { get; set; }
+        public string CommentTypeCode { get; set; }
         public string TypeDesc { get; set; }
         public string BasicNumber { get; set; }
         public string Comment { get; set; }

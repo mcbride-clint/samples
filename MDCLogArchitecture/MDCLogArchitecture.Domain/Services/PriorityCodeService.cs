@@ -1,10 +1,12 @@
 ﻿using MDCLogArchitecture.Domain.Interfaces.Repositories;
+using MDCLogArchitecture.Models.DomainModels;
+using MDCLogArchitecture.Models.ViewModels;
 using MDCLogArchitecture.Domain.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
-using System.Linq;
 
 namespace MDCLogArchitecture.Domain.Services
 {
@@ -17,23 +19,37 @@ namespace MDCLogArchitecture.Domain.Services
             _logger = logger;
             _PriorityCodeRepo = PriorityCodeRepo;
         }
-        public List<IPriorityCode> FindPriorityList()
+        public IList<PriorityCode> FindPriorityList()
         {
+            _logger.LogError("Hello");
             return _PriorityCodeRepo.FindPriorityList().ToList();
         }
-        public IPriorityCode Insert(IPriorityCode PriorityCode)
-        {
-            return _PriorityCodeRepo.InsertPriority(PriorityCode);
-        }
 
-        public IPriorityCode Find(string PriorityCode)
+        public PriorityCodeVM FindPriority(int PriorityCode)
         {
             return _PriorityCodeRepo.FindPriority(PriorityCode);
         }
 
-        public IPriorityCode Edit(IPriorityCode ThisPriorityCode)
+        public PriorityCodeVM GetCreatePriorityCodeVMType()
+        {
+            return new PriorityCodeVM();
+        }
+
+        public PriorityCodeVM InsertPriority(PriorityCodeVM ThisPriorityCode)
+        {
+            return _PriorityCodeRepo.InsertPriority(ThisPriorityCode);
+        }
+
+        public PriorityCodeVM EditPriority(PriorityCodeVM ThisPriorityCode)
         {
             return _PriorityCodeRepo.EditPriority(ThisPriorityCode);
+        }
+
+        public int DeletePriority(int Priority)
+        {
+            int recordsDeleted = _PriorityCodeRepo.DeletePriority(Priority);
+            return recordsDeleted;
+
         }
     }
 }

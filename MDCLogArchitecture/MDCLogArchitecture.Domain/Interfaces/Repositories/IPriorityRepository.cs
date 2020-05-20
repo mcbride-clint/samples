@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿using System.Collections.Generic;
+using MDCLogArchitecture.Models.DomainModels;
+using MDCLogArchitecture.Models.ViewModels;
 
 
 namespace MDCLogArchitecture.Domain.Interfaces.Repositories
 {
     public interface IPriorityRepository
     {
-        IPriorityCode InsertPriority(IPriorityCode entity);
-        IPriorityCode SavePriority(IPriorityCode entity);
-        IPriorityCode EditPriority(IPriorityCode entity);
-        IPriorityCode FindPriority(string PriorityCode);
-        
-        IEnumerable<IPriorityCode> FindPriorityList();
-        IPriorityCode DeletePriority(string PriorityCode);
-        
+        PriorityCodeVM InsertPriority(PriorityCodeVM ThisPriorityCode);
+        PriorityCode SavePriority(PriorityCode entity);
+        PriorityCodeVM EditPriority(PriorityCodeVM entity);
+        PriorityCodeVM FindPriority(int Priority);
+        IEnumerable<PriorityCode> FindPriorityList();
+        //PriorityCode DeletePriority(string PriorityCode);
+        int DeletePriority(int Priority);
+
     }
 }
+

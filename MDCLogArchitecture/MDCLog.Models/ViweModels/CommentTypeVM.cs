@@ -1,11 +1,10 @@
-﻿using MDCLogArchitecture.  Domain.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MDCLogArchitecture.Models.DomainModels
+namespace MDCLogArchitecture.Models.ViewModels
 {
-    public class CommentType :ICommentType
+    public class CommentTypeVM
     {
         public string CommentTypeCode { get; set; }
         public string TypeDesc { get; set; }

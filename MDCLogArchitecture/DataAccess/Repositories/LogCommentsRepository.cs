@@ -29,13 +29,13 @@ namespace MDCLogArchitecture.DataAccess.Repositories
         public ILogComments Find(int SeqNum)
         {
             string findSQL = listSQL + " where seq_num = " + SeqNum;
-            LogComments comment = _db.QuerySingle<LogComments>(findSQL);
+            LogComment comment = _db.QuerySingle<LogComment>(findSQL);
             return comment;
         }
         public IEnumerable<ILogComments> FindList(int LogNumber)
         {
             string mySQL = listSQL + " where Log_num = " + LogNumber;
-            return _db.Query<LogComments>(mySQL);
+            return _db.Query<LogComment>(mySQL);
         }
        
 
