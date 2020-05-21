@@ -14,7 +14,6 @@ namespace MdcLog.Application.CommentTypes
         CommentType FindType(string CommentTypeCode);
         ICollection<CommentType> FindTypeList();
         CommentType DeleteType(string CommentTypeCode);
-        //ICommentTypeRepository InsertType(ICommentTypeRepository thisCommentType);
-        //CommentType EditType(ICommentTypeRepository thisCommentType);
+        
     }
 }

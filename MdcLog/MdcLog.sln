@@ -11,11 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A88FED1B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MdcLog.UI", "MdcLog.UI\MdcLog.UI.csproj", "{3D66CC9C-6891-40DA-BEB8-CB0B6AF68135}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MdcLog.Domain", "MdcLog.Domain\MdcLog.Domain.csproj", "{F3525E53-06E5-468D-AA53-2FE130BD38C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MdcLog.Domain", "MdcLog.Domain\MdcLog.Domain.csproj", "{F3525E53-06E5-468D-AA53-2FE130BD38C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MdcLog.Application", "MdcLog.Application\MdcLog.Application.csproj", "{47D99689-343F-4346-A4C8-E281EF39DDDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MdcLog.Application", "MdcLog.Application\MdcLog.Application.csproj", "{47D99689-343F-4346-A4C8-E281EF39DDDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MdcLog.Infrastructure", "MdcLog.Infrastructure\MdcLog.Infrastructure.csproj", "{900C3AB7-C0A6-499F-8A8A-C11BD0C243E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MdcLog.Infrastructure", "MdcLog.Infrastructure\MdcLog.Infrastructure.csproj", "{900C3AB7-C0A6-499F-8A8A-C11BD0C243E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
