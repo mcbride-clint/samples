@@ -31,4 +31,8 @@
     <ProjectReference Include="..\MdcLog.Infrastructure\MdcLog.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\Images\Log2.png" />
+  </ItemGroup>
+
 </Project>

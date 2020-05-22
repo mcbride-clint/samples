@@ -24,6 +24,7 @@ namespace MdcLog
         {
             Configuration = configuration;
         }
+       
 
         public IConfiguration Configuration { get; }
 
@@ -36,7 +37,7 @@ namespace MdcLog
             {
                 return new SqlConnection(connString);
             });
-
+            
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
