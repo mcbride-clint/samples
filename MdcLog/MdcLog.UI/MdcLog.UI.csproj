@@ -22,7 +22,7 @@
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.35" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0-preview.3.20215.2" />
-    <PackageReference Include="Radzen.Blazor" Version="2.9.1" />
+    <PackageReference Include="Radzen.Blazor" Version="2.9.2" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
   </ItemGroup>
 

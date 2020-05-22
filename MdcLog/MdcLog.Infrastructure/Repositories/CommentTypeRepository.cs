@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using Dapper;
 using MdcLog.Application.CommentTypes;
 using MdcLog.Domain.Entities;
@@ -59,9 +60,11 @@ namespace MdcLog.Infrastructure.Repositories
              return _db.Query<CommentType>(listSQL).ToList();
         }
 
-        public CommentType DeleteType(string CommentTypeCode)
+        public CommentType DeleteType(CommentType entity)
         {
-            throw new NotImplementedException();
+            string mySQL = " Delete[dbo].[TM_MDC_COMMENT_TYPES] " + $" WHERE[Type] = @{nameof(entity.CommentTypeCode)}";
+            int rowsAffected = _db.Execute(mySQL, entity);
+            return entity;
         }
         public CommentType EditType2(CommentType entity)
         {

@@ -58,11 +58,33 @@ namespace MdcLog.Application.CommentTypes
 
             return linqViewList;
         }
-        public CommentTypeView FindType(string CommentTypeCode)
+        public CreateCommentTypeVM GetCreateCommentVMType()
+        {
+            return new CreateCommentTypeVM();
+        }
+        public UpdateCommentTypeVM GetCreateUpdateVMType()
+        {
+            return new UpdateCommentTypeVM();
+        }
+        public DeleteCommentTypeVM GetDeleteCommentTypeVM()
+        {
+            return new DeleteCommentTypeVM();
+        }
+        public UpdateCommentTypeVM FindType(string CommentTypeCode)
         {
             var foundType = _commentTypesRepo.FindType(CommentTypeCode);
 
-            return new CommentTypeView()
+            return new UpdateCommentTypeVM()
+            {
+                CommentTypeCode = foundType.CommentTypeCode,
+                TypeDesc = foundType.TypeDesc
+            };
+        }
+        public DeleteCommentTypeVM FindDeleteType(string CommentTypeCode)
+        {
+            var foundType = _commentTypesRepo.FindType(CommentTypeCode);
+
+            return new DeleteCommentTypeVM()
             {
                 CommentTypeCode = foundType.CommentTypeCode,
                 TypeDesc = foundType.TypeDesc
@@ -86,6 +108,16 @@ namespace MdcLog.Application.CommentTypes
                 TypeDesc = ThisCommentType.TypeDesc
             };
             _commentTypesRepo.EditType(updateComment);
+            return ThisCommentType;
+        }
+        public DeleteCommentTypeVM DeleteType(DeleteCommentTypeVM ThisCommentType)
+        {
+            var deleteComment = new CommentType()
+            {
+                CommentTypeCode = ThisCommentType.CommentTypeCode,
+                TypeDesc = ThisCommentType.TypeDesc
+            };
+            _commentTypesRepo.DeleteType(deleteComment);
             return ThisCommentType;
         }
     }

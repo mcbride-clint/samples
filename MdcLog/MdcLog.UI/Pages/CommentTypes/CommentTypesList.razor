@@ -28,7 +28,7 @@
             </Template>
 
         </RadzenGridColumn>
-        <RadzenGridColumn TItem="CommentType" Title="">
+        <RadzenGridColumn TItem="CommentTypeView" Title="">
             <Template Context="data">
                 <RadzenButton Text="Delete" Click="() => { showDelete = true; editCode = data.CommentTypeCode; passTitle = deleteTitle; } "
                               ButtonStyle="ButtonStyle.Secondary " Style="margin-bottom: 5px; width: 100px; text-align:center" />
@@ -41,12 +41,12 @@
     <CreateCommentType OnClose="CloseDialog" />
 </MdcLog.UI.Components.ModelsModal>
 
-@*<ModelsModal Title=@passTitle Visible="showEdit">
-    <EditCommentType Typecode="@editCode" OnClose="CloseDialog" />
-</ModelsModal>
-<ModelsModal Title=@passTitle Visible="showDelete">
+<MdcLog.UI.Components.ModelsModal Title=@passTitle Visible="showEdit">
+    <UpdateCommentType Typecode="@editCode" OnClose="CloseDialog" />
+</MdcLog.UI.Components.ModelsModal>
+<MdcLog.UI.Components.ModelsModal Title=@passTitle Visible="showDelete">
     <DeleteCommentType Typecode="@editCode" OnClose="CloseDialog" />
-</ModelsModal>*@
+</MdcLog.UI.Components.ModelsModal>
 
 
 @code {

@@ -13,7 +13,7 @@ namespace MdcLog.Application.CommentTypes
         CommentType EditType(CommentType entity);
         CommentType FindType(string CommentTypeCode);
         ICollection<CommentType> FindTypeList();
-        CommentType DeleteType(string CommentTypeCode);
+        CommentType DeleteType(CommentType entity);
         
     }
 }
