@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Comments\Models\" />
     <Folder Include="Common\" />
     <Folder Include="LogHandlers\Models\" />
     <Folder Include="Priorties\Models\" />
