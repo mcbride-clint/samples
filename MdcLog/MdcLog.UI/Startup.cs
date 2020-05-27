@@ -32,7 +32,7 @@ namespace MdcLog
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            string connString = @"Server=DESKTOP-KH6A94U;Database=mdc;Trusted_Connection = True;";
+            string connString = @"Server=DESKTOP-UV36790\SQLDRA;Database=mdc;Trusted_Connection = True;";
             services.AddScoped<IDbConnection, SqlConnection>(c =>
             {
                 return new SqlConnection(connString);
