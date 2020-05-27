@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MDCLog.Models\MDCLogArchitecture.Models.csproj" />
+    
   </ItemGroup>
 
 </Project>
