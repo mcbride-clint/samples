@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MdcLog.Application.Comments.Models
 {
-    public class LogCommentView
+    public class CreateLogCommentVM
     {
         public int SeqNum { get; set; }
         public int LogNumber { get; set; }

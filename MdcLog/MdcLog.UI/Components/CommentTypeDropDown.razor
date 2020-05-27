@@ -1,0 +1,37 @@
+﻿@using MdcLog.Domain.Entities
+@using MdcLog.Application.CommentTypes
+@using MdcLog.Application.CommentTypes.Models
+<RadzenDropDown style="display: block"
+                Name="Description"
+                @bind-Value="CommentTypeCode"
+                AllowClear="true"
+                FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                FilterOperator="StringFilterOperator.Contains"
+                AllowFiltering="true"
+                Data="@commentCodeTypes"
+                Change="UpdateValue"
+                TextProperty="@nameof(CommentTypeView.TypeDesc)"
+                ValueProperty="@nameof(CommentTypeView.CommentTypeCode)" />
+
+
+@code {
+    [Inject] CommentTypeService service { get; set; }
+    [Parameter] public string CommentTypeCode { get; set; }
+    [Parameter] public EventCallback<string> CommentTypeCodeChanged { get; set; }
+
+    internal ICollection<CommentTypeView> commentCodeTypes { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        commentCodeTypes = service.FindTypeList();
+    }
+    private void UpdateValue(object args)
+    {
+        CommentTypeCodeChanged.InvokeAsync((string)args);
+    }
+}
+
+
+

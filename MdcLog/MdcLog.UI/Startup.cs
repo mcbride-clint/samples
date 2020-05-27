@@ -16,6 +16,9 @@ using MdcLog.Application.CommentTypes.Models;
 using MdcLog.Infrastructure.Repositories;
 using System.Data.SqlClient;
 using System.Data;
+using MdcLog.Infrastructure;
+using MdcLog.Application.Comments;
+
 namespace MdcLog
 {
     public class Startup
@@ -45,7 +48,8 @@ namespace MdcLog
             
             services.AddScoped<ICommentTypeRepository, CommentTypeRepository>();            
             services.AddScoped<CommentTypeService>();
-           
+            services.AddScoped<ILogCommentRepository, LogCommentRepository>();
+            services.AddScoped<LogCommentService>();
             services.AddScoped<Radzen.NotificationService>();
             services.AddScoped<Radzen.DialogService>();
             services.AddScoped<RadzenMenu>();
