@@ -44,7 +44,7 @@
 <MdcLog.UI.Components.ModelsModal Title=@passTitle Visible="showEdit">
     <UpdateCommentType Typecode="@editCode" OnClose="CloseDialog" />
 </MdcLog.UI.Components.ModelsModal>
-<MdcLog.UI.Components.ModelsModal Title=@passTitle Visible="showDelete">
+<MdcLog.UI.Components.ModelsModal Title=@passTitle Visible="showDelete" >
     <DeleteCommentType Typecode="@editCode" OnClose="CloseDialog" />
 </MdcLog.UI.Components.ModelsModal>
 
@@ -65,7 +65,7 @@
     private string editTitle { get; set; }
     private string passTitle { get; set; }
     private string deleteTitle { get; set; }
-
+    private string passSize { get; set; }
     protected override void OnInitialized()
 
     {
@@ -75,7 +75,7 @@
         createTitle = "Create Comment Type";
         editTitle = "Edit Comment Type";
         deleteTitle = "Delete Comment Type";
-
+        passSize = "large";
     }
 
     private void CloseDialog(bool wasSaved)
