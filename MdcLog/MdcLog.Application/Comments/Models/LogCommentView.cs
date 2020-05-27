@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace MdcLog.Domain.Entities
+namespace MdcLog.Application.Comments.Models
 {
-    public class LogComment
+    class LogCommentView
     {
         public int SeqNum { get; set; }
         public int LogNumber { get; set; }
