@@ -1,0 +1,122 @@
+﻿@page "/Comments/Create"
+
+@using MdcLog.Application.Comments
+@using MdcLog.Application.Comments.Models
+
+
+
+
+@*<RadzenCard>*@
+    <RadzenTemplateForm TItem="CreateLogCommentVM" Data="@entity" Submit="@OnSubmit" InvalidSubmit="@OnInvalidSubmit">
+        <div class="row" style="margin-bottom: 48px">
+            <div class="col-md-12">
+                <Radzen.Blazor.RadzenFieldset Text="" Style="border:outset">
+
+                    <div class="row">
+                        <div class="col-sm-3 align-items-center d-flex">
+                            <RadzenLabel Text="Log Number" />
+                        </div>
+                        <div class="col-md-8">
+                            <RadzenNumeric Name="LogNumber" @bind-Value="entity.LogNumber" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 align-items-center d-flex">
+                            <RadzenLabel Text="Type" />
+                        </div>
+                        @*<div class="col-md-8">
+                            <BlazorApp1.Components.CommentTypeDropDown @bind-CommentTypeCode="entity.CommentTypeCode"></BlazorApp1.Components.CommentTypeDropDown>
+                        </div>*@
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 align-items-center d-flex">
+                            <RadzenLabel Text="Type Desc" />
+                        </div>
+                        <div class="col-md-8">
+                            <RadzenTextBox Name="TypeDesc" @bind-Value="entity.TypeDesc" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 align-items-center d-flex">
+                            <RadzenLabel Text="Basic Number" />
+                        </div>
+                        <div class="col-md-8">
+                            <RadzenTextBox Name="BasicNumber" @bind-Value="entity.BasicNumber" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-3 align-items-center d-flex">
+                            <RadzenLabel Text="Comment" />
+                        </div>
+                        <div class="col-md-8">
+                            <RadzenTextArea Cols="60" Rows="3" Name="Comment" @bind-Value="entity.Comment">
+
+                            </RadzenTextArea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 align-items-center d-flex">
+                            <RadzenLabel Text="Created By" />
+                        </div>
+                        <div class="col-md-8">
+                            <RadzenTextBox Name="CreatedBy" @bind-Value="entity.CreatedBy" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 align-items-center d-flex">
+                            <RadzenLabel Text="Created By Seq" />
+                        </div>
+                        <div class="col-md-8">
+                            <RadzenNumeric Name="CreatedBySeqNum" @bind-Value="entity.CreatedBySeqNum" />
+                        </div>
+                    </div>
+
+
+
+                </Radzen.Blazor.RadzenFieldset>
+            </div>
+        </div>
+        <RadzenButton ButtonType="ButtonType.Submit" Text="Save"></RadzenButton>
+        <RadzenButton Text="Cancel" Click="() => OnClose.InvokeAsync(false)" ButtonStyle="ButtonStyle.Secondary" Style="margin-bottom: 10px; width: 150px" />
+    </RadzenTemplateForm>
+@*</RadzenCard>*@
+
+
+@code {
+    [Inject] private LogCommentService service { get; set; }
+    [Inject] NotificationService notificationService { get; set; }
+    [Inject] NavigationManager navigationManager { get; set; }
+
+    private CreateLogCommentVM entity { get; set; }
+    [Parameter] public EventCallback<bool> OnClose { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        entity = service.GetCreateCommentVMType();
+
+    }
+
+    protected void OnSubmit()
+    {
+        entity = service.InsertComment(entity);
+
+        // notificationService.Notify(NotificationSeverity.Success, "Type Code " + entity.CommentTypeCode + " Created Successfully.");
+        //navigationManager.NavigateTo("/CommentTypesList");
+
+        OnClose.InvokeAsync(true);
+    }
+
+    protected void OnInvalidSubmit()
+    {
+        notificationService.Notify(NotificationSeverity.Warning, "Please fix issues.");
+    }
+    async Task ShowNotification(NotificationMessage message)
+    {
+        notificationService.Notify(message);
+
+
+        await InvokeAsync(() => { StateHasChanged(); });
+    }
+}
