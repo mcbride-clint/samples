@@ -1,0 +1,81 @@
+﻿@page "/CommentTypes/Create"
+
+
+@using MdcLog.Application.CommentTypes.Models
+@using MdcLog.Application.CommentTypes
+
+<RadzenCard>
+    <RadzenTemplateForm TItem="CreateCommentTypeVM" Data="@entity" Submit="@OnSubmit" InvalidSubmit="@OnInvalidSubmit">
+        <div class="row" style="margin-bottom: 48px">
+            <div class="col-md-12">
+                <Radzen.Blazor.RadzenFieldset Text="" Style="border:outset">
+                    <div class="row">
+                        <div class="col-sm-3 align-items-center d-flex">
+                            <RadzenLabel Text="Type" />
+                        </div>
+                        <div class="col-md-8">
+                            <RadzenTextBox style="width: 30%;" Name="CommentTypeCode" @bind-Value="entity.CommentTypeCode" />
+                            <RadzenRequiredValidator Component="CommentTypeCode" Text="Type is required" Popup="@true" Style="position:relative" />
+                            <RadzenLengthValidator Component="CommentTypeCode" Max="2" Text="Type Code cannot be more than 2 characters" Popup="@true" Style="position: sticky" />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-3 align-items-center d-flex">
+                            <RadzenLabel Text="Description" />
+                        </div>
+                        <div class="col-md-8">
+                            <RadzenTextBox style="width: 50%;" Name="TypeDesc" @bind-Value="entity.TypeDesc" />
+                            <RadzenRequiredValidator Component="TypeDesc" Text="Description is required" Popup="@true" Style="position:sticky" />
+                        </div>
+                    </div>
+
+                </Radzen.Blazor.RadzenFieldset>
+            </div>
+        </div>
+        <RadzenButton ButtonType="ButtonType.Submit" Text="Save"></RadzenButton>
+        <RadzenButton Text="Cancel" Click="() => OnClose.InvokeAsync(false)" ButtonStyle="ButtonStyle.Secondary" Style="margin-bottom: 10px; width: 150px" />
+    </RadzenTemplateForm>
+</RadzenCard>
+
+
+
+@code {
+    [Inject] private CommentTypeService service { get; set; }
+    [Inject] NotificationService notificationService { get; set; }
+    [Inject] NavigationManager navigationManager { get; set; }
+
+    private CreateCommentTypeVM entity { get; set; }
+    [Parameter] public EventCallback<bool> OnClose { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+       entity = service.GetCreateCommentVMType();
+
+    }
+
+    protected void OnSubmit()
+    {
+        entity = service.InsertType(entity);
+
+        notificationService.Notify(NotificationSeverity.Success, "Type Code " + entity.CommentTypeCode + " Created Successfully.");
+        //navigationManager.NavigateTo("/CommentTypesList");
+
+        OnClose.InvokeAsync(true);
+    }
+
+    protected void OnInvalidSubmit()
+    {
+        notificationService.Notify(NotificationSeverity.Warning, "Please fix issues.");
+    }
+    async Task ShowNotification(NotificationMessage message)
+    {
+        notificationService.Notify(message);
+
+        await InvokeAsync(() => { StateHasChanged(); });
+    }
+
+}
+

@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\MDCBlazorApp"
+    "\\MDCBlazorApp",
+    "\\MdcLog",
+    "\\MDCLogArchitecture"
   ],
-  "SelectedNode": "\\MDCLogArchitecture",
+  "SelectedNode": "\\MDCBlazorApp\\.gitignore",
   "PreviewInSolutionExplorer": false
 }

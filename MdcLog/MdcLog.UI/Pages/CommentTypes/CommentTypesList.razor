@@ -1,0 +1,105 @@
+﻿@page "/CommentTypesList"
+@using MdcLog.Application;
+@using MdcLog.Domain;
+@using MdcLog.Domain.Entities;
+@using MdcLog.Application.CommentTypes.Models;
+@using MdcLog.Application.CommentTypes;
+@inject DialogService dialogService
+
+<h3>Comment Type Codes</h3>
+
+<RadzenButton Text="Create" Click="() => { showCreate = true; passTitle = createTitle; } "
+              ButtonStyle="ButtonStyle.Secondary" Style="margin-bottom: 10px; width: 150px" />
+
+<RadzenGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="8"
+            AllowSorting="true" Data="@_types" TItem="CommentTypeView"
+            Style="margin-bottom: 20px; width:600px;">
+
+
+    <Columns>
+        <RadzenGridColumn TItem="CommentTypeView" Property="CommentTypeCode" Title="Type" />
+        <RadzenGridColumn TItem="CommentTypeView" Property="TypeDesc" Title="Description" />
+        <RadzenGridColumn TItem="CommentTypeView" Title="">
+            <Template Context="data">
+                <RadzenButton Text="Edit" Click="() => { showEdit = true; editCode = data.CommentTypeCode; passTitle = editTitle; } "
+                              ButtonStyle="ButtonStyle.Secondary " Style="margin-bottom: 5px; width: 100px; text-align:center" />
+                @*<RadzenButton Icon="account-circle" Click="() => { showEdit = true; editCode = data.CommentTypeCode; passTitle = editTitle; } "
+                    ButtonStyle="ButtonStyle.Secondary " Style="margin-bottom: 5px; width: 100px; text-align:center" />*@
+            </Template>
+
+        </RadzenGridColumn>
+        <RadzenGridColumn TItem="CommentTypeView" Title="">
+            <Template Context="data">
+                <RadzenButton Text="Delete" Click="() => { showDelete = true; editCode = data.CommentTypeCode; passTitle = deleteTitle; } "
+                              ButtonStyle="ButtonStyle.Secondary " Style="margin-bottom: 5px; width: 100px; text-align:center" />
+            </Template>
+        </RadzenGridColumn>
+    </Columns>
+</RadzenGrid>
+
+<MdcLog.UI.Components.ModelsModal Title=@passTitle Visible="showCreate">
+    <CreateCommentType OnClose="CloseDialog" />
+</MdcLog.UI.Components.ModelsModal>
+
+<MdcLog.UI.Components.ModelsModal Title=@passTitle Visible="showEdit">
+    <UpdateCommentType Typecode="@editCode" OnClose="CloseDialog" />
+</MdcLog.UI.Components.ModelsModal>
+<MdcLog.UI.Components.ModelsModal Title=@passTitle Visible="showDelete">
+    <DeleteCommentType Typecode="@editCode" OnClose="CloseDialog" />
+</MdcLog.UI.Components.ModelsModal>
+
+
+@code {
+    [Inject]
+    private CommentTypeService service { get; set; }
+
+    private List<CommentTypeView> _types { get; set; }
+
+    private bool showCreate { get; set; }
+    private bool showEdit { get; set; }
+    private bool showDelete { get; set; }
+    private string switchValue { get; set; }
+    private string editCode { get; set; }
+
+    private string createTitle { get; set; }
+    private string editTitle { get; set; }
+    private string passTitle { get; set; }
+    private string deleteTitle { get; set; }
+
+    protected override void OnInitialized()
+
+    {
+        base.OnInitialized();
+
+        _types = service.FindTypeList().ToList();
+        createTitle = "Create Comment Type";
+        editTitle = "Edit Comment Type";
+        deleteTitle = "Delete Comment Type";
+
+    }
+
+    private void CloseDialog(bool wasSaved)
+    {
+
+        if (showCreate == true)
+        {
+            showCreate = false;
+        }
+        if (showEdit == true)
+        {
+            showEdit = false;
+        }
+        if (showDelete == true)
+        {
+            showDelete = false;
+        }
+
+        if (wasSaved)
+        {
+            _types = service.FindTypeList().ToList();
+        }
+    }
+
+
+}
+
