@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using Dapper;
-using MdcLog.Application.CommentTypes;
+using MdcLog.Application.Priorties;
+using MdcLog.Application.Priorties.Models;
 using MdcLog.Domain.Entities;
 using Microsoft.Extensions.Logging;
 
 namespace MdcLog.Infrastructure.Repositories
 {
-    class PriorityRepository : IPriorityRepository
+    public class PriorityRepository : IPriorityRepository
     {
         private string listSQL = " Select PRIORITY,DESCR " +
             " from TM_MDC_LOG_PRIORITY ";

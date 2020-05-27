@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MdcLog.Domain.Entities
+namespace MdcLog.Application.Priorties.Models
 {
-    public class PriorityCode
+    public class PriorityCodeVM
     {
         public int Priority { get; set; }
         public string Descr { get; set; }

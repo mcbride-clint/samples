@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MdcLog.Domain.Entities
 {
-    class LogAttachment
+    public class LogAttachment
     {
         public int SeqNum { get; set; }
         public string FileName { get; set; }

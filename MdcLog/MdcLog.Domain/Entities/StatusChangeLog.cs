@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MdcLog.Domain.Entities
 {
-    class StatusChangeLog
+    public class StatusChangeLog
     {
         public int StatusChangeSeqNum { get; set; }
         public int LogNumber { get; set; }
