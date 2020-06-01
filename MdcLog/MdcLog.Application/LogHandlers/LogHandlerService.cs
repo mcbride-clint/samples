@@ -53,11 +53,33 @@ namespace MdcLog.Application.LogHandlers
         {
             return new CreateLogHandlerVM();
         }
-        //public int DeleteLogHandler(int Uid)
-        //{
-        //    int recordsDeleted = _LogHandlersRepo.DeleteLogHandler(Uid);
-        //    return recordsDeleted;
+       
+        public DeleteLogHandlerVM FindDeleteLogHandler(int Uid)
+        {
+            var foundLogHandler = _LogHandlersRepo.FindLogHandler(Uid);
 
-        //}
+            return new DeleteLogHandlerVM()
+            {
+                Uid = foundLogHandler.Uid,
+                UserSeqNum = foundLogHandler.UserSeqNum,
+                Code = foundLogHandler.Code,
+                Tmma = foundLogHandler.Tmma
+            };
+        }
+
+        public DeleteLogHandlerVM DeleteLogHandler(DeleteLogHandlerVM ThisLogHandler)
+        {
+            var deleteLogHandler = new LogHandlerVM()
+            {
+                Uid = ThisLogHandler.Uid,
+                UserSeqNum = ThisLogHandler.UserSeqNum,
+                Code = ThisLogHandler.Code,
+                Tmma = ThisLogHandler.Tmma
+            };
+            _LogHandlersRepo.DeleteLogHandler(deleteLogHandler);
+            return ThisLogHandler;
+        }
+
+
     }
 }
