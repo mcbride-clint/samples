@@ -5,15 +5,15 @@
 @using MdcLog.Domain.Entities;
 @using MdcLog.Application.Comments.Models;
 @using MdcLog.Application.Comments;
+@using MdcLog.UI.Components
 @inject DialogService dialogService
 <h3>Comments List</h3>
+
 <MdcLog.UI.Components.CommentTypeDropDown></MdcLog.UI.Components.CommentTypeDropDown>
+
 <RadzenButton Text="Create" Click="() => { showCreate = true; passTitle = createTitle; } "
               ButtonStyle="ButtonStyle.Secondary" Style="margin-bottom: 10px; width: 150px" />
 
-@*<RadzenGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="8"
-            AllowSorting="true" Data="@_types" TItem="LogCommentView"
-            Style="margin-bottom: 20px; width:60%;">*@
     <RadzenGrid TValue="string" AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="5"
                 AllowSorting="true" Data="@_types" TItem="LogCommentView"
                 ValueProperty="Comment"
