@@ -16,6 +16,9 @@ using MdcLog.Application.CommentTypes.Models;
 using MdcLog.Infrastructure.Repositories;
 using System.Data.SqlClient;
 using System.Data;
+using MdcLog.Infrastructure;
+using MdcLog.Application.Comments;
+
 using MdcLog.Application.LogHandlers;
 using MdcLog.Application.LogHandlers.Models;
 
@@ -52,6 +55,8 @@ namespace MdcLog
             services.AddScoped<ILogHandlersRepository, LogHandlerRepository>();
             services.AddScoped<LogHandlerService>();
            
+            services.AddScoped<ILogCommentRepository, LogCommentRepository>();
+            services.AddScoped<LogCommentService>();
             services.AddScoped<Radzen.NotificationService>();
             services.AddScoped<Radzen.DialogService>();
             services.AddScoped<RadzenMenu>();

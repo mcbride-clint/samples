@@ -1,0 +1,95 @@
+﻿@page "/CommentList"
+ 
+@using MdcLog.Application;
+@using MdcLog.Domain;
+@using MdcLog.Domain.Entities;
+@using MdcLog.Application.Comments.Models;
+@using MdcLog.Application.Comments;
+@inject DialogService dialogService
+<h3>Comments List</h3>
+<MdcLog.UI.Components.CommentTypeDropDown></MdcLog.UI.Components.CommentTypeDropDown>
+<RadzenButton Text="Create" Click="() => { showCreate = true; passTitle = createTitle; } "
+              ButtonStyle="ButtonStyle.Secondary" Style="margin-bottom: 10px; width: 150px" />
+
+@*<RadzenGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="8"
+            AllowSorting="true" Data="@_types" TItem="LogCommentView"
+            Style="margin-bottom: 20px; width:60%;">*@
+    <RadzenGrid TValue="string" AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="5"
+                AllowSorting="true" Data="@_types" TItem="LogCommentView"
+                ValueProperty="Comment"
+                Style="overflow:auto;width:unset">
+
+        <Columns>
+            <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.SeqNum)" Title="Comment #" Width="60px" />
+            <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.LogNumber)" Title="Log" Width="30px" />
+            <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.TypeDesc)" Title="Type" Width="50px" />
+            <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.CreatedBy)" Title="Created By" Width="60px" />
+            <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.CreateDate)" Title="Created" Width="60px">
+                <Template Context="LogCommentView">
+                    @String.Format("{0:d}", LogCommentView.CreateDate)
+                </Template>
+            </RadzenGridColumn>
+            
+            <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.Comment)" Title="Comment" Width="400px">
+                <Template Context="LogComment">
+                    <textarea readonly rows="2" cols="105">@LogComment.Comment</textarea>
+                </Template>
+            </RadzenGridColumn>
+        </Columns>
+    </RadzenGrid>
+
+<MdcLog.UI.Components.ModelsModal Title=@passTitle Visible="showCreate" ModalSize="large">
+    <CreateLogComment OnClose="CloseDialog" />
+</MdcLog.UI.Components.ModelsModal>
+
+
+
+
+@code {
+    [Inject]
+    private LogCommentService service { get; set; }
+
+    private List<LogCommentView> _types { get; set; }
+    [Parameter]
+    public int Log{ get; set; }
+    private bool showCreate { get; set; }
+
+    private string switchValue { get; set; }
+    private string editCode { get; set; }
+
+    private string createTitle { get; set; }
+
+    private string passTitle { get; set; }
+    private string passSize { get; set; }
+
+    protected override void OnInitialized()
+
+    {
+        base.OnInitialized();
+
+        _types = service.FindCommentList().ToList();
+        createTitle = "Create Comment ";
+
+    }
+    protected override void OnParametersSet()
+    {
+        //the param will be set now
+        var test = Log;
+    }
+    private void CloseDialog(bool wasSaved)
+    {
+
+        if (showCreate == true)
+        {
+            showCreate = false;
+        }
+
+
+        if (wasSaved)
+        {
+            _types = service.FindCommentList().ToList();
+        }
+    }
+
+
+}
