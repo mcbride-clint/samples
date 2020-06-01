@@ -18,6 +18,7 @@ using System.Data.SqlClient;
 using System.Data;
 using MdcLog.Infrastructure;
 using MdcLog.Application.Comments;
+using MdcLog.Application.StatusCodes;
 
 namespace MdcLog
 {
@@ -52,6 +53,8 @@ namespace MdcLog
             services.AddScoped<LogCommentService>();
             services.AddScoped<Radzen.NotificationService>();
             services.AddScoped<Radzen.DialogService>();
+            services.AddScoped<IStatusCodeRepository, StatusCodeRepository>();
+            services.AddScoped<StatusCodeService>();
             services.AddScoped<RadzenMenu>();
         }
 

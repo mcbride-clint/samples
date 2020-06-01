@@ -1,0 +1,12 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace MdcLog.Domain.Entities
+{
+    public class StatusCode
+    {
+        public string Status { get; set; }
+        public string Descr { get; set; }
+    }
+}
