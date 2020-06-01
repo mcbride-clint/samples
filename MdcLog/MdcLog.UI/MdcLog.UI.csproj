@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\Images\Log2.png" />
+    <None Include="wwwroot\Images\oldLog2.png" />
   </ItemGroup>
 
 </Project>

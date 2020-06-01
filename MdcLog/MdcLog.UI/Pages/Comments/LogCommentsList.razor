@@ -1,4 +1,5 @@
 ﻿@page "/CommentList"
+ 
 @using MdcLog.Application;
 @using MdcLog.Domain;
 @using MdcLog.Domain.Entities;
@@ -24,13 +25,14 @@
             <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.TypeDesc)" Title="Type" Width="50px" />
             <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.CreatedBy)" Title="Created By" Width="60px" />
             <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.CreateDate)" Title="Created" Width="60px">
-                <Template Context="LogComment">
-                    @String.Format("{0:d}", LogComment.CreateDate)
+                <Template Context="LogCommentView">
+                    @String.Format("{0:d}", LogCommentView.CreateDate)
                 </Template>
             </RadzenGridColumn>
+            
             <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.Comment)" Title="Comment" Width="400px">
                 <Template Context="LogComment">
-                    <textarea readonly rows="2" cols="120">@LogComment.Comment</textarea>
+                    <textarea readonly rows="2" cols="105">@LogComment.Comment</textarea>
                 </Template>
             </RadzenGridColumn>
         </Columns>
@@ -48,7 +50,8 @@
     private LogCommentService service { get; set; }
 
     private List<LogCommentView> _types { get; set; }
-
+    [Parameter]
+    public int Log{ get; set; }
     private bool showCreate { get; set; }
 
     private string switchValue { get; set; }
@@ -68,7 +71,11 @@
         createTitle = "Create Comment ";
 
     }
-
+    protected override void OnParametersSet()
+    {
+        //the param will be set now
+        var test = Log;
+    }
     private void CloseDialog(bool wasSaved)
     {
 
