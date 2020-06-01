@@ -2,6 +2,7 @@
 
 @using MdcLog.Application.Comments
 @using MdcLog.Application.Comments.Models
+@using MdcLog.Application.CommentTypes.Models
 
 
 
@@ -24,9 +25,9 @@
                         <div class="col-sm-3 align-items-center d-flex">
                             <RadzenLabel Text="Type" />
                         </div>
-                        @*<div class="col-md-8">
-                            <BlazorApp1.Components.CommentTypeDropDown @bind-CommentTypeCode="entity.CommentTypeCode"></BlazorApp1.Components.CommentTypeDropDown>
-                        </div>*@
+                        <div class="col-md-8">
+                            <MdcLog.UI.Components.CommentTypeDropDown @bind-CommentTypeCode="entity.CommentTypeCode"></MdcLog.UI.Components.CommentTypeDropDown>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-3 align-items-center d-flex">
@@ -94,7 +95,7 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        entity = service.GetCreateCommentVMType();
+        entity = service.GetCreateCommentVM();
 
     }
 
