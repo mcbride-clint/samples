@@ -26,7 +26,7 @@ namespace MdcLog.Infrastructure.Repositories
             _db = db;
         }
 
-        public LogHandlerVM InsertLogHandlersType(LogHandlerVM entity)
+        public LogHandlerVM InsertLogHandler(LogHandlerVM entity)
         {
             string mySQL = " INSERT INTO[dbo].[TM_MDC_LOG_HANDLERS] " +
                                         " ([USERID_SEQ_NUM], " +
@@ -40,16 +40,13 @@ namespace MdcLog.Infrastructure.Repositories
             return entity;
         }
 
-        public LogHandler SaveLogHandler(LogHandler entity)
+        public LogHandlerVM SaveLogHandler(LogHandlerVM entity)
         {
             throw new NotImplementedException();
         }
 
-        public LogHandlerVM EditLogHandler(LogHandlerVM entity)
+        public CreateLogHandlerVM EditLogHandler(CreateLogHandlerVM entity)
         {
-
-
-
             string mySQL = "UPDATE[dbo].[TM_MDC_LOG_HANDLERS] SET [USERID_SEQ_NUM] = " + entity.UserSeqNum +
               ", [HANDLERS_CODE] = '" + entity.Code + "'" +
               ", [TMMA_CODE] = '" + entity.Tmma + "'" +
@@ -66,15 +63,23 @@ namespace MdcLog.Infrastructure.Repositories
             return loghandler;
         }
 
-        public IEnumerable<LogHandler> FindLogHandlerList()
+        public LogHandlerVM EditLogHandler(int uid)
         {
-            return _db.Query<LogHandler>(listSQL).ToList();
+            string findSQL = listSQL + " where UID = " + uid;
+            LogHandlerVM loghandler = _db.QuerySingle<LogHandlerVM>(findSQL);
+            return loghandler;
         }
 
-        public int DeleteLogHandler(int uid)
+        public IEnumerable<LogHandlerVM> FindLogHandlerList()
         {
-            int deletedRecords = _db.Execute("DELETE[dbo].[TM_MDC_LOG_HANDLERS] where UID = " + uid);
-            return deletedRecords;
+            return _db.Query<LogHandlerVM>(listSQL).ToList();
+        }
+
+        public LogHandlerVM DeleteLogHandler(LogHandlerVM entity)
+        {
+            string mySQL = " DELETE[dbo].[TM_MDC_LOG_HANDLERS] " + $" WHERE[UID] = @{nameof(entity.Uid)}";
+            int rowsAffected = _db.Execute(mySQL, entity);
+            return entity;
         }
     }
 }

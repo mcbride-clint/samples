@@ -18,34 +18,46 @@ namespace MdcLog.Application.LogHandlers
             _logger = logger;
             _LogHandlersRepo = LogHandlersRepo;
         }
-        public List<LogHandler> FindLogHandlerList()
+        public List<LogHandlerVM> FindLogHandlerList()
         {
             return _LogHandlersRepo.FindLogHandlerList().ToList();
         }
-        public LogHandlerVM Insert(LogHandlerVM ThisLogHandler)
-        {
-            return _LogHandlersRepo.InsertLogHandlersType(ThisLogHandler);
-        }
-
         public LogHandlerVM FindLogHandler(int Uid)
         {
             return _LogHandlersRepo.FindLogHandler(Uid);
         }
 
-        public LogHandlerVM EditLogHandler(LogHandlerVM ThisLogHandler)
+        public CreateLogHandlerVM CreateNewLogHandlerVM()
         {
-            return _LogHandlersRepo.EditLogHandler(ThisLogHandler);
+            return new CreateLogHandlerVM();
         }
 
-        public LogHandlerVM GetCreateLogHandlerVMType()
+        public CreateLogHandlerVM InsertLogHandler(CreateLogHandlerVM ThisLogHandler)
         {
-            return new LogHandlerVM();
-        }
-        public int DeleteLogHandler(int Uid)
-        {
-            int recordsDeleted = _LogHandlersRepo.DeleteLogHandler(Uid);
-            return recordsDeleted;
+            var insertLogHandler = new LogHandlerVM()
+            {
+                UserSeqNum = ThisLogHandler.UserSeqNum,
+                Code = ThisLogHandler.Code,
+                Tmma = ThisLogHandler.Tmma
+            };
+            _LogHandlersRepo.InsertLogHandler(insertLogHandler);
+            return ThisLogHandler;
+        }       
 
+        //public CreateLogHandlerVM EditLogHandler(CreateLogHandlerVM ThisLogHandler)
+        //{
+        //    return _LogHandlersRepo.EditLogHandler(ThisLogHandler);
+        //}
+
+        public CreateLogHandlerVM GetCreateLogHandlerVMType()
+        {
+            return new CreateLogHandlerVM();
         }
+        //public int DeleteLogHandler(int Uid)
+        //{
+        //    int recordsDeleted = _LogHandlersRepo.DeleteLogHandler(Uid);
+        //    return recordsDeleted;
+
+        //}
     }
 }

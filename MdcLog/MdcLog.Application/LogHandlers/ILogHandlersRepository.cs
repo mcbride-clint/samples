@@ -8,13 +8,11 @@ namespace MdcLog.Application.LogHandlers
 {
     public interface ILogHandlersRepository
     {
-        //LogHandler InsertLogHandler(LogHandler entity);
-        LogHandler SaveLogHandler(LogHandler entity);
-        LogHandlerVM EditLogHandler(LogHandlerVM entity);
+        LogHandlerVM InsertLogHandler(LogHandlerVM entity);
+        LogHandlerVM SaveLogHandler(LogHandlerVM entity);
+        LogHandlerVM EditLogHandler(int Uid);
         LogHandlerVM FindLogHandler(int Uid);
-        IEnumerable<LogHandler> FindLogHandlerList();
-        LogHandlerVM InsertLogHandlersType(LogHandlerVM thisLogHandler);
-
-        int DeleteLogHandler(int Uid);
+        IEnumerable<LogHandlerVM> FindLogHandlerList();
+        LogHandlerVM DeleteLogHandler(LogHandlerVM entity);
     }
 }

@@ -1,0 +1,99 @@
+﻿@page "/LogHandlersList"
+@using MdcLog.Application;
+@using MdcLog.Domain;
+@using MdcLog.Domain.Entities;
+@using MdcLog.Application.LogHandlers.Models;
+@using MdcLog.Application.LogHandlers;
+@inject DialogService dialogService
+
+<h3>Log Handlers</h3>
+
+<RadzenButton Text="Create" Click="() => { showCreate = true; passTitle = createTitle; } " ButtonStyle="ButtonStyle.Secondary" Style="margin-bottom: 10px; width: 150px" />
+@*<a href="/LogHandlers/Create" class="btn btn-primary mb-2">Create New Log Handler</a>*@
+
+<RadzenGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="8" AllowSorting="true"
+            Data="@_loghandlers" TItem="LogHandlerVM"
+            Style="margin-bottom: 20px; width:800px;">
+
+    <Columns>
+        <RadzenGridColumn TItem="LogHandlerVM" Property="Uid" Title="Unique ID" Visible="true" />
+        <RadzenGridColumn TItem="LogHandlerVM" Property="UserSeqNum" Title="UserSeqNum" />
+        <RadzenGridColumn TItem="LogHandlerVM" Property="Code" Title="Code" />
+        <RadzenGridColumn TItem="LogHandlerVM" Property="Tmma" Title="TMMA" />
+        <RadzenGridColumn TItem="LogHandlerVM" Title="">
+            <Template Context="data">
+                <RadzenButton Text="Edit" Click="() => { showEdit = true; editCode = data.Uid; passTitle = editTitle; } "
+                              ButtonStyle="ButtonStyle.Secondary " Style="margin-bottom: 5px; width: 100px; text-align:center" />
+            </Template>
+
+        </RadzenGridColumn>
+        <RadzenGridColumn TItem="LogHandlerVM" Title="">
+            <Template Context="data">
+                <RadzenButton Text="Delete" Click="() => { showDelete = true; editCode = data.Uid; passTitle = deleteTitle; } "
+                              ButtonStyle="ButtonStyle.Secondary " Style="margin-bottom: 5px; width: 100px; text-align:center" />
+            </Template>
+        </RadzenGridColumn>
+    </Columns>
+
+</RadzenGrid>
+
+<MdcLog.UI.Components.ModelsModal Title=@passTitle Visible="showCreate">
+    <CreateLogHandler OnClose="CloseDialog" />
+</MdcLog.UI.Components.ModelsModal>
+
+
+
+
+@code {
+    [Inject]
+    private LogHandlerService service { get; set; }
+
+    private List<LogHandlerVM> _loghandlers { get; set; }
+
+    private bool showCreate { get; set; }
+    private bool showEdit { get; set; }
+    private bool showDelete { get; set; }
+    private string switchValue { get; set; }
+    private int editCode { get; set; }
+
+    private string createTitle { get; set; }
+    private string editTitle { get; set; }
+    private string passTitle { get; set; }
+    private string deleteTitle { get; set; }
+
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        _loghandlers = service.FindLogHandlerList().ToList();
+        createTitle = "Create Log Handler";
+        editTitle = "Edit Log Handler";
+        deleteTitle = "Delete Log Handler";
+
+    }
+
+    private void CloseDialog(bool wasSaved)
+    {
+
+        if (showCreate == true)
+        {
+            showCreate = false;
+        }
+        if (showEdit == true)
+        {
+            showEdit = false;
+        }
+        if (showDelete == true)
+        {
+            showDelete = false;
+        }
+
+        if (wasSaved)
+        {
+            _loghandlers = service.FindLogHandlerList().ToList();
+        }
+    }
+
+
+}
