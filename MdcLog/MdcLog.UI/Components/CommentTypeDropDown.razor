@@ -1,4 +1,5 @@
 ﻿@using MdcLog.Domain.Entities
+
 @using MdcLog.Application.CommentTypes
 @using MdcLog.Application.CommentTypes.Models
 <RadzenDropDown style="display: block"
@@ -29,6 +30,7 @@
     }
     private void UpdateValue(object args)
     {
+        
         CommentTypeCodeChanged.InvokeAsync((string)args);
     }
 }

@@ -69,7 +69,7 @@ namespace MdcLog.Application.Comments
 
 
 
-        public CreateLogCommentVM GetCreateCommentVMType()
+        public CreateLogCommentVM GetCreateCommentVM()
         {
             return new CreateLogCommentVM();
         }
