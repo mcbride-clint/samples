@@ -26,7 +26,7 @@ namespace MdcLog.Infrastructure.Repositories
             _db = db;
         }
 
-        public LogHandlerVM InsertLogHandler(LogHandlerVM entity)
+        public LogHandler InsertLogHandler(LogHandler entity)
         {
             string mySQL = " INSERT INTO[dbo].[TM_MDC_LOG_HANDLERS] " +
                                         " ([USERID_SEQ_NUM], " +
@@ -40,12 +40,12 @@ namespace MdcLog.Infrastructure.Repositories
             return entity;
         }
 
-        public LogHandlerVM SaveLogHandler(LogHandlerVM entity)
+        public LogHandler SaveLogHandler(LogHandler entity)
         {
             throw new NotImplementedException();
         }
 
-        public CreateLogHandlerVM EditLogHandler(CreateLogHandlerVM entity)
+        public LogHandlerVM EditLogHandler(LogHandlerVM entity)
         {
             string mySQL = "UPDATE[dbo].[TM_MDC_LOG_HANDLERS] SET [USERID_SEQ_NUM] = " + entity.UserSeqNum +
               ", [HANDLERS_CODE] = '" + entity.Code + "'" +
@@ -56,26 +56,26 @@ namespace MdcLog.Infrastructure.Repositories
             return entity;
         }
 
-        public LogHandlerVM FindLogHandler(int uid)
+        public LogHandler FindLogHandler(int uid)
         {
             string findSQL = listSQL + " where UID = " + uid;
-            LogHandlerVM loghandler = _db.QuerySingle<LogHandlerVM>(findSQL);
+            LogHandler loghandler = _db.QuerySingle<LogHandler>(findSQL);
             return loghandler;
         }
 
-        public LogHandlerVM EditLogHandler(int uid)
+        public LogHandler EditLogHandler(int uid)
         {
             string findSQL = listSQL + " where UID = " + uid;
-            LogHandlerVM loghandler = _db.QuerySingle<LogHandlerVM>(findSQL);
+            LogHandler loghandler = _db.QuerySingle<LogHandler>(findSQL);
             return loghandler;
         }
 
-        public IEnumerable<LogHandlerVM> FindLogHandlerList()
+        public IEnumerable<LogHandler> FindLogHandlerList()
         {
-            return _db.Query<LogHandlerVM>(listSQL).ToList();
+            return _db.Query<LogHandler>(listSQL).ToList();
         }
 
-        public LogHandlerVM DeleteLogHandler(LogHandlerVM entity)
+        public LogHandler DeleteLogHandler(LogHandler entity)
         {
             string mySQL = " DELETE[dbo].[TM_MDC_LOG_HANDLERS] " + $" WHERE[UID] = @{nameof(entity.Uid)}";
             int rowsAffected = _db.Execute(mySQL, entity);

@@ -18,23 +18,42 @@ namespace MdcLog.Application.LogHandlers
             _logger = logger;
             _LogHandlersRepo = LogHandlersRepo;
         }
+        //public List<LogHandler> FindLogHandlerList()
+        //{
+        //    return _LogHandlersRepo.FindLogHandlerList().ToList();
+        //}
+
         public List<LogHandlerVM> FindLogHandlerList()
         {
-            return _LogHandlersRepo.FindLogHandlerList().ToList();
+            var logHandlerList = _LogHandlersRepo.FindLogHandlerList();
+
+            var newLogHandlerList = logHandlerList
+                .Select(item => new LogHandlerVM()
+                {
+                    Uid = item.Uid,
+                    UserSeqNum = item.UserSeqNum,
+                    Code = item.Code,
+                    Tmma = item.Tmma
+                })
+                .ToList();
+
+
+            return newLogHandlerList;
         }
-        public LogHandlerVM FindLogHandler(int Uid)
+
+        public LogHandler FindLogHandler(int Uid)
         {
             return _LogHandlersRepo.FindLogHandler(Uid);
         }
 
-        public CreateLogHandlerVM CreateNewLogHandlerVM()
+        public CreateLoghandlerVM CreateNewLogHandlerVM()
         {
-            return new CreateLogHandlerVM();
+            return new CreateLoghandlerVM();
         }
 
-        public CreateLogHandlerVM InsertLogHandler(CreateLogHandlerVM ThisLogHandler)
+        public CreateLoghandlerVM InsertLogHandler(CreateLoghandlerVM ThisLogHandler)
         {
-            var insertLogHandler = new LogHandlerVM()
+            var insertLogHandler = new LogHandler()
             {
                 UserSeqNum = ThisLogHandler.UserSeqNum,
                 Code = ThisLogHandler.Code,
@@ -49,11 +68,8 @@ namespace MdcLog.Application.LogHandlers
         //    return _LogHandlersRepo.EditLogHandler(ThisLogHandler);
         //}
 
-        public CreateLogHandlerVM GetCreateLogHandlerVMType()
-        {
-            return new CreateLogHandlerVM();
-        }
-       
+        
+
         public DeleteLogHandlerVM FindDeleteLogHandler(int Uid)
         {
             var foundLogHandler = _LogHandlersRepo.FindLogHandler(Uid);
@@ -69,7 +85,7 @@ namespace MdcLog.Application.LogHandlers
 
         public DeleteLogHandlerVM DeleteLogHandler(DeleteLogHandlerVM ThisLogHandler)
         {
-            var deleteLogHandler = new LogHandlerVM()
+            var deleteLogHandler = new LogHandler()
             {
                 Uid = ThisLogHandler.Uid,
                 UserSeqNum = ThisLogHandler.UserSeqNum,

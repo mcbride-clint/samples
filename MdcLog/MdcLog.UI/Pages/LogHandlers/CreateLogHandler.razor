@@ -8,7 +8,7 @@
 
 
 <RadzenCard>
-    <RadzenTemplateForm TItem="CreateLogHandlerVM" Data="@entity" Submit="@OnSubmit" InvalidSubmit="@OnInvalidSubmit">
+    <RadzenTemplateForm TItem="CreateLoghandlerVM" Data="@entity" Submit="@OnSubmit" InvalidSubmit="@OnInvalidSubmit">
         <div class="row" style="margin-bottom: 48px">
             <div class="col-md-12">
                 <Radzen.Blazor.RadzenFieldset Text="Log Handler" Style="border:outset">
@@ -59,7 +59,7 @@
     [Inject] NavigationManager navigationManager { get; set; }
 
 
-    private CreateLogHandlerVM entity { get; set; }
+    private CreateLoghandlerVM entity { get; set; }
     [Parameter] public EventCallback<bool> OnClose { get; set; }
 
     protected override void OnInitialized()

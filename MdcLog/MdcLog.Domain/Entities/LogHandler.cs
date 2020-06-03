@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MdcLog.Domain.Entities
 {
-    public class LogHandlerVM
+    public class LogHandler
     {
         public int Uid { get; set; }
         public int UserSeqNum { get; set; }
