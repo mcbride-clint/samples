@@ -17,7 +17,7 @@
 
 @code {
     [Inject] StatusCodeService service { get; set; }
-    [Parameter] public string StatusCode { get; set; }
+    [Parameter] public string Status { get; set; }
     [Parameter] public EventCallback<string> StatusCodeChanged { get; set; }
 
     internal ICollection<StatusCodeView> statusCodes { get; set; }
