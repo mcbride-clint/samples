@@ -18,37 +18,85 @@ namespace MdcLog.Application.Priorties
             _logger = logger;
             _PriorityCodeRepo = PriorityCodeRepo;
         }
-        public IList<PriorityCode> FindPriorityList()
+
+        public List<PriorityCodeVM> FindPriorityCodeList()
         {
-            _logger.LogError("Hello");
-            return _PriorityCodeRepo.FindPriorityList().ToList();
+            var PriorityCodeList = _PriorityCodeRepo.FindPriorityCodeList();
+
+            var newPriorityCodeList = PriorityCodeList
+                .Select(item => new PriorityCodeVM()
+                {
+                    Priority = item.Priority,
+                    Descr = item.Descr
+
+                })
+                .ToList();
+
+
+            return newPriorityCodeList;
         }
 
-        public PriorityCodeVM FindPriority(int PriorityCode)
+        public CreatePriorityCodeVM CreateNewPriorityCodeVM()
         {
-            return _PriorityCodeRepo.FindPriority(PriorityCode);
+            return new CreatePriorityCodeVM();
         }
 
-        public PriorityCodeVM GetCreatePriorityCodeVMType()
+        public CreatePriorityCodeVM InsertPriorityCode(CreatePriorityCodeVM ThisPriorityCode)
         {
-            return new PriorityCodeVM();
+            var insertPriorityCode = new PriorityCode()
+            {
+                Priority = ThisPriorityCode.Priority,
+                Descr = ThisPriorityCode.Descr
+            };
+            _PriorityCodeRepo.InsertPriorityCode(insertPriorityCode);
+            return ThisPriorityCode;
         }
 
-        public PriorityCodeVM InsertPriority(PriorityCodeVM ThisPriorityCode)
+        public EditPriorityCodeVM FindPriorityCode(int Priority)
         {
-            return _PriorityCodeRepo.InsertPriority(ThisPriorityCode);
+            var foundPriorityCode = _PriorityCodeRepo.FindPriorityCode(Priority);
+
+            return new EditPriorityCodeVM()
+            {
+                Priority = foundPriorityCode.Priority,
+                Descr = foundPriorityCode.Descr
+            };
         }
 
-        public PriorityCodeVM EditPriority(PriorityCodeVM ThisPriorityCode)
+        public EditPriorityCodeVM EditPriorityCode(EditPriorityCodeVM ThisPriorityCode)
         {
-            return _PriorityCodeRepo.EditPriority(ThisPriorityCode);
+            var editPriorityCode = new PriorityCode()
+            {
+                Priority = ThisPriorityCode.Priority,
+                Descr = ThisPriorityCode.Descr
+            };
+            _PriorityCodeRepo.EditPriorityCode(editPriorityCode);
+            return ThisPriorityCode;
         }
 
-        public int DeletePriority(int Priority)
-        {
-            int recordsDeleted = _PriorityCodeRepo.DeletePriority(Priority);
-            return recordsDeleted;
 
+        public DeletePriorityCodeVM FindDeletePriorityCode(int Priority)
+        {
+            var foundPriorityCode = _PriorityCodeRepo.FindPriorityCode(Priority);
+
+            return new DeletePriorityCodeVM()
+            {
+                Priority = foundPriorityCode.Priority,
+                Descr = foundPriorityCode.Descr
+            };
         }
+
+        public DeletePriorityCodeVM DeletePriorityCode(DeletePriorityCodeVM ThisPriorityCode)
+        {
+            var deletePriorityCode = new PriorityCode()
+            {
+                Priority = ThisPriorityCode.Priority,
+                Descr = ThisPriorityCode.Descr
+            };
+            _PriorityCodeRepo.DeletePriorityCode(deletePriorityCode);
+            return ThisPriorityCode;
+        }
+
     }
+
 }

@@ -23,7 +23,7 @@ namespace MdcLog.Infrastructure.Repositories
             _db = db;
         }
 
-        public PriorityCodeVM InsertPriority(PriorityCodeVM entity)
+        public PriorityCode InsertPriorityCode(PriorityCode entity)
         {
             string mySQL = " INSERT INTO [TM_MDC_LOG_PRIORITY] ([PRIORITY],[DESCR]) VALUES " +
                            " ( '" + entity.Priority + "','" + entity.Descr + "')";
@@ -31,12 +31,12 @@ namespace MdcLog.Infrastructure.Repositories
             return entity;
         }
 
-        public PriorityCode SavePriority(PriorityCode entity)
+        public PriorityCode SavePriorityCode(PriorityCode entity)
         {
             throw new NotImplementedException();
         }
 
-        public PriorityCodeVM EditPriority(PriorityCodeVM entity)
+        public PriorityCode EditPriorityCode(PriorityCode entity)
         {
             string mySQL = "UPDATE[dbo].[TM_MDC_LOG_PRIORITY] SET[PRIORITY] = '" + entity.Priority + "'" +
               ",[DESCR] = '" + entity.Descr + "'" +
@@ -45,24 +45,23 @@ namespace MdcLog.Infrastructure.Repositories
             return entity;
         }
 
-        public PriorityCodeVM FindPriority(int PriorityCode)
+        public PriorityCode FindPriorityCode(int PriorityCode)
         {
             string findSQL = listSQL + " Where PRIORITY = '" + PriorityCode + "'";
-            //CommentType commentType = _db.QuerySingle<CommentType>(findSQL);
-            //return commentType;
-            PriorityCodeVM priorityCode = _db.QuerySingle<PriorityCodeVM>(findSQL);
+            PriorityCode priorityCode = _db.QuerySingle<PriorityCode>(findSQL);
             return priorityCode;
         }
 
-        public IEnumerable<PriorityCode> FindPriorityList()
+        public IEnumerable<PriorityCode> FindPriorityCodeList()
         {
             return _db.Query<PriorityCode>(listSQL);
         }
 
-        public int DeletePriority(int PriorityCode)
+        public PriorityCode DeletePriorityCode(PriorityCode entity)
         {
-            int deletedRecords = _db.Execute("DELETE[dbo].[TM_MDC_LOG_PRIORITY] where PRIORITY = '" + PriorityCode + "'");
-            return deletedRecords;
-        }
+            string mySQL = "DELETE [dbo].[TM_MDC_LOG_PRIORITY]  WHERE[PRIORITY] = " + entity.Priority;
+            int rowsAffected = _db.Execute(mySQL, entity);
+            return entity;
+        }       
     }
 }

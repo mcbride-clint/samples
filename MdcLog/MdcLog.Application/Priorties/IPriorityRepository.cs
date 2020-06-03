@@ -11,12 +11,12 @@ namespace MdcLog.Application.Priorties
 {
     public interface IPriorityRepository
     {
-        PriorityCodeVM InsertPriority(PriorityCodeVM ThisPriorityCode);
-        PriorityCode SavePriority(PriorityCode entity);
-        PriorityCodeVM EditPriority(PriorityCodeVM entity);
-        PriorityCodeVM FindPriority(int Priority);
-        IEnumerable<PriorityCode> FindPriorityList();
-        //PriorityCode DeletePriority(string PriorityCode);
-        int DeletePriority(int Priority);
+        PriorityCode InsertPriorityCode(PriorityCode entity);
+        PriorityCode SavePriorityCode(PriorityCode entity);
+        PriorityCode EditPriorityCode(PriorityCode entity);
+        PriorityCode FindPriorityCode(int Priority);
+        IEnumerable<PriorityCode> FindPriorityCodeList();
+        PriorityCode DeletePriorityCode(PriorityCode entity);
+
     }
 }

@@ -18,6 +18,7 @@ using System.Data.SqlClient;
 using System.Data;
 using MdcLog.Application.LogHandlers;
 using MdcLog.Application.LogHandlers.Models;
+using MdcLog.Application.Priorties;
 
 namespace MdcLog
 {
@@ -51,6 +52,9 @@ namespace MdcLog
 
             services.AddScoped<ILogHandlersRepository, LogHandlerRepository>();
             services.AddScoped<LogHandlerService>();
+
+            services.AddScoped<IPriorityRepository, PriorityRepository>();
+            services.AddScoped<PriorityCodeService>();
            
             services.AddScoped<Radzen.NotificationService>();
             services.AddScoped<Radzen.DialogService>();
