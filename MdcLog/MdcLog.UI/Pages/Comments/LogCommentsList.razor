@@ -1,5 +1,5 @@
 ﻿@page "/CommentList"
-
+@page "/CommentList/{Log}"
 @using MdcLog.Application;
 @using MdcLog.Domain;
 @using MdcLog.Domain.Entities;
@@ -48,13 +48,13 @@
 
 
 @code {
-   // This page has an example of usding the Modal dialo cvomponent//
+    // This page has an example of usding the Modal dialo cvomponent//
     [Inject]
     private LogCommentService service { get; set; }
 
     private List<LogCommentView> _types { get; set; }
     [Parameter]
-    public int Log { get; set; }
+    public string Log { get; set; }
     private bool showCreate { get; set; }
 
     private string switchValue { get; set; }
@@ -70,7 +70,7 @@
     {
         base.OnInitialized();
 
-        _types = service.FindCommentList().ToList();
+        _types = service.FindCommentList(Log).ToList();
         createTitle = "Create Comment ";
 
     }
@@ -90,7 +90,7 @@
 
         if (wasSaved)
         {
-            _types = service.FindCommentList().ToList();
+            _types = service.FindCommentList(Log).ToList();
         }
     }
 
