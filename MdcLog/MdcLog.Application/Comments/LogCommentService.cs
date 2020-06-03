@@ -28,7 +28,7 @@ namespace MdcLog.Application.Comments
         /// Get All Comment Types
         /// </summary>
         /// <returns></returns>
-        public List<LogCommentView> FindCommentList()
+        public List<LogCommentView> FindCommentList(string Log)
         {
             //var commentTypes = _commentTypesRepo.FindTypeList();
 
@@ -36,7 +36,7 @@ namespace MdcLog.Application.Comments
 
 
             // Linq
-            var commentList = _commentsRepo.FindCommentList();
+            var commentList = _commentsRepo.FindCommentList( Log);
 
             var linqViewList = commentList
                 .Select(item => new LogCommentView()

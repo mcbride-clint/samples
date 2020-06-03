@@ -9,7 +9,7 @@ namespace MdcLog.Application.Comments
     {
         LogComment InsertComment(LogComment entity);
         
-        ICollection<LogComment> FindCommentList();
+        ICollection<LogComment> FindCommentList(string Log);
        
     }
 }

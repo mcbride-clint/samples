@@ -59,9 +59,10 @@ namespace MdcLog.Infrastructure
 
 
 
-        public ICollection<LogComment> FindCommentList()
+        public ICollection<LogComment> FindCommentList(string Log)
         {
-            return _db.Query<LogComment>(listSQL).ToList();
+            string getSQL = listSQL + " Where LOG_NUM = " + Log;
+            return _db.Query<LogComment>(getSQL).ToList();
         }
 
 
