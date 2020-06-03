@@ -1,5 +1,5 @@
-﻿@page "/StatusCodes/Edit"
-@page "/StatusCodes/Edit/{statuscode}"
+﻿@page "/StatusCodes/Delete"
+@page "/StatusCodes/Delete/{statuscode}"
 
 
 @using MdcLog.Application.StatusCodes.Models
@@ -7,7 +7,7 @@
 
 
 <RadzenCard>
-    <RadzenTemplateForm TItem="UpdateStatusCodeVM" Data="@entity" Submit="@OnSubmit" InvalidSubmit="@OnInvalidSubmit">
+    <RadzenTemplateForm TItem="DeleteStatusCodeVM" Data="@entity" Submit="@OnSubmit" InvalidSubmit="@OnInvalidSubmit">
         <div class="row" style="margin-bottom: 48px">
             <div class="col-md-12">
                 <Radzen.Blazor.RadzenFieldset Text="" Style="border:outset">
@@ -27,7 +27,7 @@
                             <RadzenLabel Text="Description" />
                         </div>
                         <div class="col-md-8">
-                            <RadzenTextBox style="width: 100%;" Name="Descr" @bind-Value="entity.Descr" />
+                            <RadzenTextBox style="width: 100%;" ReadOnly="true" Name="Descr" @bind-Value="entity.Descr" />
                             <RadzenRequiredValidator Component="Descr" Text="Description is required" Popup="@true" Style="position:sticky" />
                             <RadzenLengthValidator Component="Descr" Max="50" Text="Description cannot be more than 50 characters" Popup="@true" Style="position: sticky" />
                         </div>
@@ -47,21 +47,21 @@
     [Inject] NotificationService notificationService { get; set; }
     [Inject] NavigationManager navigationManager { get; set; }
 
-    private UpdateStatusCodeVM entity { get; set; }
+    private DeleteStatusCodeVM entity { get; set; }
     [Parameter] public EventCallback<bool> OnClose { get; set; }
     [Parameter] public string Statuscode { get; set; }
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        entity = service.GetUpdateStatusCodeVM();
-        entity = service.FindStatusCode(Statuscode);
+        entity = service.GetDeleteStatusCodeVM();
+        entity = service.FindDeleteStatusCode(Statuscode);
     }
 
     protected void OnSubmit()
     {
-        entity = service.EditStatusCode(entity);
+        entity = service.DeleteStatusCode(entity);
 
-        notificationService.Notify(NotificationSeverity.Success, "Status Code " + entity.Status + " Edited Successfully.");
+        notificationService.Notify(NotificationSeverity.Success, "Status Code " + entity.Status + " Deleted Successfully.");
         //navigationManager.NavigateTo("/CommentTypesList");
 
         OnClose.InvokeAsync(true);

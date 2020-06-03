@@ -30,7 +30,7 @@
         </RadzenGridColumn>
         <RadzenGridColumn TItem="StatusCodeView" Title="">
             <Template Context="data">
-                <RadzenButton Text="Delete" Click="() => { showDelete = true; editCode = data.Descr; passTitle = deleteTitle; } "
+                <RadzenButton Text="Delete" Click="() => { showDelete = true; editCode = data.Status; passTitle = deleteTitle; } "
                               ButtonStyle="ButtonStyle.Secondary " Style="margin-bottom: 5px; width: 100px; text-align:center" />
             </Template>
         </RadzenGridColumn>
@@ -44,9 +44,9 @@
 <MdcLog.UI.Components.ModelsModal Title=@passTitle Visible="showEdit">
     <MdcLog.UI.Pages.StatusCodes.UpdateStatusCode Statuscode="@editCode" OnClose="CloseDialog" />
 </MdcLog.UI.Components.ModelsModal>
-@*<MdcLog.UI.Components.ModelsModal Title=@passTitle Visible="showDelete">
-    <DeleteCommentType Typecode="@editCode" OnClose="CloseDialog" />
-</MdcLog.UI.Components.ModelsModal>*@
+<MdcLog.UI.Components.ModelsModal Title=@passTitle Visible="showDelete">
+    <MdcLog.UI.Pages.StatusCodes.DeleteStatusCode Statuscode="@editCode" OnClose="CloseDialog" />
+</MdcLog.UI.Components.ModelsModal>
 
 
 @code {

@@ -20,9 +20,11 @@
             Style="overflow:auto;width:unset">
 
     <Columns>
-        <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.SeqNum)" Title="Comment #" Width="60px" />
+        <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.SeqNum)" Title="Comment Id" Width="60px" />
         <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.LogNumber)" Title="Log" Width="30px" />
-        <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.TypeDesc)" Title="Type" Width="50px" />
+        <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.TypeDesc)" Title="Type" Width="60px" />
+        <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.LinkToSeqNum)" Title="Link To Comment" Width="80px" />
+        <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.BasicNumber)" Title="Basic #" Width="50px" />
         <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.CreatedBy)" Title="Created By" Width="60px" />
         <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.CreateDate)" Title="Created" Width="60px">
             <Template Context="LogCommentView">
@@ -32,7 +34,7 @@
 
         <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.Comment)" Title="Comment" Width="400px">
             <Template Context="LogComment">
-                <textarea readonly rows="2" cols="105">@LogComment.Comment</textarea>
+                <textarea readonly rows="3" cols="80">@LogComment.Comment</textarea>
             </Template>
         </RadzenGridColumn>
     </Columns>
