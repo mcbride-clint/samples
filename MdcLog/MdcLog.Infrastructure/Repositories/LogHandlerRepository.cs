@@ -45,7 +45,7 @@ namespace MdcLog.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public LogHandlerVM EditLogHandler(LogHandlerVM entity)
+        public LogHandler EditLogHandler(LogHandler entity)
         {
             string mySQL = "UPDATE[dbo].[TM_MDC_LOG_HANDLERS] SET [USERID_SEQ_NUM] = " + entity.UserSeqNum +
               ", [HANDLERS_CODE] = '" + entity.Code + "'" +

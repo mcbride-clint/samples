@@ -18,10 +18,6 @@ namespace MdcLog.Application.LogHandlers
             _logger = logger;
             _LogHandlersRepo = LogHandlersRepo;
         }
-        //public List<LogHandler> FindLogHandlerList()
-        //{
-        //    return _LogHandlersRepo.FindLogHandlerList().ToList();
-        //}
 
         public List<LogHandlerVM> FindLogHandlerList()
         {
@@ -41,10 +37,10 @@ namespace MdcLog.Application.LogHandlers
             return newLogHandlerList;
         }
 
-        public LogHandler FindLogHandler(int Uid)
-        {
-            return _LogHandlersRepo.FindLogHandler(Uid);
-        }
+        //public LogHandler FindLogHandler(int Uid)
+        //{
+        //    return _LogHandlersRepo.FindLogHandler(Uid);
+        //}
 
         public CreateLoghandlerVM CreateNewLogHandlerVM()
         {
@@ -61,14 +57,34 @@ namespace MdcLog.Application.LogHandlers
             };
             _LogHandlersRepo.InsertLogHandler(insertLogHandler);
             return ThisLogHandler;
-        }       
+        }
 
-        //public CreateLogHandlerVM EditLogHandler(CreateLogHandlerVM ThisLogHandler)
-        //{
-        //    return _LogHandlersRepo.EditLogHandler(ThisLogHandler);
-        //}
+        public EditLogHandlerVM FindLogHandler(int Uid)
+        {
+            var foundLogHandler = _LogHandlersRepo.FindLogHandler(Uid);
 
-        
+            return new EditLogHandlerVM()
+            {
+                Uid = foundLogHandler.Uid,
+                UserSeqNum = foundLogHandler.UserSeqNum,
+                Code = foundLogHandler.Code,
+                Tmma = foundLogHandler.Tmma
+            };
+        }
+
+        public EditLogHandlerVM EditLogHandler(EditLogHandlerVM ThisLogHandler)
+        {
+            var editLogHandler = new LogHandler()
+            {
+                Uid = ThisLogHandler.Uid,
+                UserSeqNum = ThisLogHandler.UserSeqNum,
+                Code = ThisLogHandler.Code,
+                Tmma = ThisLogHandler.Tmma
+            };
+            _LogHandlersRepo.EditLogHandler(editLogHandler);
+            return ThisLogHandler;
+        }
+
 
         public DeleteLogHandlerVM FindDeleteLogHandler(int Uid)
         {

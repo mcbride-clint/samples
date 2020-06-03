@@ -10,7 +10,7 @@ namespace MdcLog.Application.LogHandlers
     {
         LogHandler InsertLogHandler(LogHandler entity);
         LogHandler SaveLogHandler(LogHandler entity);
-        LogHandler EditLogHandler(int Uid);
+        LogHandler EditLogHandler(LogHandler entity);
         LogHandler FindLogHandler(int Uid);
         IEnumerable<LogHandler> FindLogHandlerList();
         LogHandler DeleteLogHandler(LogHandler entity);

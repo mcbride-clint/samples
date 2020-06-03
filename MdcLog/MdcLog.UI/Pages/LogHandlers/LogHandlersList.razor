@@ -41,6 +41,10 @@
     <CreateLogHandler OnClose="CloseDialog" />
 </MdcLog.UI.Components.ModelsModal>
 
+<MdcLog.UI.Components.ModelsModal Title=@passTitle Visible="showEdit">
+    <EditLogHandler uid="@editCode" OnClose="CloseDialog" />
+</MdcLog.UI.Components.ModelsModal>
+
 <MdcLog.UI.Components.ModelsModal Title=@passTitle Visible="showDelete">
     <DeleteLogHandler uid="@editCode" OnClose="CloseDialog" />
 </MdcLog.UI.Components.ModelsModal>
