@@ -71,7 +71,16 @@ namespace MdcLog.Application.StatusCodes
                 Descr = foundStatus.Descr
             };
         }
-       
+        public DeleteStatusCodeVM FindDeleteStatusCode(string StatusCode)
+        {
+            var foundStatus = _statusCodesRepo.FindStatusCode(StatusCode);
+            return new DeleteStatusCodeVM()
+            {
+                Status = foundStatus.Status,
+                Descr = foundStatus.Descr
+            };
+        }
+
         public List<StatusCodeView> FindStatusCodeList()
         {
             var statusCodeList = _statusCodesRepo.FindStatusCodeList();
