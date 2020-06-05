@@ -1,0 +1,43 @@
+﻿@page "/Users/UserIdList"
+@using MdcLog.Application;
+@using MdcLog.Domain;
+@using MdcLog.Domain.Entities;
+@using MdcLog.Application.Users.Models;
+@using MdcLog.Application.Users;
+
+<h3>UserIdList</h3>
+
+
+
+<MdcLog.UI.Components.UserIdDropDown></MdcLog.UI.Components.UserIdDropDown>
+
+    <RadzenGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="8"
+                AllowSorting="true" Data="@_types" TItem="UserIdView"
+                Style="margin-bottom: 20px; width:600px;">
+        <Columns>
+            <RadzenGridColumn TItem="UserIdView" Property="UserIdSeq" Title="Status" />
+            <RadzenGridColumn TItem="UserIdView" Property="AdFullName" Title="Name" />
+            <RadzenGridColumn TItem="UserIdView" Property="Owner" Title="Owner" />
+
+        </Columns>
+    </RadzenGrid>
+
+    @code {
+        [Inject]
+        private UserIdService service { get; set; }
+
+        private List<UserIdView> _types { get; set; }
+
+        protected override void OnInitialized()
+        {
+
+
+            base.OnInitialized();
+
+            _types = service.FindUserIdList().ToList();
+
+        }
+
+
+
+    }
