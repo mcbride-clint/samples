@@ -1,0 +1,106 @@
+﻿@page "/LogHandlers/Delete"
+@page "/LogHandlers/Delete/{uid}"
+
+
+@using MdcLog.Application;
+@using MdcLog.Domain;
+@using MdcLog.Domain.Entities;
+@using MdcLog.Application.LogHandlers.Models;
+@using MdcLog.Application.LogHandlers;
+@inject DialogService dialogService
+
+<RadzenCard>
+    <RadzenTemplateForm TItem="DeleteLogHandlerVM" Data="@entity" Submit="@OnSubmit" InvalidSubmit="@OnInvalidSubmit">
+        <div class="row" style="margin-bottom: 48px">
+            <div class="col-md-12">
+                <Radzen.Blazor.RadzenFieldset Text="Log Handler" Style="border:outset">
+                    <div class="row">
+                        <div class="col-md-6 align-items-center d-flex">
+                            <RadzenLabel Text="USERID UniqueID" />
+                        </div>
+                        <div class="col-md-8">
+                            <RadzenNumeric style="width: 100%;" Name="UserSeqNum" @bind-Value="entity.Uid"/>
+                            <RadzenRequiredValidator Component="UserSeqNum" Text="UserIDSeqNum is required" Popup="@true" Style="position:relative" />
+                            @*<RadzenLengthValidator Component="UserSeqNum" Max="4" Text="UserIdSeqNum cannot be more than 4 characters" Popup="@true" Style="position: sticky" />*@
+                        </div>
+                    </div>
+                    <br /><div class="row">
+                        <div class="col-md-6 align-items-center d-flex">
+                            <RadzenLabel Text="USERID SEQNUM" />
+                        </div>
+                        <div class="col-md-8">
+                            <RadzenNumeric style="width: 100%;" Name="UserSeqNum" @bind-Value="entity.UserSeqNum" />
+                            <RadzenRequiredValidator Component="UserSeqNum" Text="UserIDSeqNum is required" Popup="@true" Style="position:relative" />
+                            @*<RadzenLengthValidator Component="UserSeqNum" Max="4" Text="UserIdSeqNum cannot be more than 4 characters" Popup="@true" Style="position: sticky" />*@
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6 align-items-center d-flex">
+                            <RadzenLabel Text="CODE" />
+                        </div>
+                        <div class="col-md-8">
+                            <RadzenTextBox style="width: 47%;" Name="LogHandlerCode" @bind-Value="entity.Code" />
+                            <RadzenRequiredValidator Component="LogHandlerCode" Text="Code is required" Popup="@true" Style="position:sticky" />
+                            <RadzenLengthValidator Component="LogHandlerCode" Max="1" Text="Code cannot be more than 1 character" Popup="@true" Style="position: sticky" />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6 align-items-center d-flex">
+                            <RadzenLabel Text="TMMA" />
+                        </div>
+                        <div class="col-md-8">
+                            <RadzenTextBox style="width: 47%;" Name="LogHandlerTmma" @bind-Value="entity.Tmma" />
+                            <RadzenRequiredValidator Component="LogHandlerTmma" Text="TMMA is required" Popup="@true" Style="position:sticky" />
+                            <RadzenLengthValidator Component="LogHandlerTmma" Max="4" Text="TMMA cannot be more than 4 characters" Popup="@true" Style="position: sticky" />
+                        </div>
+                    </div>
+                </Radzen.Blazor.RadzenFieldset>
+            </div>
+        </div>
+        <RadzenButton ButtonType="ButtonType.Submit" Text="Delete"></RadzenButton>
+        <RadzenButton Text="Cancel" Click="() => OnClose.InvokeAsync(false)" ButtonStyle="ButtonStyle.Secondary" Style="margin-bottom: 10px; width: 150px" />
+    </RadzenTemplateForm>
+</RadzenCard>
+
+
+@code {
+    [Inject] private LogHandlerService service { get; set; }
+    [Inject] NotificationService notificationService { get; set; }
+    [Inject] NavigationManager navigationManager { get; set; }
+
+
+    private DeleteLogHandlerVM entity { get; set; }
+    [Parameter] public EventCallback<bool> OnClose { get; set; }
+    [Parameter] public int uid { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        entity = service.FindDeleteLogHandler(uid);
+    }
+
+    protected void OnSubmit()
+    {
+        entity = service.DeleteLogHandler(entity);
+
+        notificationService.Notify(NotificationSeverity.Success, "Log Handler " + entity.Uid + " Deleted Successfully.");
+        
+        OnClose.InvokeAsync(true);
+    }
+
+    protected void OnInvalidSubmit()
+    {
+        notificationService.Notify(NotificationSeverity.Warning, "Please fix issues.");
+    }
+
+    async Task ShowNotification(NotificationMessage message)
+    {
+        notificationService.Notify(message);
+
+
+        await InvokeAsync(() => { StateHasChanged(); });
+    }
+}

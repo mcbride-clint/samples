@@ -20,6 +20,10 @@ using MdcLog.Infrastructure;
 using MdcLog.Application.Comments;
 using MdcLog.Application.StatusCodes;
 
+using MdcLog.Application.LogHandlers;
+using MdcLog.Application.LogHandlers.Models;
+using MdcLog.Application.Priorties;
+
 namespace MdcLog
 {
     public class Startup
@@ -36,7 +40,7 @@ namespace MdcLog
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            string connString = @"Server=DESKTOP-KH6A94U;Database=mdc;Trusted_Connection = True;";
+            string connString = @"Server=DESKTOP-UV36790\SQLDRA;Database=mdc;Trusted_Connection = True;";
             services.AddScoped<IDbConnection, SqlConnection>(c =>
             {
                 return new SqlConnection(connString);
@@ -49,6 +53,13 @@ namespace MdcLog
             
             services.AddScoped<ICommentTypeRepository, CommentTypeRepository>();            
             services.AddScoped<CommentTypeService>();
+
+            services.AddScoped<ILogHandlersRepository, LogHandlerRepository>();
+            services.AddScoped<LogHandlerService>();
+
+            services.AddScoped<IPriorityRepository, PriorityRepository>();
+            services.AddScoped<PriorityCodeService>();
+           
             services.AddScoped<ILogCommentRepository, LogCommentRepository>();
             services.AddScoped<LogCommentService>();
             services.AddScoped<Radzen.NotificationService>();
