@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MdcLog.Domain.Entities
+namespace MdcLog.Application.StatusCodes.Models
 {
-    public class StatusCode
+    public class StatusCodeView
     {
         public string Status { get; set; }
         public string Descr { get; set; }

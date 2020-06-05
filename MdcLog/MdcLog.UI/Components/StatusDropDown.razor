@@ -1,0 +1,37 @@
+﻿@using MdcLog.Domain.Entities
+
+@using MdcLog.Application.StatusCodes
+@using MdcLog.Application.StatusCodes.Models
+<RadzenDropDown style="display: block"
+                Name="Description"
+                @bind-Value="Status"
+                AllowClear="true"
+                FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                FilterOperator="StringFilterOperator.Contains"
+                AllowFiltering="true"
+                Data="@statusCodes"
+                Change="UpdateValue"
+                TextProperty="@nameof(StatusCodeView.Descr)"
+                ValueProperty="@nameof(StatusCodeView.Status)" />
+
+
+@code {
+    [Inject] StatusCodeService service { get; set; }
+    [Parameter] public string Status { get; set; }
+    [Parameter] public EventCallback<string> StatusCodeChanged { get; set; }
+
+    internal ICollection<StatusCodeView> statusCodes { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        statusCodes = service.FindStatusCodeList();
+    }
+    private void UpdateValue(object args)
+    {
+
+        StatusCodeChanged.InvokeAsync((string)args);
+    }
+}
+

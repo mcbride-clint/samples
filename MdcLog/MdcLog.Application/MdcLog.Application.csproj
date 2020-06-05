@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <Folder Include="Common\" />
+    <Folder Include="LogHandlers\Models\" />
+    <Folder Include="Priorties\Models\" />
     <Folder Include="StatusCodes\Models\" />
   </ItemGroup>
 
