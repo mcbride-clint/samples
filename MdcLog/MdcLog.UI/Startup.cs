@@ -19,6 +19,7 @@ using System.Data;
 using MdcLog.Infrastructure;
 using MdcLog.Application.Comments;
 using MdcLog.Application.StatusCodes;
+using MdcLog.Application.Users;
 
 using MdcLog.Application.LogHandlers;
 using MdcLog.Application.LogHandlers.Models;
@@ -66,6 +67,8 @@ namespace MdcLog
             services.AddScoped<Radzen.DialogService>();
             services.AddScoped<IStatusCodeRepository, StatusCodeRepository>();
             services.AddScoped<StatusCodeService>();
+            services.AddScoped<IUserIdRepository, UserIdRepository>();
+            services.AddScoped<UserIdService>();
             services.AddScoped<RadzenMenu>();
         }
 

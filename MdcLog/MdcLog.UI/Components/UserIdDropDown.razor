@@ -1,0 +1,37 @@
+﻿@using MdcLog.Domain.Entities
+
+@using MdcLog.Application.Users
+@using MdcLog.Application.Users.Models
+<RadzenDropDown style="display: block"
+                Name="Description"
+                @bind-Value="UserIdSeq"
+                AllowClear="true"
+                FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                FilterOperator="StringFilterOperator.Contains"
+                AllowFiltering="true"
+                Data="@userIds"
+                Change="UpdateValue"
+                TextProperty="@nameof(UserIdView.AdFullName)"
+                ValueProperty="@nameof(UserIdView.UserIdSeq)" />
+
+
+@code {
+    [Inject] UserIdService service { get; set; }
+    [Parameter] public string UserIdSeq { get; set; }
+    [Parameter] public EventCallback<string> UserIdChanged { get; set; }
+
+    internal ICollection<UserIdView> userIds { get; set; }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        userIds = service.FindUserIdList();
+    }
+    private void UpdateValue(object args)
+    {
+
+        UserIdChanged.InvokeAsync((string)args);
+    }
+}
+
