@@ -19,8 +19,8 @@
                         </div>
                         <div class="col-md-12">
                             <RadzenNumeric style="width: 100%;" Name="PriorityCode" @bind-Value="entity.Priority" />
-                            <RadzenRequiredValidator Component="PriorityCode" Text="Code is required" Popup="@true" Style="position:sticky" />
-                            <RadzenLengthValidator Component="PriorityCode" Max="1" Text="Code cannot be more than 1 character" Popup="@true" Style="position: sticky" />
+                            <RadzenRequiredValidator Component="PriorityCode" Text="Priority Code is required" Popup="@true" Style="position:sticky" />
+                            <RadzenLengthValidator Component="PriorityCode" Max="1" Text="Priority Code cannot be more than 1 character" Popup="@true" Style="position: sticky" />
                         </div>
                     </div>
                     <br />
@@ -29,9 +29,9 @@
                             <RadzenLabel Text="DESCR" />
                         </div>
                         <div class="col-md-12">
-                            <RadzenTextBox style="width: 47%;" Name="Descr" @bind-Value="entity.Descr" />
-                            <RadzenRequiredValidator Component="PriorityCode" Text="Code is required" Popup="@true" Style="position:sticky" />
-                            <RadzenLengthValidator Component="PriorityCode" Max="50" Text="Description cannot be more than 50 character" Popup="@true" Style="position: sticky" />
+                            <RadzenTextBox style="width: 100%;" Name="Descr" @bind-Value="entity.Descr" />
+                            <RadzenRequiredValidator Component="Descr" Text="Description is required" Popup="@true" Style="position:sticky" />
+                            <RadzenLengthValidator Component="Descr" Max="50" Text="Description cannot be more than 50 character" Popup="@true" Style="position: sticky" />
                         </div>
                     </div>
                     <br />

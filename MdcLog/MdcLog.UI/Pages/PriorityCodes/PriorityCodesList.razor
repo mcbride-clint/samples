@@ -16,7 +16,7 @@
 
             <Columns>
                 <RadzenGridColumn TItem="PriorityCodeVM" Property="Priority" Title="Priority" />
-                <RadzenGridColumn TItem="PriorityCodeVM" Property="Descr" Title="Description" />
+                <RadzenGridColumn TItem="PriorityCodeVM" Property="Descr" Title="Description" Width="300px" />
 
                 <RadzenGridColumn TItem="PriorityCodeVM" Title="">
                     <Template Context="data">
@@ -45,61 +45,51 @@
     <DeletePriorityCode priority="@editCode" OnClose="CloseDialog" />
 </MdcLog.UI.Components.ModelsModal>
 
+@code {
+    [Inject]
+    private PriorityCodeService service { get; set; }
+    private List<PriorityCodeVM> _PriorityCodes { get; set; }
+
+    private bool showCreate { get; set; }
+    private bool showEdit { get; set; }
+    private bool showDelete { get; set; }
+    private string switchValue { get; set; }
+    private int editCode { get; set; }
+
+    private string createTitle { get; set; }
+    private string editTitle { get; set; }
+    private string passTitle { get; set; }
+    private string deleteTitle { get; set; }
 
 
-            
+    protected override void OnInitialized()
+    {
+      base.OnInitialized();
 
+        _PriorityCodes = service.FindPriorityCodeList().ToList();
+        createTitle = "Create Priority Code";
+        editTitle = "Edit Priority Code";
+        deleteTitle = "Delete Priority Code";
 
-            @code {
-                [Inject]
-                private PriorityCodeService service { get; set; }
+    }
 
-                private List<PriorityCodeVM> _PriorityCodes { get; set; }
-
-                private bool showCreate { get; set; }
-                private bool showEdit { get; set; }
-                private bool showDelete { get; set; }
-                private string switchValue { get; set; }
-                private int editCode { get; set; }
-
-                private string createTitle { get; set; }
-                private string editTitle { get; set; }
-                private string passTitle { get; set; }
-                private string deleteTitle { get; set; }
-
-
-                protected override void OnInitialized()
-                {
-                    base.OnInitialized();
-
-                    _PriorityCodes = service.FindPriorityCodeList().ToList();
-                    createTitle = "Create Priority Code";
-                    editTitle = "Edit Priority Code";
-                    deleteTitle = "Delete Priority Code";
-
-                }
-
-                private void CloseDialog(bool wasSaved)
-                {
-
-                    if (showCreate == true)
-                    {
-                        showCreate = false;
-                    }
-                    if (showEdit == true)
-                    {
-                        showEdit = false;
-                    }
-                    if (showDelete == true)
-                    {
-                        showDelete = false;
-                    }
-
-                    if (wasSaved)
-                    {
-                        _PriorityCodes = service.FindPriorityCodeList().ToList();
-                    }
-                }
-
-
-            }
+    private void CloseDialog(bool wasSaved)
+     {
+        if (showCreate == true)
+        {
+         showCreate = false;
+        }
+        if (showEdit == true)
+        {
+         showEdit = false;
+        }
+        if (showDelete == true)
+        {
+         showDelete = false;
+        }
+        if (wasSaved)
+        {
+         _PriorityCodes = service.FindPriorityCodeList().ToList();
+        }
+    }
+    }

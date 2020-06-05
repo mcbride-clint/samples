@@ -86,10 +86,8 @@
     {
         entity = service.DeleteLogHandler(entity);
 
-
         notificationService.Notify(NotificationSeverity.Success, "Log Handler " + entity.Uid + " Deleted Successfully.");
-        //navigationManager.NavigateTo("/LogHandlersList");
-
+        
         OnClose.InvokeAsync(true);
     }
 

@@ -17,9 +17,9 @@
                             <RadzenLabel Text="PRIORITY" />
                         </div>
                         <div class="col-md-8">
-                            <RadzenNumeric style="width: 100%;" Name="UserSeqNum" @bind-Value="entity.Priority" />
-                            <RadzenRequiredValidator Component="UserSeqNum" Text="UserIDSeqNum is required" Popup="@true" Style="position:relative" />
-                            <RadzenLengthValidator Component="UserSeqNum" Max="4" Text="UserIdSeqNum cannot be more than 4 characters" Popup="@true" Style="position: sticky" />
+                            <RadzenNumeric style="width: 100%;" Name="Priority" @bind-Value="entity.Priority" />
+                            <RadzenRequiredValidator Component="Priority" Text="Priority Code is required" Popup="@true" Style="position:relative" />
+                            <RadzenLengthValidator Component="Priority" Max="1" Text="Priority Code cannot be more than 1 characters" Popup="@true" Style="position: sticky" />
                         </div>
                     </div>
                     <br />
@@ -28,9 +28,9 @@
                             <RadzenLabel Text="DESCR" />
                         </div>
                         <div class="col-md-8">
-                            <RadzenTextBox style="width: 47%;" Name="PriorityCode" @bind-Value="entity.Descr" />
-                            <RadzenRequiredValidator Component="PriorityCode" Text="Code is required" Popup="@true" Style="position:sticky" />
-                            <RadzenLengthValidator Component="PriorityCode" Max="1" Text="Code cannot be more than 1 character" Popup="@true" Style="position: sticky" />
+                            <RadzenTextBox style="width: 100%;" Name="Descr" @bind-Value="entity.Descr" />
+                            <RadzenRequiredValidator Component="Descr" Text="Description is required" Popup="@true" Style="position:sticky" />
+                            <RadzenLengthValidator Component="Descr" Max="50" Text="Decsription cannot be more than 50 character" Popup="@true" Style="position: sticky" />
                         </div>
                     </div>
                     <br />                    

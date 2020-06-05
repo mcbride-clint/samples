@@ -38,7 +38,7 @@ namespace MdcLog.Infrastructure.Repositories
 
         public PriorityCode EditPriorityCode(PriorityCode entity)
         {
-            string mySQL = "UPDATE[dbo].[TM_MDC_LOG_PRIORITY] SET[PRIORITY] = '" + entity.Priority + "'" +
+            string mySQL = "UPDATE[dbo].[TM_MDC_LOG_PRIORITY] SET [PRIORITY] = '" + entity.Priority + "'" +
               ",[DESCR] = '" + entity.Descr + "'" +
               " WHERE[PRIORITY] = '" + entity.Priority + "'";
             int rowsAffected = _db.Execute(mySQL);
@@ -59,7 +59,7 @@ namespace MdcLog.Infrastructure.Repositories
 
         public PriorityCode DeletePriorityCode(PriorityCode entity)
         {
-            string mySQL = "DELETE [dbo].[TM_MDC_LOG_PRIORITY]  WHERE[PRIORITY] = " + entity.Priority;
+            string mySQL = "DELETE From [dbo].[TM_MDC_LOG_PRIORITY] Where PRIORITY = '" + entity.Priority + "'";
             int rowsAffected = _db.Execute(mySQL, entity);
             return entity;
         }       

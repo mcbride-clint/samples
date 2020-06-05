@@ -16,8 +16,8 @@
                         </div>
                         <div class="col-md-12">
                             <RadzenNumeric style="width: 100%;" Name="Priority" @bind-Value="entity.Priority" />
-                            <RadzenRequiredValidator Component="PriorityCode" Text="Code is required" Popup="@true" Style="position:sticky" />
-                            <RadzenLengthValidator Component="PriorityCode" Max="1" Text="Priority cannot be more than 1 characters" Popup="@true" Style="position: sticky" />
+                            <RadzenRequiredValidator Component="Priority" Text="Priority Code is required" Popup="@true" Style="position:sticky" />
+                            <RadzenLengthValidator Component="Priority" Max="1" Text="Priority cannot be more than 1 characters" Popup="@true" Style="position: sticky" />
                         </div>
                     </div>
                     <br />
@@ -27,8 +27,8 @@
                         </div>
                         <div class="col-md-12">
                             <RadzenTextBox style="width: 100%;" Name="Descr" @bind-Value="entity.Descr" />
-                            <RadzenRequiredValidator Component="PriorityCode" Text="Code is required" Popup="@true" Style="position:sticky" />
-                            <RadzenLengthValidator Component="PriorityCode" Max="50" Text="Description cannot be more than 50 character" Popup="@true" Style="position: sticky" />
+                            <RadzenRequiredValidator Component="Descr" Text="Description is required" Popup="@true" Style="position:sticky" />
+                            <RadzenLengthValidator Component="Descr" Max="50" Text="Description cannot be more than 50 character" Popup="@true" Style="position: sticky" />
                         </div>
                     </div>
                     <br />
@@ -62,9 +62,7 @@
     {
         entity = service.DeletePriorityCode(entity);
 
-
-        notificationService.Notify(NotificationSeverity.Success, "Priority " + entity.Priority + " Deleted Successfully.");
-        //navigationManager.NavigateTo("/PriorityCodesList");
+        notificationService.Notify(NotificationSeverity.Success, "Priority Code " + entity.Priority + " Deleted Successfully.");        
 
         OnClose.InvokeAsync(true);
     }
