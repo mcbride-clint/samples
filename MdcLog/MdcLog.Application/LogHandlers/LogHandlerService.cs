@@ -5,6 +5,8 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using MdcLog.Application.Users ;
+using MdcLog.Application.Users.Models;
 using System.Text;
 
 namespace MdcLog.Application.LogHandlers
@@ -12,11 +14,13 @@ namespace MdcLog.Application.LogHandlers
     public class LogHandlerService
     {
         ILogHandlersRepository _LogHandlersRepo;
+        IUserIdRepository UsersRepo;
         ILogger<LogHandlerService> _logger;
         public LogHandlerService(ILogger<LogHandlerService> logger, ILogHandlersRepository LogHandlersRepo)
         {
             _logger = logger;
             _LogHandlersRepo = LogHandlersRepo;
+            IUserIdRepository _UsersRepo = UsersRepo;
         }
 
         public List<LogHandlerVM> FindLogHandlerList()
@@ -29,7 +33,9 @@ namespace MdcLog.Application.LogHandlers
                     Uid = item.Uid,
                     UserSeqNum = item.UserSeqNum,
                     Code = item.Code,
-                    Tmma = item.Tmma
+                    Tmma = item.Tmma,
+                    AdFullName = item.AdFullName
+                    
                 })
                 .ToList();
 
@@ -49,8 +55,13 @@ namespace MdcLog.Application.LogHandlers
 
         public CreateLoghandlerVM InsertLogHandler(CreateLoghandlerVM ThisLogHandler)
         {
+            
+            
+           
             var insertLogHandler = new LogHandler()
             {
+                
+                
                 UserSeqNum = ThisLogHandler.UserSeqNum,
                 Code = ThisLogHandler.Code,
                 Tmma = ThisLogHandler.Tmma

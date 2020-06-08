@@ -6,19 +6,29 @@ using System.Text;
 using System.Xml;
 using Dapper;
 using MdcLog.Application.LogHandlers;
+using MdcLog.Application.Users;
 using MdcLog.Application.LogHandlers.Models;
 using MdcLog.Domain.Entities;
+using MdcLog.Application.Users;
 using Microsoft.Extensions.Logging;
-
+using MdcLog.Infrastructure.Repositories;
 namespace MdcLog.Infrastructure.Repositories
 {
     public class LogHandlerRepository : ILogHandlersRepository
     {
+      
         private string listSQL = " Select UID as UID," +
-                                 "USERID_SEQ_NUM as USERSEQNUM, " +
+                                 " USERID_SEQ_NUM as USERSEQNUM, " +
                                  " HANDLERS_CODE as CODE, " +
                                  " TMMA_CODE as TMMA " +
                                  " from TM_MDC_LOG_HANDLERS ";
+        private string fullListSQL = " Select UID as UID," +
+                                 " t.USERID_SEQ_NUM as USERSEQNUM, " +
+                                 " HANDLERS_CODE as CODE, " +
+                                 " TMMA_CODE as TMMA, " +
+                                 " AD_FULL_NAME as AdFullName " +
+                                 " from TM_MDC_LOG_HANDLERS t";
+
 
         readonly IDbConnection _db;
         public LogHandlerRepository(IDbConnection db)
@@ -28,6 +38,7 @@ namespace MdcLog.Infrastructure.Repositories
 
         public LogHandler InsertLogHandler(LogHandler entity)
         {
+            
             string mySQL = " INSERT INTO[dbo].[TM_MDC_LOG_HANDLERS] " +
                                         " ([USERID_SEQ_NUM], " +
                                         " [HANDLERS_CODE], " +
@@ -58,6 +69,7 @@ namespace MdcLog.Infrastructure.Repositories
 
         public LogHandler FindLogHandler(int uid)
         {
+            
             string findSQL = listSQL + " where UID = " + uid;
             LogHandler loghandler = _db.QuerySingle<LogHandler>(findSQL);
             return loghandler;
@@ -70,9 +82,10 @@ namespace MdcLog.Infrastructure.Repositories
             return loghandler;
         }
 
-        public IEnumerable<LogHandler> FindLogHandlerList()
+        public IEnumerable<LogHandlerVM> FindLogHandlerList()
         {
-            return _db.Query<LogHandler>(listSQL).ToList();
+            string findSQL = fullListSQL + ",USERID u WHERE t.USERID_SEQ_NUM = u.USERID_SEQ_NUM ";
+            return _db.Query<LogHandlerVM>(findSQL).ToList();
         }
 
         public LogHandler DeleteLogHandler(LogHandler entity)

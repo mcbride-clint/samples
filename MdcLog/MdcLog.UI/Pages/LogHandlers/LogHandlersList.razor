@@ -13,11 +13,12 @@
 
 <RadzenGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="8" AllowSorting="true"
             Data="@_loghandlers" TItem="LogHandlerVM"
-            Style="margin-bottom: 20px; width:800px;">
+            Style="margin-bottom: 20px; width:70%;">
 
     <Columns>
         <RadzenGridColumn TItem="LogHandlerVM" Property="Uid" Title="Unique ID" Visible="true" />
         <RadzenGridColumn TItem="LogHandlerVM" Property="UserSeqNum" Title="UserSeqNum" />
+        <RadzenGridColumn TItem="LogHandlerVM" Property="AdFullName" Title="FullName" />
         <RadzenGridColumn TItem="LogHandlerVM" Property="Code" Title="Code" />
         <RadzenGridColumn TItem="LogHandlerVM" Property="Tmma" Title="TMMA" />
         <RadzenGridColumn TItem="LogHandlerVM" Title="">

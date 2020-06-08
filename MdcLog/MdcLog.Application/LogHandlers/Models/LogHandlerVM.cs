@@ -10,5 +10,6 @@ namespace MdcLog.Application.LogHandlers.Models
         public int UserSeqNum { get; set; }
         public string Code { get; set; }
         public string Tmma { get; set; }
+        public string AdFullName { get; set; }
     }
 }

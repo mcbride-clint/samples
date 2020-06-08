@@ -4,21 +4,22 @@
 @using MdcLog.Application.Users.Models
 <RadzenDropDown style="display: block"
                 Name="Description"
-                @bind-Value="UserIdSeq"
-                AllowClear="true"
+                @bind-Value="UserSeqNum"
+                AllowClear="true" TValue="int"
                 FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
                 FilterOperator="StringFilterOperator.Contains"
                 AllowFiltering="true"
                 Data="@userIds"
                 Change="UpdateValue"
                 TextProperty="@nameof(UserIdView.AdFullName)"
-                ValueProperty="@nameof(UserIdView.UserIdSeq)" />
+                ValueProperty="@nameof(UserIdView.UserSeqNum)" 
+                />
 
 
 @code {
     [Inject] UserIdService service { get; set; }
-    [Parameter] public string UserIdSeq { get; set; }
-    [Parameter] public EventCallback<string> UserIdChanged { get; set; }
+    [Parameter] public int UserSeqNum { get; set; }
+    [Parameter] public EventCallback<int> UserSeqNumChanged { get; set; }
 
     internal ICollection<UserIdView> userIds { get; set; }
 
@@ -30,8 +31,8 @@
     }
     private void UpdateValue(object args)
     {
-
-        UserIdChanged.InvokeAsync((string)args);
+        
+        UserSeqNumChanged.InvokeAsync((int)args);
     }
 }
 

@@ -35,15 +35,22 @@ namespace MdcLog.Application.Users
             var linqViewList = userIdList
                 .Select(item => new UserIdView
                 {
-                    UserIdSeq = item.UserIdSeq,
+                    UserSeqNum =  item.UserSeqNum,
                     Owner = item.Owner,
-                    AdFullName = item.AdFullName
+                    AdFullName = item.AdFullName,
+                    UserIdCode = item.UserIdCode
+                    
                 })
                 .ToList();
 
            
 
             return linqViewList;
+        }
+        public UserId FindUserId(int userSeqNum)
+        {
+            var userIdObj = _usersRepo.FindUserId(userSeqNum);
+            return userIdObj;
         }
     }
 }

@@ -3,13 +3,14 @@
 @using MdcLog.Application;
 @using MdcLog.Domain;
 @using MdcLog.Domain.Entities;
+@using System.Text
 @using MdcLog.Application.Comments.Models;
 @using MdcLog.Application.Comments;
 @using MdcLog.UI.Components
 @inject DialogService dialogService
 <h3>Comments List</h3>
 
-<MdcLog.UI.Components.CommentTypeDropDown></MdcLog.UI.Components.CommentTypeDropDown>
+
 
 <RadzenButton Text="Create" Click="() => { showCreate = true; passTitle = createTitle; } "
               ButtonStyle="ButtonStyle.Secondary" Style="margin-bottom: 10px; width: 150px" />
@@ -32,9 +33,9 @@
             </Template>
         </RadzenGridColumn>
 
-        <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.Comment)" Title="Comment" Width="400px">
+        <RadzenGridColumn TItem="LogCommentView" Property="@nameof(LogCommentView.Comment)" Title="Comment" Width="200px">
             <Template Context="LogComment">
-                <textarea readonly rows="3" cols="80">@LogComment.Comment</textarea>
+                <textarea readonly rows="3" cols="50" class="w-auto">@LogComment.Comment</textarea>
             </Template>
         </RadzenGridColumn>
     </Columns>
@@ -69,7 +70,10 @@
 
     {
         base.OnInitialized();
-
+        if ( Log != "100")
+        {
+            Log = "100";
+        }
         _types = service.FindCommentList(Log).ToList();
         createTitle = "Create Comment ";
 
