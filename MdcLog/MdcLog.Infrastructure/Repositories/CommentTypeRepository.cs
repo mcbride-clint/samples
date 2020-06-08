@@ -31,6 +31,11 @@ namespace MdcLog.Infrastructure.Repositories
             string mySQL = "INSERT INTO [TM_MDC_COMMENT_TYPES] ([TYPE],[TYPE_DESC]) VALUES " +
         "('" + entity.CommentTypeCode + "','" + entity.TypeDesc.ToString() + "')";
             int rowsAffected = _db.Execute(mySQL);
+            if (rowsAffected == 0)
+            {
+                throw new Exception($"Record Does Not Exist: {entity.CommentTypeCode}");
+            }
+            
             return entity;
         }
 

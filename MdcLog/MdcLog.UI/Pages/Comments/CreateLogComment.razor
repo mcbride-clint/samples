@@ -11,7 +11,7 @@
     <RadzenTemplateForm TItem="CreateLogCommentVM" Data="@entity" Submit="@OnSubmit" InvalidSubmit="@OnInvalidSubmit">
         <div class="row" style="margin-bottom: 48px">
             <div class="col-md-12">
-                <Radzen.Blazor.RadzenFieldset Text="" Style="border:outset">
+                <Radzen.Blazor.RadzenFieldset Text="Log Comment" Style="border:outset">
 
                     <div class="row">
                         <div class="col-sm-3 align-items-center d-flex">
@@ -78,7 +78,7 @@
                 </Radzen.Blazor.RadzenFieldset>
             </div>
         </div>
-        <RadzenButton ButtonType="ButtonType.Submit" Text="Save"></RadzenButton>
+        <RadzenButton ButtonType="ButtonType.Submit" Text="Create Comment"></RadzenButton>
         <RadzenButton Text="Cancel" Click="() => OnClose.InvokeAsync(false)" ButtonStyle="ButtonStyle.Secondary" Style="margin-bottom: 10px; width: 150px" />
     </RadzenTemplateForm>
 @*</RadzenCard>*@

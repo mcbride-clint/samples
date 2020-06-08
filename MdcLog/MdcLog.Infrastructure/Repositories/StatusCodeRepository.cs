@@ -57,6 +57,10 @@ namespace MdcLog.Infrastructure
             string mySQL = "INSERT INTO [TM_MDC_STATUS_CODES] ([STATUS],[DESCR]) VALUES " +
     "('" + entity.Status + "','" + entity.Descr.ToString() + "')";
             int rowsAffected = _db.Execute(mySQL);
+            if (rowsAffected == 0)
+            {
+                throw new Exception($"Record Not Inserted: {entity.Status}");
+            }
             return entity;
         }
 
