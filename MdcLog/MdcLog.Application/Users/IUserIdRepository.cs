@@ -8,7 +8,7 @@ namespace MdcLog.Application.Users
 {
    public interface IUserIdRepository
     {
-        UserId FindUserId(string UserIdSeqNum);
+        UserId FindUserId(int UserSeqNum);
         ICollection<UserId> FindUserIdList();
     }
 }

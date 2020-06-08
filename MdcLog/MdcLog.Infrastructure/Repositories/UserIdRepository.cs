@@ -12,8 +12,8 @@ namespace MdcLog.Infrastructure.Repositories
 {
     public class UserIdRepository :IUserIdRepository
     {
-        private string listSQL = "Select USERID_SEQ_NUM as UserIdSeq,OWNER,AD_FULL_NAME as AdFullName " +
-         " from USERID";
+        private string listSQL = "Select USERID_SEQ_NUM as UserSeqNum,OWNER,AD_FULL_NAME as AdFullName " +
+         " ,USERID as UserIdCode from USERID";
 
         readonly System.Data.IDbConnection _db;
 
@@ -25,12 +25,12 @@ namespace MdcLog.Infrastructure.Repositories
         }
         public ICollection<UserId> FindUserIdList()
         {
-            string runSQL = listSQL + " Order by Status";
+            string runSQL = listSQL + " Order by AD_FULL_NAME";
             return _db.Query<UserId>(listSQL).ToList();
         }
-        public UserId FindUserId(string UserIdSeqNum)
+        public UserId FindUserId(int UserSeqNum)
         {
-            string findSQL = listSQL + " Where Status = '" + UserIdSeqNum + "'";
+            string findSQL = listSQL + " Where USER_SEQ_NUM = '" + UserSeqNum + "'";
             UserId userIduser = _db.QuerySingle<UserId>(findSQL);
             return userIduser;
         }
