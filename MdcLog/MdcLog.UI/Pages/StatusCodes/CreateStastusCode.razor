@@ -8,7 +8,7 @@
     <RadzenTemplateForm TItem="CreateStatusCodeVM" Data="@entity" Submit="@OnSubmit" InvalidSubmit="@OnInvalidSubmit">
         <div class="row" style="margin-bottom: 48px">
             <div class="col-md-12">
-                <Radzen.Blazor.RadzenFieldset Text="" Style="border:outset">
+                <Radzen.Blazor.RadzenFieldset Text="Status Code" Style="border:outset">
                     <div class="row">
                         <div class="col-sm-3 align-items-center d-flex">
                             <RadzenLabel Text="Type" />
@@ -34,7 +34,7 @@
                 </Radzen.Blazor.RadzenFieldset>
             </div>
         </div>
-        <RadzenButton ButtonType="ButtonType.Submit" Text="Save"></RadzenButton>
+        <RadzenButton ButtonType="ButtonType.Submit" Text="Create Status Code"></RadzenButton>
         <RadzenButton Text="Cancel" Click="() => OnClose.InvokeAsync(false)" ButtonStyle="ButtonStyle.Secondary" Style="margin-bottom: 10px; width: 150px" />
     </RadzenTemplateForm>
 </RadzenCard>
