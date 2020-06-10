@@ -28,9 +28,9 @@ namespace MdcLog.Application.StatusCodes
         {
             return new CreateStatusCodeVM();
         }
-        public UpdateStatusCodeVM GetUpdateStatusCodeVM()
+        public EditStatusCodeVM GetUpdateStatusCodeVM()
         {
-            return new UpdateStatusCodeVM();
+            return new EditStatusCodeVM();
         }
         public DeleteStatusCodeVM GetDeleteStatusCodeVM()
         {
@@ -51,7 +51,7 @@ namespace MdcLog.Application.StatusCodes
             return ThisDeleteStatus;
         }
 
-        public UpdateStatusCodeVM EditStatusCode(UpdateStatusCodeVM ThisStatus)
+        public EditStatusCodeVM EditStatusCode(EditStatusCodeVM ThisStatus)
         {
             var updateStatus = new StatusCode()
             {
@@ -62,10 +62,10 @@ namespace MdcLog.Application.StatusCodes
             return ThisStatus;
         }
 
-        public UpdateStatusCodeVM FindStatusCode(string StatusCode)
+        public EditStatusCodeVM FindStatusCode(string StatusCode)
         {
             var foundStatus = _statusCodesRepo.FindStatusCode( StatusCode);
-            return new UpdateStatusCodeVM()
+            return new EditStatusCodeVM()
             {
                 Status = foundStatus.Status,
                 Descr = foundStatus.Descr

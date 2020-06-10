@@ -7,7 +7,7 @@
 
 
 <RadzenCard>
-    <RadzenTemplateForm TItem="UpdateStatusCodeVM" Data="@entity" Submit="@OnSubmit" InvalidSubmit="@OnInvalidSubmit">
+    <RadzenTemplateForm TItem="EditStatusCodeVM" Data="@entity" Submit="@OnSubmit" InvalidSubmit="@OnInvalidSubmit">
         <div class="row" style="margin-bottom: 48px">
             <div class="col-md-12">
                 <Radzen.Blazor.RadzenFieldset Text="Status Code" Style="border:outset">
@@ -47,7 +47,7 @@
     [Inject] NotificationService notificationService { get; set; }
     [Inject] NavigationManager navigationManager { get; set; }
 
-    private UpdateStatusCodeVM entity { get; set; }
+    private EditStatusCodeVM entity { get; set; }
     [Parameter] public EventCallback<bool> OnClose { get; set; }
     [Parameter] public string Statuscode { get; set; }
     protected override void OnInitialized()

@@ -7,7 +7,7 @@
 
 
 <RadzenCard>
-    <RadzenTemplateForm TItem="UpdateCommentTypeVM" Data="@entity" Submit="@OnSubmit" InvalidSubmit="@OnInvalidSubmit">
+    <RadzenTemplateForm TItem="EditCommentTypeVM" Data="@entity" Submit="@OnSubmit" InvalidSubmit="@OnInvalidSubmit">
         <div class="row" style="margin-bottom: 48px">
             <div class="col-md-12">
                 <Radzen.Blazor.RadzenFieldset Text="Comment Type" Style="border:outset">
@@ -47,7 +47,7 @@
     [Inject] NotificationService notificationService { get; set; }
     [Inject] NavigationManager navigationManager { get; set; }
 
-    private UpdateCommentTypeVM entity { get; set; }
+    private EditCommentTypeVM entity { get; set; }
     [Parameter] public EventCallback<bool> OnClose { get; set; }
     [Parameter] public string Typecode { get; set; }
     protected override void OnInitialized()

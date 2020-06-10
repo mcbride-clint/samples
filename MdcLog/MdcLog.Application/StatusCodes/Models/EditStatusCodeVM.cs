@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace MdcLog.Application.StatusCodes.Models
 {
-    public class UpdateStatusCodeVM
+    public class EditStatusCodeVM
     {
 
         [ReadOnly(isReadOnly: true)]

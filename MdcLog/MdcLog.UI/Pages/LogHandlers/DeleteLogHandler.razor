@@ -19,7 +19,7 @@
                             <RadzenLabel Text="USERID UniqueID" />
                         </div>
                         <div class="col-md-8">
-                            <RadzenNumeric style="width: 100%;" Name="UserSeqNum" @bind-Value="entity.Uid"/>
+                            <RadzenNumeric style="width: 100%;" ReadOnly="true" Name="UserSeqNum" @bind-Value="entity.Uid"/>
                             <RadzenRequiredValidator Component="UserSeqNum" Text="UserIDSeqNum is required" Popup="@true" Style="position:relative" />
                             @*<RadzenLengthValidator Component="UserSeqNum" Max="4" Text="UserIdSeqNum cannot be more than 4 characters" Popup="@true" Style="position: sticky" />*@
                         </div>
@@ -29,7 +29,7 @@
                             <RadzenLabel Text="USERID SEQNUM" />
                         </div>
                         <div class="col-md-8">
-                            <RadzenNumeric style="width: 100%;" Name="UserSeqNum" @bind-Value="entity.UserSeqNum" />
+                            <RadzenNumeric style="width: 100%;" ReadOnly="true" Name="UserSeqNum" @bind-Value="entity.UserSeqNum" />
                             <RadzenRequiredValidator Component="UserSeqNum" Text="UserIDSeqNum is required" Popup="@true" Style="position:relative" />
                             @*<RadzenLengthValidator Component="UserSeqNum" Max="4" Text="UserIdSeqNum cannot be more than 4 characters" Popup="@true" Style="position: sticky" />*@
                         </div>
@@ -40,7 +40,7 @@
                             <RadzenLabel Text="CODE" />
                         </div>
                         <div class="col-md-8">
-                            <RadzenTextBox style="width: 47%;" Name="LogHandlerCode" @bind-Value="entity.Code" />
+                            <RadzenTextBox style="width: 47%;" ReadOnly="true" Name="LogHandlerCode" @bind-Value="entity.Code" />
                             <RadzenRequiredValidator Component="LogHandlerCode" Text="Code is required" Popup="@true" Style="position:sticky" />
                             <RadzenLengthValidator Component="LogHandlerCode" Max="1" Text="Code cannot be more than 1 character" Popup="@true" Style="position: sticky" />
                         </div>
@@ -51,7 +51,7 @@
                             <RadzenLabel Text="TMMA" />
                         </div>
                         <div class="col-md-8">
-                            <RadzenTextBox style="width: 47%;" Name="LogHandlerTmma" @bind-Value="entity.Tmma" />
+                            <RadzenTextBox style="width: 47%;" ReadOnly="true" Name="LogHandlerTmma" @bind-Value="entity.Tmma" />
                             <RadzenRequiredValidator Component="LogHandlerTmma" Text="TMMA is required" Popup="@true" Style="position:sticky" />
                             <RadzenLengthValidator Component="LogHandlerTmma" Max="4" Text="TMMA cannot be more than 4 characters" Popup="@true" Style="position: sticky" />
                         </div>

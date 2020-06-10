@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MdcLog.Application.CommentTypes.Models
 {
-    public class UpdateCommentTypeVM
+    public class EditCommentTypeVM
     {
         [ReadOnly(isReadOnly: true)]
         public string CommentTypeCode { get; set; }
