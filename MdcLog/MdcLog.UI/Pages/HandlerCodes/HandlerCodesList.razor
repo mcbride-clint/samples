@@ -1,0 +1,105 @@
+﻿@page "/HandlerCodes/HandlerCodesList"
+@using MdcLog.Application;
+@using MdcLog.Domain;
+@using MdcLog.Domain.Entities;
+@using MdcLog.Application.HandlerCodes.Models;
+@using MdcLog.Application.HandlerCodes;
+@inject DialogService dialogService
+
+<h3>Handler Codes</h3>
+<RadzenButton Text="Create" Click="() => { showCreate = true; passTitle = createTitle; } "
+              ButtonStyle="ButtonStyle.Secondary" Style="margin-bottom: 10px; width: 150px" />
+
+<RadzenGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="8"
+            AllowSorting="true" Data="@_types" TItem="HandlerCodeView"
+            Style="margin-bottom: 20px; width:600px;">
+
+
+    <Columns>
+        <RadzenGridColumn TItem="HandlerCodeView" Property="Code" Title="Code" />
+        <RadzenGridColumn TItem="HandlerCodeView" Property="Descr" Title="Description" />
+        <RadzenGridColumn TItem="HandlerCodeView" Title="">
+            <Template Context="data">
+
+                <RadzenButton Text="Edit" Click="() => { showEdit = true; editCode = data.Code; passTitle = editTitle; } "
+                              ButtonStyle="ButtonStyle.Secondary " Style="margin-bottom: 5px; width: 100px; text-align:center" />
+                @*<RadzenButton Icon="account-circle" Click="() => { showEdit = true; editCode = data.CommentTypeCode; passTitle = editTitle; } "
+                    ButtonStyle="ButtonStyle.Secondary " Style="margin-bottom: 5px; width: 100px; text-align:center" />*@
+            </Template>
+
+        </RadzenGridColumn>
+        <RadzenGridColumn TItem="HandlerCodeView" Title="">
+            <Template Context="data">
+                <RadzenButton Text="Delete" Click="() => { showDelete = true; editCode = data.Code; passTitle = deleteTitle; } "
+                              ButtonStyle="ButtonStyle.Secondary " Style="margin-bottom: 5px; width: 100px; text-align:center" />
+            </Template>
+        </RadzenGridColumn>
+    </Columns>
+</RadzenGrid>
+
+<MdcLog.UI.Components.ModelsModal Title=@passTitle Visible="showCreate">
+    <MdcLog.UI.Pages.HandlerCodes.CreateHandlerCode OnClose="CloseDialog" />
+</MdcLog.UI.Components.ModelsModal>
+
+<MdcLog.UI.Components.ModelsModal Title=@passTitle Visible="showEdit">
+    <MdcLog.UI.Pages.HandlerCodes.EditHandlerCode Code="@editCode" OnClose="CloseDialog" />
+</MdcLog.UI.Components.ModelsModal>
+<MdcLog.UI.Components.ModelsModal Title=@passTitle Visible="showDelete">
+    <MdcLog.UI.Pages.HandlerCodes.DeleteHandlerCode Code="@editCode" OnClose="CloseDialog" />
+</MdcLog.UI.Components.ModelsModal>
+
+
+@code {
+    [Inject]
+    private HandlerCodeService service { get; set; }
+
+    private List<HandlerCodeView> _types { get; set; }
+
+    private bool showCreate { get; set; }
+    private bool showEdit { get; set; }
+    private bool showDelete { get; set; }
+    private string switchValue { get; set; }
+    private string editCode { get; set; }
+
+    private string createTitle { get; set; }
+    private string editTitle { get; set; }
+    private string passTitle { get; set; }
+    private string deleteTitle { get; set; }
+    private string passSize { get; set; }
+    protected override void OnInitialized()
+
+    {
+        base.OnInitialized();
+
+        _types = service.FindHandlerCodeList().ToList();
+        createTitle = "Create Handler Code";
+        editTitle = "Edit Handler Code";
+        deleteTitle = "Delete Handler Code";
+        passSize = "large";
+    }
+
+    private void CloseDialog(bool wasSaved)
+    {
+
+        if (showCreate == true)
+        {
+            showCreate = false;
+        }
+        if (showEdit == true)
+        {
+            showEdit = false;
+        }
+        if (showDelete == true)
+        {
+            showDelete = false;
+        }
+
+        if (wasSaved)
+        {
+            _types = service.FindHandlerCodeList().ToList();
+        }
+    }
+
+
+}
+
