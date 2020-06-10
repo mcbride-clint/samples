@@ -20,7 +20,7 @@ using MdcLog.Infrastructure;
 using MdcLog.Application.Comments;
 using MdcLog.Application.StatusCodes;
 using MdcLog.Application.Users;
-
+using MdcLog.Application.HandlerCodes;
 using MdcLog.Application.LogHandlers;
 using MdcLog.Application.LogHandlers.Models;
 using MdcLog.Application.Priorties;
@@ -54,6 +54,8 @@ namespace MdcLog
             
             services.AddScoped<ICommentTypeRepository, CommentTypeRepository>();            
             services.AddScoped<CommentTypeService>();
+            services.AddScoped<IHandlerCodeRepository, HandlerCodeRepository>();
+            services.AddScoped<HandlerCodeService>();
 
             services.AddScoped<ILogHandlersRepository, LogHandlerRepository>();
             services.AddScoped<LogHandlerService>();

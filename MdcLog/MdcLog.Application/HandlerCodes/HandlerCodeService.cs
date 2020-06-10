@@ -29,7 +29,7 @@ namespace MdcLog.Application.HandlerCodes
         /// Get All Comment Types
         /// </summary>
         /// <returns></returns>
-        public List<HandlerCodeView> FindTypeList()
+        public List<HandlerCodeView> FindHandlerCodeList()
         {
             //var commentTypes = _commentTypesRepo.FindTypeList();
 
@@ -59,15 +59,15 @@ namespace MdcLog.Application.HandlerCodes
 
             return linqViewList;
         }
-        public CreateHandlerCodeVM GetCreateHandlerCodeVMType()
+        public CreateHandlerCodeVM GetCreateHandlerCodeVM()
         {
             return new CreateHandlerCodeVM();
         }
-        public EditHandlerCodeVM GetCreateUpdateVMType()
+        public EditHandlerCodeVM GetCreateUpdateHandlerCodeVM()
         {
             return new EditHandlerCodeVM();
         }
-        public DeleteHandlerCodeVM GetDeleteCommentTypeVM()
+        public DeleteHandlerCodeVM GetDeleteHandlerCodeVM()
         {
             return new DeleteHandlerCodeVM();
         }
@@ -87,11 +87,11 @@ namespace MdcLog.Application.HandlerCodes
 
             return new DeleteHandlerCodeVM()
             {
-                Code = foundHandlerCode.
+                Code = foundHandlerCode.Code,
                 Descr = foundHandlerCode.Descr
             };
         }
-        public CreateHandlerCodeVM InsertType(CreateHandlerCodeVM ThisHandlerCode)
+        public CreateHandlerCodeVM InsertHandlerCode(CreateHandlerCodeVM ThisHandlerCode)
         {
             var insertHandlerCode = new HandlerCode()
             {
@@ -101,7 +101,7 @@ namespace MdcLog.Application.HandlerCodes
             _handlerCodesRepo.InsertHandlerCode(insertHandlerCode);
             return ThisHandlerCode;
         }
-        public EditHandlerCodeVM EditType(EditHandlerCodeVM ThisHandlerCode)
+        public EditHandlerCodeVM EditHandlerCode(EditHandlerCodeVM ThisHandlerCode)
         {
             var updateHandlerCode = new HandlerCode()
             {
@@ -111,7 +111,7 @@ namespace MdcLog.Application.HandlerCodes
             _handlerCodesRepo.EditHandlerCode(updateHandlerCode);
             return ThisHandlerCode;
         }
-        public DeleteHandlerCodeVM DeleteType(DeleteHandlerCodeVM ThisHandlerCode)
+        public DeleteHandlerCodeVM DeleteHandlerCode(DeleteHandlerCodeVM ThisHandlerCode)
         {
             var deleteHandlerCode = new HandlerCode()
             {
