@@ -15,7 +15,7 @@
                             <RadzenLabel Text="PRIORITY" />
                         </div>
                         <div class="col-md-12">
-                            <RadzenNumeric style="width: 100%;" Name="Priority" @bind-Value="entity.Priority" />
+                            <RadzenNumeric style="width: 100%;" ReadOnly="true" Name="Priority" @bind-Value="entity.Priority" />
                             <RadzenRequiredValidator Component="Priority" Text="Priority Code is required" Popup="@true" Style="position:sticky" />
                             <RadzenLengthValidator Component="Priority" Max="1" Text="Priority cannot be more than 1 characters" Popup="@true" Style="position: sticky" />
                         </div>
@@ -26,7 +26,7 @@
                             <RadzenLabel Text="DESCR" />
                         </div>
                         <div class="col-md-12">
-                            <RadzenTextBox style="width: 100%;" Name="Descr" @bind-Value="entity.Descr" />
+                            <RadzenTextBox style="width: 100%;" ReadOnly="true" Name="Descr" @bind-Value="entity.Descr" />
                             <RadzenRequiredValidator Component="Descr" Text="Description is required" Popup="@true" Style="position:sticky" />
                             <RadzenLengthValidator Component="Descr" Max="50" Text="Description cannot be more than 50 character" Popup="@true" Style="position: sticky" />
                         </div>
